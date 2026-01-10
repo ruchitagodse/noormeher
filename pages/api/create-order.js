@@ -1,3 +1,7 @@
+export const config = {
+  runtime: "nodejs",
+};
+
 import Razorpay from "razorpay";
 
 export default async function handler(req, res) {
@@ -40,7 +44,6 @@ export default async function handler(req, res) {
     // Success
     return res.status(200).json(order);
   } catch (error) {
-    // Generic error response (no HTML, no crash)
     return res.status(500).json({
       message: "Failed to create Razorpay order",
     });
