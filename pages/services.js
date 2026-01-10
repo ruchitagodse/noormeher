@@ -6,27 +6,26 @@ export default function Services() {
 
       {/* HERO */}
       <section
-        className="page-hero"
+        className="page-hero services-hero"
         style={{ backgroundImage: "url(/images/services.jpg)" }}
       >
         <div className="overlay">
           <div className="container">
-            <h1>Services</h1>
-         
+            <h1 className="page-title">Services</h1>
           </div>
         </div>
       </section>
 
       {/* CONTENT */}
-      <section className="container section white-bg">
-     
-        <hr />
+      <section className="container section white-bg services-section">
+
+        <hr className="section-divider" />
 
         {/* FACILITIES */}
-        <h3>FACILITIES FOR RESIDENCE CHILDREN</h3>
+        <h3 className="section-heading">FACILITIES FOR RESIDENCE CHILDREN</h3>
 
-        <div className="grid-2">
-          <ul>
+        <div className="grid-2 services-grid">
+          <ul className="service-list">
             <li>Clothing.</li>
             <li>Basic computer training.</li>
             <li>Aqua water purifier for drinking</li>
@@ -37,7 +36,7 @@ export default function Services() {
             <li>AI Whiteboard provided for education.</li>
           </ul>
 
-          <ul>
+          <ul className="service-list">
             <li>Locker.</li>
             <li>School bags and supplies</li>
             <li>Staff (26 teachers / 2 non-teaching)</li>
@@ -48,27 +47,29 @@ export default function Services() {
           </ul>
         </div>
 
-        {/* ACADEMIC */}
-        <h3>ACADEMIC</h3>
+        <hr className="section-divider" />
 
-        <p>
+        {/* ACADEMIC */}
+        <h3 className="section-heading">ACADEMIC</h3>
+
+        <p className="service-text">
           The Noor Meher Charitable Trust offers both religious and formal
           education. Jamiya Tajveedul Quran provides Quranic recitation classes
           at three levels (Noorani Qaida, Nazera, Hifz) and a full academic
           syllabus with quarterly, half-term, and annual exams.
         </p>
 
-        <p>
+        <p className="service-text">
           The Trust also runs Noor Meher Urdu Maktab and High School (Grades 1-10,
           Maharashtra State Board), which conducts two unit tests, semester
           exams, and a final exam.
         </p>
 
-        <div className="grid-2">
+        <div className="grid-2 services-subgrid">
           {/* HEALTH */}
-          <div>
-            <h4>HEALTH & HYGIENE</h4>
-            <ul>
+          <div className="service-card">
+            <h4 className="service-subtitle">HEALTH & HYGIENE</h4>
+            <ul className="service-list">
               <li>Nutrition</li>
               <li>Medicine</li>
               <li>Toiletries</li>
@@ -80,9 +81,9 @@ export default function Services() {
           </div>
 
           {/* SAFETY */}
-          <div>
-            <h4>SAFETY & SECURITY</h4>
-            <ul>
+          <div className="service-card">
+            <h4 className="service-subtitle">SAFETY & SECURITY</h4>
+            <ul className="service-list">
               <li>
                 Two Teachers are available 24 / 7 for supervision.
               </li>

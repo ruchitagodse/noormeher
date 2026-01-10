@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import Sidebar from "./SideBar";
+import PageSidebar from "./PageSideBar";
 
 export default function Layout({ children }) {
   return (
@@ -10,7 +10,7 @@ export default function Layout({ children }) {
       <div className="layout-wrapper">
         <main className="page-layout">
           <div className="page-content">{children}</div>
-          <Sidebar />
+          <PageSidebar />
         </main>
       </div>
 

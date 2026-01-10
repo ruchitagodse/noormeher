@@ -41,13 +41,16 @@ export default function GalleryPhotosPage() {
         {loading && <p>Loading photos...</p>}
         {!loading && photos.length === 0 && <p>No photos found.</p>}
 
-        <div className="row">
-          {photos.map((photo) => (
-            <div className="col-md-4 mb-4" key={photo.id}>
-              <img src={photo.image} className="img-fluid rounded" />
-            </div>
-          ))}
-        </div>
+    <div className="row">
+  {photos.map((photo) => (
+    <div className="col-md-4 mb-4" key={photo.id}>
+      <div className="gallery-card gallery-photo-card">
+        <img src={photo.image} alt="Gallery Photo" />
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
 
       <Footer />

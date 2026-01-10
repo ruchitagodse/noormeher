@@ -1,9 +1,102 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 
+/* ================= LOAD RAZORPAY ================= */
+const loadRazorpay = () => {
+  return new Promise((resolve) => {
+    if (window.Razorpay) return resolve(true);
+
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 export default function Donate() {
+  const [formData, setFormData] = useState({
+    title: "Mr.",
+    name: "",
+    address: "",
+    city: "",
+    zip: "",
+    state: "",
+    email: "",
+    phone: "",
+    mobile: "",
+    amount: "",
+    purpose: "HAFIZ",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  /* ================= HANDLE DONATE ================= */
+  const handleDonate = async (e) => {
+    e.preventDefault();
+
+    if (!formData.amount || Number(formData.amount) < 1) {
+      alert("Please enter a valid donation amount");
+      return;
+    }
+
+    const razorpayLoaded = await loadRazorpay();
+    if (!razorpayLoaded) {
+      alert("Failed to load Razorpay. Check internet connection.");
+      return;
+    }
+
+    // Create order
+    const res = await fetch("/api/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: formData.amount }),
+    });
+
+    // 🚨 IMPORTANT: handle backend failure
+    if (!res.ok) {
+      alert("Unable to initiate payment. Please try again later.");
+      return;
+    }
+
+    const orderData = await res.json();
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // FRONTEND KEY ONLY
+      amount: orderData.amount,
+      currency: "INR",
+      name: "Noormeher Charitable Trust",
+      description: `Donation for ${formData.purpose}`,
+      order_id: orderData.id,
+
+      handler: function () {
+        alert("Payment successful. Thank you for your donation ❤️");
+      },
+
+      prefill: {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.mobile || formData.phone,
+      },
+
+      notes: {
+        purpose: formData.purpose,
+        address: formData.address,
+      },
+
+      theme: {
+        color: "#2c7be5",
+      },
+    };
+
+    const razorpay = new window.Razorpay(options);
+    razorpay.open();
+  };
+
   return (
     <Layout title="Donate | Noormeher Charitable Trust">
-
       {/* HERO */}
       <section
         className="page-hero"
@@ -12,36 +105,28 @@ export default function Donate() {
         <div className="overlay">
           <div className="container">
             <h1>Donate</h1>
-        
           </div>
         </div>
       </section>
 
       {/* CONTENT */}
       <section className="container section white-bg">
-        <h2>PLEASE FILL THE FORM BELOW TO DONATE</h2>
-        <hr />
+         <div className="donate-wrapper">
+  
+     <div className="donate-box">
+      <h2>PLEASE FILL THE FORM BELOW TO DONATE</h2>
 
         <div className="info-box">
           <p>
-            <strong>Kindly Note:</strong>  
-            Noor Meher Charitable Trust is not authorized to receive any donation
-            other than INR (Indian Rupee).
+            <strong>Kindly Note:</strong> Donations are accepted only in INR.
+            International / NRE / NRO payments are not accepted.
           </p>
         </div>
 
-        <div className="info-box">
-          <p>
-            Donation made from any <strong>INTERNATIONAL, NRE or NRO</strong> account
-            will not be accepted.
-          </p>
-        </div>
-
-        {/* DONATION FORM */}
-        <form className="donate-form">
+        <form className="donate-form" onSubmit={handleDonate}>
           <div className="form-group">
             <label>Title</label>
-            <select>
+            <select name="title" value={formData.title} onChange={handleChange}>
               <option>Mr.</option>
               <option>Mrs.</option>
               <option>M/s.</option>
@@ -50,57 +135,58 @@ export default function Donate() {
 
           <div className="form-group">
             <label>Name</label>
-            <input type="text" placeholder="Full Name" />
+            <input name="name" required onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>Address</label>
-            <textarea placeholder="Address" />
+            <textarea name="address" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>City</label>
-            <input type="text" placeholder="City" />
+            <input name="city" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>Zip Code</label>
-            <input type="text" placeholder="Zip Code" />
+            <input name="zip" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>State</label>
-            <input type="text" placeholder="State" />
+            <input name="state" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="Email" />
+            <input type="email" name="email" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>Phone</label>
-            <input type="text" placeholder="Phone" />
+            <input name="phone" onChange={handleChange} />
           </div>
 
           <div className="form-group">
             <label>Mobile</label>
-            <input type="text" placeholder="Mobile" />
+            <input name="mobile" onChange={handleChange} />
           </div>
-
-          <p className="support-text">
-            Yes, InshaAllah I want to support <strong>Jamiya Tajweeddul Quran</strong>{" "}
-            run by <strong>Noor Meher Charitable Trust</strong> by donating.
-          </p>
 
           <div className="form-group">
             <label>Amount (₹)</label>
-            <input type="text" placeholder="Donation Amount" />
+            <input
+              type="number"
+              name="amount"
+              value={formData.amount}
+              required
+              onChange={handleChange}
+            />
           </div>
 
           <div className="form-group">
             <label>Donation to be used for</label>
-            <select>
+            <select name="purpose" onChange={handleChange}>
               <option>HAFIZ</option>
               <option>ALIM</option>
               <option>QARI</option>
@@ -131,11 +217,13 @@ export default function Donate() {
           </div>
         </form>
 
-        {/* PAYMENT ICONS */}
         <div className="payment-icons">
-          <img src="/img/mastercard_logo_footer.gif" alt="Mastercard" />
-          <img src="/img/visa_logo_footer.gif" alt="Visa" />
-          <img src="/img/rupay_logo_footer.gif" alt="Rupay" />
+          <p>
+            We accept UPI, Cards, Net Banking & Wallets. Payments are securely
+            processed by Razorpay.
+          </p>
+        </div>
+        </div>
         </div>
       </section>
     </Layout>

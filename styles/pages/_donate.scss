@@ -1,0 +1,200 @@
+/* =========================================================
+   DONATE PAGE WRAPPER
+========================================================= */
+
+.donate-wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   DONATE TITLE
+========================================================= */
+
+.donate-title {
+  text-align: center;
+  font-size: 52px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .donate-title {
+    font-size: 34px;
+  }
+}
+
+/* =========================================================
+   DONATE BOX
+========================================================= */
+
+.donate-box {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 48px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .donate-box {
+    padding: 26px 22px;
+  }
+}
+
+/* =========================================================
+   DONATE HEADING
+========================================================= */
+
+.donate-box h2 {
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .donate-box h2 {
+    font-size: 22px;
+  }
+}
+
+/* =========================================================
+   INFO NOTE
+========================================================= */
+
+.info-box {
+  background: linear-gradient(
+    135deg,
+    rgba(34,197,94,0.08),
+    rgba(34,197,94,0.03)
+  );
+  border-left: 5px solid #22c55e;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-bottom: 36px;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.donate-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 768px) {
+  .donate-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.donate-form input,
+.donate-form textarea,
+.donate-form select {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background: #f8fafc;
+  transition: all 0.25s ease;
+}
+
+.donate-form textarea {
+  resize: none;
+  min-height: 90px;
+}
+
+.donate-form input:focus,
+.donate-form textarea:focus,
+.donate-form select:focus {
+  outline: none;
+  border-color: #22c55e;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
+}
+
+/* Full-width fields */
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  color: #fff;
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(34,197,94,0.45);
+}
+
+.btn-danger {
+  background: transparent;
+  color: #0f172a;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #f1f5f9;
+}
+
+/* =========================================================
+   PAYMENT INFO
+========================================================= */
+
+.payment-icons {
+  margin-top: 36px;
+  text-align: center;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+}

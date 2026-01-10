@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import Link from "next/link";
+import Layout from "@/components/Layout";
 
 export default function GalleryPage() {
   const [galleryYears, setGalleryYears] = useState([]);
@@ -29,19 +29,14 @@ export default function GalleryPage() {
 
   return (
     <>
-      <Header />
-
-      <div
-        style={{
-          backgroundImage: "url(/images/gallery.jpg)",
-          backgroundSize: "cover",
-          minHeight: "350px",
-        }}
-      >
+      <Layout>
+    <section className="page-hero">
         <div className="container">
-          <h1 className="text-white py-5">Gallery</h1>
+          <h1>Gallery</h1>
+        
         </div>
-      </div>
+      </section>
+
 
       <div className="container my-5">
         <div className="row bg-white p-4">
@@ -59,7 +54,8 @@ export default function GalleryPage() {
               {galleryYears.map((item) => (
                 <div className="col-md-4 mb-4" key={item.id}>
                   <Link href={`/gallery/${item.id}`}>
-                    <div className="card shadow-sm h-100">
+                 <div className="card gallery-card h-100">
+
                       <img
                         src={item.image}
                         alt={item.year}
@@ -77,7 +73,7 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      <Footer />
+      </Layout>
     </>
   );
 }

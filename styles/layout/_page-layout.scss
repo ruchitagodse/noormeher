@@ -1,0 +1,255 @@
+/* =========================================================
+   PAGE LAYOUT – FINAL
+========================================================= */
+
+.page-layout {
+  max-width: 1250px;
+  margin: auto;
+  padding: 70px 20px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+.page-content {
+  min-width: 0;
+  animation: fadeUp 0.8s ease both;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .page-layout {
+    display: block;
+    padding: 40px 16px;
+  }
+}
+
+/* =========================================================
+   HERO – GREEN ACADEMY THEME
+========================================================= */
+/* ================= ABOUT HERO TITLE ================= */
+
+.page-hero h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-align: center;
+
+  /* Green + Dark blend */
+  background: linear-gradient(
+    90deg,
+    #0f172a 0%,
+    #0f172a 45%,
+    #16a34a 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Soft depth */
+  text-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+
+  animation: heroFadeUp 0.9s ease both;
+}
+
+.hero-bg {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(34, 197, 94, 0.12),
+      rgba(236, 255, 246, 0.95)
+    ),
+    url("/hero.jpg") center / cover no-repeat;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+/* HERO TITLE */
+.hero-content h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 68px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+
+  /* MATCHING IMAGE */
+  color: #0b2e1a;
+
+  text-shadow: 0 8px 40px rgba(15, 130, 70, 0.15);
+  animation: heroTitle 1s ease both;
+}
+
+/* HERO SUBTEXT */
+.hero-content p {
+  font-size: 20px;
+  color: #4b6358;
+  margin: 22px auto 36px;
+  max-width: 720px;
+  line-height: 1.8;
+
+  animation: heroText 1.2s ease both;
+}
+
+/* HERO BUTTON */
+.hero-content a {
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.35);
+
+  animation: heroBtn 1.4s ease both;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .hero-bg {
+    padding: 90px 0 50px;
+    min-height: unset;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+    line-height: 1.25;
+  }
+
+  .hero-content p {
+    font-size: 14.5px;
+  }
+}
+
+/* =========================================================
+   HERO ANIMATIONS
+========================================================= */
+
+@keyframes heroTitle {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroText {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroBtn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   SECTION – GREEN ACADEMY TITLES
+========================================================= */
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+/* MAIN SECTION TITLE */
+.section-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 18px;
+
+  background: linear-gradient(
+    90deg,
+    #0b2e1a,
+    #16a34a
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: fadeUp 0.9s ease both;
+}
+
+/* SUBTITLE */
+.section-subtitle {
+  text-align: center;
+  font-size: 17px;
+  color: #4b6358;
+  max-width: 720px;
+  margin: 0 auto 60px;
+  line-height: 1.8;
+
+  animation: fadeUp 1.1s ease both;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   BODY TEXT – SOFT EDUCATION TONE
+========================================================= */
+
+.section p {
+  color: #4b6358;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.section p strong {
+  color: #0b2e1a;
+  font-weight: 600;
+}
+
+/* =========================================================
+   CARDS – CLEAN & MODERN
+========================================================= */
+
+.grid-3 .card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.grid-3 .card h3,
+.grid-3 .card h4 {
+  color: #0b2e1a;
+  font-weight: 700;
+}
+
+.grid-3 .card p {
+  color: #4b6358;
+  line-height: 1.7;
+}
+
+.grid-3 .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(22, 163, 74, 0.18);
+}
+
+/* =========================================================
+   FADE UP (GLOBAL)
+========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

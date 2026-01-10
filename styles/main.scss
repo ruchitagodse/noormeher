@@ -1,0 +1,27 @@
+@use "base/variables";
+@use "base/reset";
+@use "base/animations";
+
+@use "layout/header";
+@use "layout/footer";
+@use "layout/sidebar";
+@use "layout/grid";
+@use "layout/page-layout";
+
+@use "components/buttons";
+@use "components/cards";
+@use "components/forms";
+@use "components/cta";
+
+
+@use "pages/home";
+@use "pages/inner-pages";
+@use "pages/contact";
+@use "pages/donate";
+@use "pages/achievements";
+@use "pages/activity";
+@use "pages/service";
+@use "pages/about";
+@use "pages/faq";
+@use "pages/quran";
+@use "pages/gallery";

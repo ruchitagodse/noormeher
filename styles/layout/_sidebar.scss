@@ -1,0 +1,294 @@
+/* =========================================================
+   SIDEBAR – DESKTOP (STICKY)
+========================================================= */
+.sidebar {
+  position: sticky;
+  top: 110px; /* header height + gap */
+  align-self: flex-start;
+  height: calc(100vh - 130px);
+  overflow-y: auto;
+
+  background: transparent;
+  transition: transform 0.35s ease;
+
+  a {
+    transition: background 0.25s ease, color 0.25s ease;
+
+    &.active {
+      background: linear-gradient(135deg, #0aa84f, #22c55e);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 6px 16px rgba(10, 168, 79, 0.35);
+    }
+  }
+}
+
+/* =========================================================
+   SIDEBAR ACCORDION
+========================================================= */
+.panel {
+  overflow: hidden;
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+      content: "▾";
+      position: absolute;
+      right: 16px;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &[open] summary::after {
+    transform: rotate(180deg);
+  }
+}
+
+.panel-body {
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================
+   SIDEBAR CONTENT
+========================================================= */
+.quick-links li {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.quick-links a {
+  font-size: 14px;
+  color: var(--text-dark);
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.marquee ul li {
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* =========================================================
+   SIDEBAR TOGGLE BUTTON (DEFAULT: HIDDEN)
+========================================================= */
+.sidebar-toggle {
+  display: none;
+}
+
+/* =========================================================
+   SIDEBAR OVERLAY (DEFAULT: HIDDEN)
+========================================================= */
+.sidebar-overlay {
+  display: none;
+}
+
+/* =========================================================
+   MOBILE SIDEBAR (OFF-CANVAS)
+========================================================= */
+@media (max-width: 992px) {
+
+  /* Hide desktop sticky behavior */
+  .sidebar {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 85%;
+    max-width: 320px;
+    height: calc(100vh - 64px);
+    background: #ffffff;
+    padding: 20px;
+    z-index: 3000;
+
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Overlay only on mobile */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 2500;
+  }
+
+  /* Hamburger button */
+  .sidebar-toggle {
+    display: flex;
+    position: fixed;
+    top: 14px;
+    right: 16px;
+
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 20px;
+
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    z-index: 5000;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+}
+/* Desktop: sidebar hidden by default */
+.sidebar {
+  display: none;
+}
+
+/* Mobile only */
+@media (max-width: 992px) {
+  .sidebar {
+    display: block;
+  }
+}
+/* ================= MOBILE SIDEBAR ================= */
+.mobile-sidebar {
+  display: none;
+}
+/* =========================================================
+   MOBILE SIDEBAR – ENHANCED
+========================================================= */
+
+.mobile-panel {
+  margin-top: 14px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.mobile-panel summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 18px;
+}
+
+.mobile-panel summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  color: #16a34a;
+}
+
+.mobile-panel[open] summary::after {
+  content: "–";
+}
+
+/* Quick links */
+.mobile-quick-links,
+.mobile-achievements {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.mobile-quick-links li,
+.mobile-achievements li {
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.mobile-quick-links a {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.mobile-quick-links a:hover {
+  color: #16a34a;
+}
+
+/* Donate button polish */
+.mobile-nav .donate-btn {
+  margin-top: 14px;
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .mobile-sidebar {
+    display: block;
+    position: fixed;
+    top: 64px;
+    right: 0;
+    width: 85%;
+    max-width: 320px;
+    height: calc(100vh - 64px);
+    background: #fff;
+    padding: 20px;
+overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    z-index: 3000;
+    box-shadow: -20px 0 40px rgba(0,0,0,.15);
+  }
+
+  .mobile-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+}
+
+/* Overlay */
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.45);
+    z-index: 2500;
+  }
+}
+/* ================= PAGE SIDEBAR (DESKTOP ONLY) ================= */
+.page-sidebar {
+  position: sticky;
+  top: 110px;
+  height: calc(100vh - 130px);
+  overflow-y: auto;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}

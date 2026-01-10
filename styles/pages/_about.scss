@@ -1,0 +1,124 @@
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+.about-section {
+  padding-top: 40px;
+}
+
+/* Divider */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d1fae5, transparent);
+  margin: 50px 0;
+}
+
+/* =========================================================
+   CONTENT WRAPPER
+========================================================= */
+
+.about-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Paragraphs */
+.about-content p {
+  font-size: 15.8px;
+  color: #475569;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   SUB HEADINGS
+========================================================= */
+
+.about-subheading {
+  margin-top: 50px;
+  margin-bottom: 22px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  position: relative;
+}
+
+.about-subheading::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #22c55e, #0aa84f);
+}
+
+/* =========================================================
+   ICON LIST
+========================================================= */
+
+.about-icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-icon-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 14px;
+  font-size: 15.5px;
+  color: #475569;
+}
+
+.about-icon-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #22c55e;
+  font-weight: 700;
+}
+
+/* =========================================================
+   ADMIN LIST
+========================================================= */
+
+.about-admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-admin-list li {
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  background: #f8fffb;
+  border-left: 4px solid #22c55e;
+  border-radius: 10px;
+  font-size: 15.5px;
+  color: #475569;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .about-content {
+    padding: 0 4px;
+  }
+
+  .about-content p {
+    font-size: 14.5px;
+  }
+
+  .about-subheading {
+    font-size: 20px;
+  }
+
+  .about-admin-list li {
+    font-size: 14.5px;
+  }
+}

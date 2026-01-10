@@ -1,0 +1,66 @@
+.section {
+  padding: 100px 0;
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding: 60px 0;
+  }
+}
+.section h2,
+.center {
+  font-family: "Poppins", sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 26px;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+
+  animation: fadeUp 0.9s ease both;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .section h2 {
+    font-size: 30px;
+    margin-bottom: 18px;
+  }
+}
+.section.container p {
+  max-width: 860px;
+  margin: 14px auto;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: #475569;
+
+  animation: fadeUp 1.1s ease both;
+}
+
+/* Slight emphasis on first paragraph */
+.section.container p:first-of-type {
+  font-size: 17px;
+  color: #334155;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .section.container p {
+    font-size: 14.5px;
+    padding: 0 6px;
+  }
+}
+.highlights h4 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .highlights h4 {
+    font-size: 18px;
+  }
+}

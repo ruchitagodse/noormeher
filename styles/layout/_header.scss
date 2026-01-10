@@ -1,0 +1,150 @@
+/* =========================================================
+   HEADER – GLOBAL
+========================================================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+}
+
+/* =========================================================
+   MAIN HEADER
+========================================================= */
+.main-header {
+  background: linear-gradient(135deg, #eafff3, #f4fff9);
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* SCROLLED STATE */
+.main-header.scrolled {
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   HEADER INNER
+========================================================= */
+.header-inner {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 320px;
+}
+
+.logo img {
+  height: 52px;
+  width: auto;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   NAVIGATION (DESKTOP)
+========================================================= */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  white-space: nowrap;
+}
+
+.nav a {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.nav a:hover {
+  color: var(--primary);
+}
+
+/* =========================================================
+   DONATE BUTTON
+========================================================= */
+.donate-btn {
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  color: #fff !important;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+.top-bar {
+  background: #f0fff7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+  color: #334155;
+}
+
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-social {
+  display: flex;
+  gap: 12px;
+}
+/* =========================================================
+   MOBILE HEADER FIX
+========================================================= */
+/* =========================================================
+   MOBILE HEADER – FINAL FIX
+========================================================= */
+@media (max-width: 992px) {
+
+  /* Header must be SOLID */
+  .main-header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    backdrop-filter: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    z-index: 4000;
+  }
+
+  /* Proper header height */
+  .header-inner {
+    height: 64px;
+    padding: 0 14px;
+  }
+
+  /* Logo clean */
+  .logo img {
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+ 
+
+  /* Hide desktop elements */
+  .nav,
+  .donate-btn,
+  .top-bar {
+    display: none;
+  }
+
+  /* 🔑 PUSH HERO DOWN (THIS FIXES OVERLAP) */
+  .hero-bg {
+    padding-top: 64px;
+  }
+}

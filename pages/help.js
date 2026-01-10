@@ -8,7 +8,7 @@ export default function Help() {
         <main className="content">
           <h2>Alms / How You Can Help</h2>
 
-          <ul>
+          <ul className="activity-list">
             <li>Meals for children</li>
             <li>Milk Scheme</li>
             <li>Education Adoption</li>

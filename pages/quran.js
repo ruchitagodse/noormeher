@@ -1,17 +1,17 @@
 import Layout from "../components/Layout";
-import Sidebar from "../components/SideBar";
+
 
 export default function QuranPage() {
   return (
     <Layout title="Quran | Noormeher Charitable Trust">
 
       {/* ===== PAGE BANNER ===== */}
-      <section
+      {/* <section
         className="page-banner"
         style={{
           backgroundImage: "url(/images/quran.jpg)",
         }}
-      />
+      /> */}
 
       {/* ===== CONTENT ===== */}
       <section className="container section">

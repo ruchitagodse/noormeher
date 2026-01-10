@@ -6,28 +6,27 @@ export default function Activities() {
 
       {/* HERO */}
       <section
-        className="page-hero"
+        className="page-hero activities-hero"
         style={{ backgroundImage: "url(/images/activities.jpg)" }}
       >
         <div className="overlay">
           <div className="container">
-            <h1>Activities</h1>
-       
+            <h1 className="page-title">Activities</h1>
           </div>
         </div>
       </section>
 
       {/* CONTENT */}
-      <section className="container section white-bg">
-    
-        <hr />
+      <section className="container section white-bg activities-section">
 
-        <div className="grid-2">
+        <hr className="section-divider" />
+
+        <div className="grid-2 activities-grid">
           {/* ADMISSION */}
-          <div>
-            <h3>ADMISSION</h3>
+          <div className="activity-card">
+            <h3 className="activity-title">ADMISSION</h3>
 
-            <ul>
+            <ul className="activity-list">
               <li>Age Limit 8 – 14 years</li>
               <li>
                 8 - 10 years of age for Norani Qaida and for Noor Meher Urdu
@@ -53,11 +52,13 @@ export default function Activities() {
           </div>
 
           {/* EDUCATION */}
-          <div>
-            <h3>EDUCATION</h3>
-            <p>Education covers the following areas :</p>
+          <div className="activity-card">
+            <h3 className="activity-title">EDUCATION</h3>
+            <p className="activity-intro">
+              Education covers the following areas :
+            </p>
 
-            <ul>
+            <ul className="activity-list">
               <li>Formal School</li>
               <li>Non-formal School</li>
               <li>Educational Visits</li>
@@ -67,13 +68,13 @@ export default function Activities() {
           </div>
         </div>
 
-        <hr />
+        <hr className="section-divider" />
 
         {/* PROGRAMME */}
-        <h3>PROGRAMME</h3>
+        <h3 className="activity-title centered">PROGRAMME</h3>
 
-        <div className="grid-2">
-          <ul>
+        <div className="grid-2 activities-grid">
+          <ul className="activity-list">
             <li>Celebrate EID-UL-FITR</li>
             <li>Celebrate EID-AL-ADHA</li>
             <li>
@@ -88,7 +89,7 @@ export default function Activities() {
             <li>Sports Day</li>
           </ul>
 
-          <ul>
+          <ul className="activity-list">
             <li>
               Yearly speech competition on Seeratun Nabawi (pbuh).
             </li>

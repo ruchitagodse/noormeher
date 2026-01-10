@@ -43,24 +43,25 @@ export default function GalleryTypesPage() {
 
         {!loading && types.length === 0 && <p>No albums found.</p>}
 
-        <div className="row">
-          {types.map((item) => (
-            <div className="col-md-4 mb-4" key={item.id}>
-              <Link href={`/gallery/${yearId}/${item.id}`}>
-                <div className="card shadow-sm h-100">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="img-fluid"
-                  />
-                  <div className="card-footer text-center fw-bold">
-                    {item.name}
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+      <div className="row">
+  {types.map((item) => (
+    <div className="col-md-4 mb-4" key={item.id}>
+      <Link href={`/gallery/${yearId}/${item.id}`}>
+        <div className="card gallery-card gallery-type-card h-100">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="img-fluid"
+          />
+          <div className="card-footer text-center fw-bold">
+            {item.name}
+          </div>
         </div>
+      </Link>
+    </div>
+  ))}
+</div>
+
       </div>
 
       <Footer />

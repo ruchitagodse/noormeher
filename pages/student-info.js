@@ -2,68 +2,56 @@ import Layout from "../components/Layout";
 
 export default function StudentInfo() {
   return (
-    <Layout>
-
-   
-
-      <h3 style={{ fontFamily: "Candal" }}>Student Information</h3>
-      <hr />
-
-      {/* DOB */}
-      <div className="row">
-        <label className="col-sm-2 control-label">DOB</label>
-        <div className="col-sm-4">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="DD-MM-YYYY"
-          />
-          <small>eg:- 24-01-2001</small>
+    <Layout title="Student Information | Noormeher Charitable Trust">
+      {/* HERO */}
+      <section className="page-hero student-hero">
+        <div className="container">
+          <h1>Students Information</h1>
+          <p>Enter student details to fetch information</p>
         </div>
-      </div>
+      </section>
 
-      <br />
+      {/* FORM SECTION */}
+      <section className="container section">
+        <div className="student-form-card">
 
-      {/* Year */}
-      <div className="row">
-        <label className="col-sm-2 control-label">Year</label>
-        <div className="col-sm-3">
-          <select className="form-control">
-            <option value="">Select Year</option>
-            <option>2021</option>
-            <option>2022</option>
-            <option>2023</option>
-            <option>2024</option>
-            <option>2025</option>
-          </select>
-        </div>
-      </div>
+          {/* DOB */}
+          <div className="form-row">
+            <label>Date of Birth</label>
+            <input type="text" placeholder="DD-MM-YYYY" />
+            <small>Example: 24-01-2001</small>
+          </div>
 
-      <br />
+          {/* YEAR */}
+          <div className="form-row">
+            <label>Year</label>
+            <select>
+              <option value="">Select Year</option>
+              <option>2021</option>
+              <option>2022</option>
+              <option>2023</option>
+              <option>2024</option>
+              <option>2025</option>
+            </select>
+          </div>
 
-      {/* Form Number */}
-      <div className="row">
-        <label className="col-sm-2 control-label">Form No.</label>
-        <div className="col-sm-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="eg:- 541"
-          />
+          {/* FORM NO */}
+          <div className="form-row">
+            <label>Form Number</label>
+            <input type="text" placeholder="eg: 541" />
+          </div>
+
+          {/* ACTION */}
+          <div className="form-actions">
+            <button className="btn-primary">Get Info</button>
+          </div>
         </div>
 
-        <div className="col-sm-2">
-          <button className="btn btn-primary">Get Info</button>
+        {/* RESULT TABLE PLACEHOLDER */}
+        <div id="tableaa" className="student-result">
+          {/* API result goes here */}
         </div>
-      </div>
-
-      <br />
-
-      {/* Result Table Placeholder */}
-      <div id="tableaa">
-        {/* Later: fetch data using API */}
-      </div>
-
+      </section>
     </Layout>
   );
 }

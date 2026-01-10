@@ -19,13 +19,13 @@ export default function PrivacyPolicy() {
       </section>
 
       {/* ===== Page Content ===== */}
-      <section className="container section">
+      <section className="container section white-bg">
         <div className="row">
           
           {/* ===== Main Content ===== */}
           <div className="col-md-9">
        
-            <hr />
+         
 
             <p>
               This privacy policy sets out how <strong>Noormeher Charitable Trust</strong> 
@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
             </p>
 
             <h4>What we collect</h4>
-            <ul className="policy-list">
+            <ul className="activity-list">
               <li>Name and job title</li>
               <li>Contact information including email address</li>
               <li>Demographic information such as postcode, preferences and interests</li>
@@ -59,7 +59,7 @@ export default function PrivacyPolicy() {
               service, and in particular for the following reasons:
             </p>
 
-            <ul className="policy-list">
+            <ul className="activity-list">
               <li>Internal record keeping</li>
               <li>We may use the information to improve our work</li>
             </ul>

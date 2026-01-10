@@ -4,24 +4,22 @@ export default function Vision() {
   return (
     <Layout>
       {/* ================= HERO / TITLE SECTION ================= */}
-      <section
-        className="hero hero-bg"
-        style={{
-          backgroundImage: "url('/images/bvision.JPG')",
-          minHeight: "350px",
-        }}
+    <section
+        className="page-hero activities-hero"
+        style={{ backgroundImage: "url(/images/activities.jpg)" }}
       >
-        <div className="hero-content">
-          <h1>Our Vision</h1>
+        <div className="overlay">
+          <div className="container">
+            <h1 className="page-title">Our Vision</h1>
+          </div>
         </div>
       </section>
-
       {/* ================= VISION CONTENT ================= */}
-      <section className="container section">
+      <section className="container section  white-bg ">
     
-        <hr />
+    
 
-        <ul className="vision-list">
+        <ul className="activity-list">
           <li>
             Education with residential accommodation and arrangement of food
             and clothing for poor, needy, orphan and deserving Muslim students.

@@ -1,0 +1,61 @@
+/* =========================================================
+   RESET
+========================================================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HTML & BODY
+========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #ecfff6, #f6fffb);
+  color: var(--text-dark);
+  overflow-x: hidden; /* 🔑 prevents mobile side gaps */
+}
+
+/* =========================================================
+   LINKS
+========================================================= */
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent; /* better mobile tap */
+}
+
+/* =========================================================
+   CONTAINER (DESKTOP + MOBILE FRIENDLY)
+========================================================= */
+.container {
+  width: 100%;
+  max-width: 1250px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 24px);
+}
+
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+========================================================= */
+@media (max-width: 992px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}

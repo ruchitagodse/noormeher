@@ -1,0 +1,152 @@
+/* ===============================
+   PAGE BANNER
+================================ */
+
+.page-banner {
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 0 40px 40px;
+  margin-bottom: 40px;
+}
+
+/* ===============================
+   GRID LAYOUT
+================================ */
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* ===============================
+   MAIN CONTENT
+================================ */
+
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #14532d;
+  margin: 30px 0 10px;
+}
+
+.content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 16px;
+  color: #0f172a;
+}
+
+.content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, #22c55e, transparent);
+  margin: 30px 0;
+}
+
+/* ===============================
+   ROW (TEXT + IMAGE)
+================================ */
+
+.row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  margin: 40px 0;
+}
+
+/* Reverse layout automatically handled by markup order */
+
+/* ===============================
+   TEXT BLOCK
+================================ */
+
+.text {
+  background: #ffffff;
+  padding: 28px 30px;
+  border-radius: 22px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.text p {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: #334155;
+}
+
+.text i {
+  color: #14532d;
+  font-style: italic;
+}
+
+/* ===============================
+   IMAGE BOX
+================================ */
+
+.image-box {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 992px) {
+  .page-banner {
+    height: 200px;
+    border-radius: 0 0 26px 26px;
+  }
+
+  .content h2 {
+    font-size: 26px;
+  }
+
+  .content h3 {
+    font-size: 20px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .text {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-banner {
+    height: 160px;
+  }
+
+  .content h2 {
+    font-size: 22px;
+  }
+
+  .text p {
+    font-size: 14.5px;
+  }
+}

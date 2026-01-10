@@ -1,0 +1,173 @@
+/* =========================================================
+   GRID – WHAT WE DO / FEATURES
+========================================================= */
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  align-items: stretch;
+  margin-top: 60px;
+}
+
+/* =========================================================
+   CARD BASE
+========================================================= */
+
+.grid-3 .card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 50px 40px 44px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.9s ease forwards;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* =========================================================
+   ICON BADGE
+========================================================= */
+
+.grid-3 .card::before {
+  font-size: 34px;
+  width: 64px;
+  height: 64px;
+
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: -32px;
+  left: 30px;
+
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+}
+
+/* Individual icons */
+.grid-3 .card:nth-child(1)::before { content: "🎯"; }
+.grid-3 .card:nth-child(2)::before { content: "🤝"; }
+.grid-3 .card:nth-child(3)::before { content: "🏆"; }
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.grid-3 .card h3 {
+  margin-top: 34px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.grid-3 .card p {
+  margin-top: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.grid-3 .link {
+  margin-top: auto;
+  padding-top: 18px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* =========================================================
+   HOVER EFFECT
+========================================================= */
+
+.grid-3 .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.14);
+}
+
+/* =========================================================
+   TABLET RESPONSIVE
+========================================================= */
+
+@media (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .grid-3 .card {
+    padding: 44px 34px 38px;
+  }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE (CRITICAL FIX)
+========================================================= */
+
+@media (max-width: 640px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .grid-3 .card {
+    padding: 34px 26px 30px;
+  }
+
+  /* Remove floating overlap on mobile */
+  .grid-3 .card::before {
+    position: static;
+    margin-bottom: 14px;
+  }
+
+  .grid-3 .card h3 {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .grid-3 .card p {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   OPTIONAL: HIGHLIGHT VARIANT
+========================================================= */
+
+.highlights .card {
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff, #f0fff7);
+}
+
+.highlights .card::before {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

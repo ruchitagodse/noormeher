@@ -12,7 +12,7 @@ export default function MissionPage() {
       </section>
 
       {/* CONTENT */}
-      <section className="container section">
+      <section className="container section white-bg">
       
         <p className="italic">
           “Our Mission is to work for the cause and care of CHILDREN of our

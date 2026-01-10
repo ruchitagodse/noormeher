@@ -4,20 +4,15 @@ export default function TermsConditions() {
   return (
     <Layout>
       {/* ===== HERO / TITLE ===== */}
-      <section
-        className="hero hero-small"
-        style={{
-          backgroundImage: "url(/images/bg.jpg)",
-        }}
-      >
-        <div className="hero-overlay">
+     
+  <section className="page-hero">
+        <div className="container">
           <h1>Terms & Conditions</h1>
-      
+        
         </div>
       </section>
-
       {/* ===== CONTENT ===== */}
-      <section className="container section">
+      <section className="container section white-bg">
   
         <p>
           Welcome to our website. If you continue to browse and use this website,
@@ -48,7 +43,7 @@ export default function TermsConditions() {
 
         <h3>Website Usage Terms</h3>
 
-        <ul className="list">
+        <ul className="activity-list">
           <li>
             The content of the pages of this website is for your general
             information and use only. It is subject to change without prior

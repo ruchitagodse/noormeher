@@ -1,0 +1,19 @@
+.card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .card h3 {
+    font-size: 20px;
+  }
+}
+.card p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #475569;
+}
