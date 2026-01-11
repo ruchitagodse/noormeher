@@ -43,6 +43,16 @@ export default function MobileSidebar({ open, setOpen }) {
               <Link href="/help" onClick={() => setOpen(false)}>
               Alms / How You Can Help
               </Link>
+            </li>    
+             <li>
+              <Link href="/student-info" onClick={() => setOpen(false)}>
+              Get Students Info
+              </Link>
+            </li>    
+             <li>
+              <Link href="/faq" onClick={() => setOpen(false)}>
+              FAQ's
+              </Link>
             </li>                      
             </ul>
           </details>

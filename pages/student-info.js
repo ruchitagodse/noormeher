@@ -6,7 +6,8 @@ export default function StudentInfo() {
       {/* HERO */}
       <section className="page-hero student-hero">
         <div className="container">
-          <h1>Students Information</h1>
+          
+             <h2 className="center">Students Information</h2>
           <p>Enter student details to fetch information</p>
         </div>
       </section>

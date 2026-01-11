@@ -6,18 +6,7 @@ export default function PrivacyPolicy() {
     <Layout title="Privacy Policy | Noormeher Charitable Trust">
 
       {/* ===== Hero / Banner ===== */}
-      <section
-        className="page-hero"
-        style={{
-          backgroundImage: "url(/images/bg.jpg)",
-        }}
-      >
-        <div className="container">
-                <h1>Privacy Policy</h1>
-       
-        </div>
-      </section>
-
+        <h2 className="center">Privacy Policy</h2>
       {/* ===== Page Content ===== */}
       <section className="container section white-bg">
         <div className="row">

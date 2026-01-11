@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 const images = [
   "/images/slide11.jpg",
   "/images/slide2.jpg",
-  "/images/slide3.JPG",
+  "/images/slide3.jpg",
   "/images/slide6.jpg",
   "/images/slide7.jpg",
   "/images/slide4.jpg",
@@ -155,7 +155,7 @@ export default function Home() {
   {/* ACHIEVEMENTS */}
   <div className="card highlight-card">
     <div className="card-image">
-      <img src="/images/achievemnts.jpg" alt="Achievements" />
+      <img src="/images/achievements.jpg" alt="Achievements" />
     </div>
     <h3>Achievements</h3>
     <p>

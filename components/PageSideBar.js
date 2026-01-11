@@ -46,6 +46,16 @@ export default function PageSidebar() {
               Alms / How You Can Help
               </Link>
             </li>
+              <li>
+              <Link href="/student-info" className={isActive("/student-info") ? "active" : ""}>
+              Get Students Info
+              </Link>
+            </li>    
+             <li>
+              <Link href="/faq" className={isActive("/faq") ? "active" : ""}>
+              FAQ's
+              </Link>
+            </li>   
           </ul>
         </div>
       </details>

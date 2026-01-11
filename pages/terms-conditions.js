@@ -5,12 +5,10 @@ export default function TermsConditions() {
     <Layout>
       {/* ===== HERO / TITLE ===== */}
      
-  <section className="page-hero">
-        <div className="container">
-          <h1>Terms & Conditions</h1>
+
+          <h2 className="center">Terms & Conditions</h2>
         
-        </div>
-      </section>
+        
       {/* ===== CONTENT ===== */}
       <section className="container section white-bg">
   

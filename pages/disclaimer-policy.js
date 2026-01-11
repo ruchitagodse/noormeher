@@ -5,13 +5,9 @@ export default function Disclaimer() {
     <Layout title="Disclaimer Policy | Noormeher Charitable Trust">
 
       {/* ===== HERO / TITLE SECTION ===== */}
-      <section className="page-hero">
-        <div className="container">
-          <h1>Disclaimer Policy</h1>
+      
+          <h2 className="center">Disclaimer Policy</h2>
         
-        </div>
-      </section>
-
       {/* ===== CONTENT SECTION ===== */}
       <section className="container page-content white-bg">
         <div className="content-with-sidebar">

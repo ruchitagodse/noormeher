@@ -73,14 +73,7 @@ export default function FAQ() {
   return (
     <Layout title="FAQ | Noormeher Charitable Trust">
       {/* HERO */}
-      <section
-        className="page-hero"
-        style={{ backgroundImage: "url(/images/bg.jpg)" }}
-      >
-        <div className="container">
-          <h1>FAQ</h1>
-        </div>
-      </section>
+      <h2 className="center">FAQ</h2>
 
       {/* CONTENT */}
       <section className="container section">
