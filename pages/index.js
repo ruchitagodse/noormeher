@@ -155,7 +155,7 @@ export default function Home() {
   {/* ACHIEVEMENTS */}
   <div className="card highlight-card">
     <div className="card-image">
-      <img src="/images/achievements.jpg" alt="Achievements" />
+      <img src="/images/achievemnts.jpg" alt="Achievements" />
     </div>
     <h3>Achievements</h3>
     <p>
