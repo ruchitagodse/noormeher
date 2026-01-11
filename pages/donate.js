@@ -97,21 +97,14 @@ export default function Donate() {
 
   return (
     <Layout title="Donate | Noormeher Charitable Trust">
-      {/* HERO */}
-      <section
-        className="page-hero"
-        style={{ backgroundImage: "url(/images/bg.jpg)" }}
-      >
-        <div className="overlay">
-          <div className="container">
+    
+      
              <h2 className="center">Donate</h2>
             
-          </div>
-        </div>
-      </section>
+          
 
       {/* CONTENT */}
-      <section className="container section white-bg">
+      <section className="container section ">
          <div className="donate-wrapper">
   
      <div className="donate-box">
