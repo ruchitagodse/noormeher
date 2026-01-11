@@ -58,7 +58,7 @@ export default function Footer() {
         </p>
         <p>
           Handcrafted with <span style={{ color: "red" }}>❤</span> by{" "}
-          <span className="brand">Webhawkers</span>
+          <span className="brand">Ruchita Godse</span>
         </p>
       </div>
     </footer>

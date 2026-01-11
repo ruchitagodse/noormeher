@@ -14,7 +14,7 @@ export default function QuranPage() {
       /> */}
 
       {/* ===== CONTENT ===== */}
-      <section className="container section">
+        <section className="container section">
         <div className="grid-layout">
 
           {/* ===== MAIN CONTENT ===== */}
@@ -23,9 +23,15 @@ export default function QuranPage() {
             <nav className="breadcrumb">
          
             </nav>
+  
+            <h2 className="center">QURANIC VERSES / HADITH</h2>
 
-            <h2>QURANIC VERSES / HADITH</h2>
-            <hr />
+        
+        
+      
+
+
+          
 
             <h3>QURAN</h3>
 

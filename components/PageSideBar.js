@@ -38,7 +38,12 @@ export default function PageSidebar() {
             </li>
             <li>
               <Link href="/achievements" className={isActive("/achievements") ? "active" : ""}>
-                Progress & Success
+                Progress & Success	
+              </Link>
+            </li>
+              <li>
+              <Link href="/help" className={isActive("/help") ? "active" : ""}>
+              Alms / How You Can Help
               </Link>
             </li>
           </ul>

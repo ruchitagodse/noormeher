@@ -19,13 +19,9 @@ export default function Header() {
     <>
       <header>
         {/* ================= TOP BAR (DESKTOP ONLY) ================= */}
-        <div className="top-bar">
+        {/* <div className="top-bar">
           <div className="container top-bar-inner">
-            <div className="top-left">
-              <span>📍 Malad, Mumbai</span>
-              <span>📞 (022) 2881-0448</span>
-              <span>✉️ info@noormeher.org</span>
-            </div>
+         
 
             <div className="top-social">
               <a
@@ -54,7 +50,7 @@ export default function Header() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* ================= MAIN HEADER ================= */}
         <div className={`main-header ${scrolled ? "scrolled" : ""}`}>

@@ -5,7 +5,7 @@
 .page-layout {
   max-width: 1250px;
   margin: auto;
-  padding: 70px 20px;
+  padding: 20px 10px;
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 48px;
@@ -21,57 +21,417 @@
 @media (max-width: 992px) {
   .page-layout {
     display: block;
-    padding: 40px 16px;
+    padding: 30px 20px;
   }
 }
 
 /* =========================================================
    HERO – GREEN ACADEMY THEME
 ========================================================= */
-/* ================= ABOUT HERO TITLE ================= */
+/* ================= PAGE HERO ================= */
 
+.page-hero {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      rgba(11, 46, 26, 0.55),
+      rgba(11, 46, 26, 0.55)
+    ),
+    url("/hero.jpg") center / cover no-repeat;
+}
+
+/* ================= GLASS TITLE ================= */
+
+/* ================= WHITE + GREEN GLOSSY TITLE ================= */
 .page-hero h1 {
   font-family: "Poppins", sans-serif;
   font-size: 52px;
   font-weight: 800;
-  letter-spacing: -0.03em;
   text-align: center;
+  letter-spacing: -0.02em;
 
-  /* Green + Dark blend */
+  /* MAIN COLOR = WHITE */
+  color: #ffffff;
+
+  /* SOFT GREEN GLOW */
+  text-shadow:
+    0 0 10px rgba(34, 197, 94, 0.55),
+    0 0 26px rgba(34, 197, 94, 0.35);
+
+  position: relative;
+  display: inline-block;
+}
+.page-hero h1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
   background: linear-gradient(
-    90deg,
-    #0f172a 0%,
-    #0f172a 45%,
-    #16a34a 100%
+    120deg,
+    transparent 0%,
+    rgba(34, 197, 94, 0.15) 35%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(34, 197, 94, 0.25) 65%,
+    transparent 100%
   );
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* Soft depth */
-  text-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
-
-  animation: heroFadeUp 0.9s ease both;
+  animation: glossySweep 3.2s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.hero-bg {
-  min-height: 90vh;
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .page-hero {
+    min-height: 220px;
+  }
+
+  .page-hero h1 {
+    font-size: 28px;
+    padding: 16px 22px;
+    border-radius: 16px;
+  }
+}
+
+/* ================= HERO CONTENT (GLASS) ================= */
+.hero-content.glass-box {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  z-index: 2;
+width: 100%;
+height: 70%;
+  max-width: 520px;      /* ⬅ smaller width */
+  padding: 26px 28px;    /* ⬅ tighter height */
+
+  // background: rgba(255, 255, 255, 0.14);
+  // backdrop-filter: blur(16px);
+  // -webkit-backdrop-filter: blur(16px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* ================= HERO TITLE ================= */
+.hero-content.glass-box h1 {
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.15;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 6px 30px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(34, 197, 94, 0.55);
+}
+
+/* ================= HERO TEXT ================= */
+.hero-content.glass-box p {
+  margin-top: 16px;
+  font-size: 18Spx;
+  line-height: 1.7;
+
+  /* MAIN COLOR */
+  color: #dde7de;
+
+  /* READABILITY SHADOW (KEY FIX) */
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.85),
+    0 6px 18px rgba(0, 0, 0, 0.6),
+
+    /* SOFT GREEN GLOW */
+    0 0 10px rgba(34, 197, 94, 0.35);
+}
+
+
+/* ================= BUTTON ================= */
+.hero-content.glass-box .donate-btn {
+  margin-top: 26px;
+  display: inline-block;
+
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  color: #fff;
+width: 30%;
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-weight: 700;
+
+  box-shadow:
+    0 14px 35px rgba(34, 197, 94, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hero-content.glass-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 85%;
+    max-width: 360px;   /* 👈 keeps it small */
+    padding: 22px 20px;
+
+    border-radius: 18px;
+  }
+
+  .hero-content.glass-box h1 {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .hero-content.glass-box p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .hero-content.glass-box .donate-btn {
+    padding: 11px 22px;
+    font-size: 14px;
+    width: 50%;
+  }
+}
+
+/* ================= IMAGE SLIDER ================= */
+/* ================= HERO SLIDER ================= */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* full screen */
+  overflow: hidden;
+}
+
+/* ================= SLIDES ================= */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1s ease, transform 1.5s ease;
+}
+
+/* ACTIVE SLIDE */
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* ================= SLIDER ARROWS ================= */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+
   display: flex;
   align-items: center;
-  position: relative;
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(34, 197, 94, 0.12),
-      rgba(236, 255, 246, 0.95)
-    ),
-    url("/hero.jpg") center / cover no-repeat;
+  justify-content: center;
+
+  transition: background 0.3s ease;
 }
 
-.hero-content {
-  max-width: 900px;
-  margin: auto;
+.slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.slider-arrow.left {
+  left: 18px;
+}
+
+.slider-arrow.right {
+  right: 18px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 85vh;
+  }
+
+  .slider-arrow {
+    display: none; /* swipe only on mobile */
+  }
+}
+
+.image-slider-section {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.image-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 420px;
+}
+
+/* Slides */
+.slide {
+  position: absolute;
+  width: 320px;
+  height: 220px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active slide */
+.slide.active {
+  width: 480px;
+  height: 320px;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 3;
+}
+
+/* Left preview */
+.slide.prev {
+  opacity: 1;
+  transform: translateX(-360px) scale(0.85);
+  z-index: 2;
+}
+
+/* Right preview */
+.slide.next {
+  opacity: 1;
+  transform: translateX(360px) scale(0.85);
+  z-index: 2;
+}
+
+/* Arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider-arrow.left {
+  left: 40px;
+}
+
+.slider-arrow.right {
+  right: 40px;
+}
+
+.slider-arrow:hover {
+  background: #22c55e;
+}
+
+/* ================= TEXT BELOW ================= */
+
+.hero-text {
   text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.hero-text p {
+  max-width: 720px;
+  margin: auto;
+  font-size: 17px;
+  color: #475569;
+}
+
+.hero-text .donate-btn {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 14px 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  color: #fff;
+ 
+  font-weight: 700;
+  box-shadow: 0 14px 30px rgba(34,197,94,0.45);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .image-slider {
+    height: auto;
+  }
+
+  .slide {
+    position: relative;
+    width: 90%;
+    height: 220px;
+    transform: none !important;
+    opacity: 1 !important;
+    margin-bottom: 20px;
+  }
+
+  .slide.prev,
+  .slide.next {
+    display: none;
+  }
+
+  .slider-arrow {
+    display: none;
+  }
+
+  .hero-text h1 {
+    font-size: 30px;
+  }
 }
 
 /* HERO TITLE */

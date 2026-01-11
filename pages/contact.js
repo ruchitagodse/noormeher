@@ -7,11 +7,12 @@ export default function Contact() {
       {/* ================= PAGE HERO ================= */}
       <section
         className="page-hero contact-hero"
-        style={{ backgroundImage: "url(/images/contact.png)" }}
+        style={{ backgroundImage: "url(/images/conact.png)" }}
       >
         <div className="overlay">
           <div className="container">
-            <h1 className="page-title">Contact Us</h1>
+            <h2 className="center">Contact Us</h2>
+
             <p className="page-subtitle">
               We are here to help you. Reach out anytime.
             </p>
@@ -105,7 +106,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="info-card">
+            <div className="info-card">                 
               <h3>Our Office</h3>
 
               <address>

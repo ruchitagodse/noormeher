@@ -1,40 +1,74 @@
 /* =========================================================
-   CTA – TRUST STYLE
+   CTA – COMPACT & ELEGANT
 ========================================================= */
 
 .cta {
-  background: linear-gradient(135deg, #0aa84f, #22c55e);
-  border-radius: 48px;
+  max-width: 1000px;
+  margin: 70px auto;
+  padding: 60px 30px;
+
   text-align: center;
-  padding: 110px 30px;
+  border-radius: 28px;
+
+  background: linear-gradient(135deg, #0aa84f, #22c55e);
+  box-shadow: 0 18px 45px rgba(34,197,94,.35);
 }
 
+/* Title */
 .cta h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 44px;
-  font-weight: 800;
+  font-size: 34px;
+  font-weight: 700;
   color: #fff;
+  margin-bottom: 12px;
 }
 
+/* Text */
 .cta p {
-  font-size: 18px;
-  color: rgba(255,255,255,.9);
-  max-width: 720px;
-  margin: 20px auto 40px;
+  font-size: 16px;
+  color: rgba(255,255,255,.95);
+  max-width: 620px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
 }
 
-.cta .btn {
-  background: #fff;
+/* Button */
+.cta-btn {
+  display: inline-block;
+  padding: 13px 34px;
+  border-radius: 999px;
+
+  background: #ffffff;
   color: #0aa84f;
+  font-weight: 600;
+  font-size: 15px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-/* Mobile */
-@media (max-width: 992px) {
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.3);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .cta {
+    margin: 40px 16px;
+    padding: 40px 20px;
+  }
+
   .cta h2 {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .cta p {
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  .cta-btn {
+    padding: 12px 28px;
+    font-size: 14px;
   }
 }

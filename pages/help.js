@@ -15,19 +15,29 @@ export default function Help() {
             <li>Financial Adoption</li>
             <li>Noor Meher Charity Scheme</li>
           </ul>
-
-          <h4>Bank Details</h4>
-          <p>
+<div className="contact-info-grid">
+  <div className="info-card">    
+          <h3>Bank Details</h3>
+          <address>
             NOOR MEHER CHARITABLE TRUST<br/>
             A/C: 012801000018468<br/>
             IFSC: IOBA0000128<br/>
             Indian Overseas Bank, Bandra West
-          </p>
+          </address>
+</div>
+         <div className="info-card">                 
+              <h3>Our Office</h3>
 
-          <h4>Office Address</h4>
-          <p>
-            Noor Meher House, Malad (West), Mumbai – 400095
-          </p>
+              <address>
+                NOOR MEHER HOUSE,<br />
+                Bungalow No. 12,<br />
+                RSC 20, Near Akashwani Ground,<br />
+                Malvani, Malad – West,<br />
+                Mumbai – 400095,<br />
+                Maharashtra, India.
+              </address>
+            </div>
+</div>
         </main>
 
     

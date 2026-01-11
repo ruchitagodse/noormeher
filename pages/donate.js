@@ -104,7 +104,8 @@ export default function Donate() {
       >
         <div className="overlay">
           <div className="container">
-            <h1>Donate</h1>
+             <h2 className="center">Donate</h2>
+            
           </div>
         </div>
       </section>

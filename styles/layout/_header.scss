@@ -85,23 +85,122 @@ header {
 /* =========================================================
    TOP BAR
 ========================================================= */
+/* ================= TOP BAR ================= */
+/* =========================================================
+   TOP BAR – PREMIUM GLASS STRIP
+========================================================= */
+
 .top-bar {
-  background: #f0fff7;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  font-size: 13px;
-  color: #334155;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #0aa84f,
+    #22c55e,
+    #16a34a
+  );
+  color: #ffffff;
+  font-size: 13.5px;
+  overflow: hidden;
+}
+
+/* subtle shine */
+.top-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.15),
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
 .top-bar-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
 }
+
+/* =========================================================
+   LEFT INFO (icons + text)
+========================================================= */
+
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.top-left span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* separator dot */
+.top-left span:not(:last-child)::after {
+  content: "•";
+  margin-left: 14px;
+  opacity: 0.5;
+}
+
+/* =========================================================
+   SOCIAL ICONS – FLOATING PILLS
+========================================================= */
 
 .top-social {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
+
+.top-social a {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.18);
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.top-social a:hover {
+  background: #ffffff;
+  color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 992px) {
+  .top-bar {
+    display: none;
+  }
+}
+.top-bar::after {
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* =========================================================
    MOBILE HEADER FIX
 ========================================================= */
