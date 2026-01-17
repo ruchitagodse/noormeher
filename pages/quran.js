@@ -59,7 +59,7 @@ export default function QuranPage() {
             <div className="row">
               <div className="image-box">
                 <img
-                  src="/images/achieveents2.jpg"
+                  src="/images/achievemnts2.jpg"
                   alt="Hadith"
                   className="img-responsive"
                 />
@@ -97,4 +97,3 @@ export default function QuranPage() {
     </Layout>
   );
 }
-

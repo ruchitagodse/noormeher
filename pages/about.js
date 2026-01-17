@@ -24,98 +24,84 @@ export default function About() {
         <div className="about-content">
 
           <p>
-            Noor Meher Charitable Trust is a non profit organization based in Mumbai,
-            primarily working to promote religious & academic education along with
-            welfare for orphan & poor children. The trust started an institution in
-            the year 2001 with 2 orphan children and by 2016 it has 141 children.
+            Noor Meher Charitable Trust is a non-profit organization based in Mumbai,
+            dedicated to providing religious, academic education and overall welfare
+            to orphaned and underprivileged Muslim children. Established in 2001
+            with just two orphan children, the Trust has grown steadily and today
+            supports more than 140 children.
           </p>
 
           <p>
-            The Trust is registered under Bombay Public Trust Act, 1950, Regd no.
-            E-20745 MUMBAI, Noor Meher Charitable Trust comes under the Income Tax
-            Exemption Act, 1961 12AA.
+            The Trust is registered under the Bombay Public Trust Act, 1950
+            (Reg. No. E-20745 Mumbai) and is recognized under the Income Tax Exemption
+            Act, 1961 (12AA).
           </p>
 
           <p>
-            By the Grace of Allah Noor Meher Charitable Trust is working since 2001
-            for welfare of poor and orphan Muslim Children and for their education,
-            health and child development and teach basic computer skills.
+            Since its inception, Noor Meher Charitable Trust has been working for the
+            education, health, and holistic development of children. Along with
+            memorization of the Holy Quran, students receive quality education in
+            English, Urdu, Hindi, Arabic and Marathi, as well as Science, Mathematics
+            and Social Studies.
           </p>
 
           <p>
-            By the Grace of Almighty since 2001, our children started memorizing the
-            Holy Quran. Our Students have become Teachers / Qari / Alim. Students
-            understand, read and write English, Urdu, Hindi, Arabic & Marathi
-            languages along with Science Math and Social science.
+            The Trust provides free education from Std. I to SSC Board, along with
+            Quran memorization. Facilities include a computer lab, a well-equipped
+            library, and basic computer training to prepare students for the modern
+            world.
           </p>
 
           <p>
-            The Trust provides free religious & academic education studies from Std
-            1st to SSC board besides memorizing the Holy Quran. There is a Computer
-            lab and a Library (Islamic books & general books) for students.
+            Orientation programs, competitions and annual activities are organized
+            every year to encourage students. Winners are recognized with
+            certificates, shields, cash prizes and gifts.
           </p>
 
           <p>
-            Every year Orientation day is organized & competitions are held to
-            encourage the students. The winners are awarded with certificates,
-            shield, cash prizes, gifts, etc.
+            To ensure students’ well-being, the Trust regularly conducts free
+            medical, dental and eye check-up camps. The premises are secured with
+            24 CCTV cameras with live monitoring to ensure the safety of children.
           </p>
 
           <p>
-            We are trying to help as many underprivileged children of Mumbai by
-            providing them access to education, recreation & a healthy environment.
-            Free Medical, Dental & Eye check-ups are organized for the students.
+            Our SSC results have consistently been excellent. Multiple batches of
+            students from 2013 onwards have passed with 100% results, while also
+            completing memorization of the Holy Quran. Since 2001, over 85 students
+            have become Hafiz — a remarkable achievement in Mumbai.
           </p>
 
           <p>
-            Trust has its website <strong>www.noormeher.org</strong>. The Trust has
-            installed 24 CCTV Cameras with live telecast 24/7 for the safety and
-            security of children.
+            The Trust also organizes the annual <strong>Musabeqatul Quran</strong>,
+            a Quran recitation competition among religious institutions across
+            Mumbai and Thane, promoting excellence in Islamic education.
           </p>
 
           <p>
-            Our first batch of 13 students for year 2013, second batch of 7 students
-            for year 2014, third batch of 5 students in 2015 & fourth batch of 6
-            students for year 2016 appeared for SSC board. All passed with flying
-            colors and memorized the Holy Quran.
-          </p>
-
-          <p>
-            Since 2001, 85 students have become Hafiz (memorized the Holy Quran
-            completely). This achievement is a great work in Mumbai.
-          </p>
-
-          <p>
-            Since last five years our trust is organizing a Holy Quran recitation
-            Program known as <strong>"MUSABEQATUL QURAN"</strong> among religious
-            institutions in Mumbai and Thane.
-          </p>
-
-          <p>
-            Noor Meher Charitable Trust focuses its approach for children whose lives
-            are devastated by humanitarian emergencies, or who are struggling each
-            day in poor Muslim families.
+            Noor Meher Charitable Trust works with the belief that every child,
+            regardless of background, deserves dignity, care and opportunity to
+            grow in a safe and nurturing environment.
           </p>
 
           <h3 className="about-subheading">
-            This means that every child should have:
+            Every child deserves:
           </h3>
 
           <ul className="about-icon-list">
-            <li>Education</li>
-            <li>Food</li>
-            <li>Clothing</li>
+            <li>Quality Education</li>
+            <li>Nutritious Food</li>
+            <li>Proper Clothing</li>
             <li>Health Care</li>
-            <li>A safe & healthy place to live</li>
+            <li>A Safe & Healthy Living Environment</li>
           </ul>
 
-          <h3 className="about-subheading">ADMINISTRATION</h3>
+          <h3 className="about-subheading">Administration</h3>
 
           <ul className="about-admin-list">
-            <li>Total Number of Trustees: <strong>10</strong></li>
-            <li>Total Number of Teaching Staff: <strong>19</strong></li>
-            <li>Total Number of Non Teaching Staff: <strong>2</strong></li>
-            <li>Total Number of Children: <strong>141</strong></li>
+            <li>Total Trustees: <strong>10</strong></li>
+            <li>Teaching Staff: <strong>19</strong></li>
+            <li>Non-Teaching Staff: <strong>2</strong></li>
+            <li>Total Children: <strong>141</strong></li>
           </ul>
 
         </div>

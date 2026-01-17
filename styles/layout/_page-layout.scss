@@ -119,11 +119,11 @@ height: 70%;
   // -webkit-backdrop-filter: blur(16px);
 
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  // border: 1px solid rgba(255, 255, 255, 0.28);
 
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  // box-shadow:
+  //   0 20px 50px rgba(0, 0, 0, 0.35),
+  //   inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
   display: flex;
   flex-direction: column;
@@ -171,7 +171,7 @@ height: 70%;
   background: linear-gradient(135deg, #0aa84f, #22c55e);
   color: #fff;
 width: 30%;
-  padding: 14px 34px;
+      padding: 14px 29px;
   border-radius: 999px;
   font-weight: 700;
 
@@ -184,7 +184,7 @@ width: 30%;
 @media (max-width: 768px) {
   .hero-content.glass-box {
     position: absolute;
-    top: 50%;
+    top: 97%;
     left: 50%;
     transform: translate(-50%, -50%);
 

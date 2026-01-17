@@ -74,10 +74,10 @@ export default function Home() {
 
 <div className="hero-content glass-box">
   <h1>Noormeher Charitable Trust</h1>
-  <p>
+  {/* <p>
     Working for Religious Education & Welfare of Orphan and Poor Muslim
     Children since 2001
-  </p>
+  </p> */}
   <a href="/about" className="donate-btn">
     Read More
   </a>
@@ -155,7 +155,7 @@ export default function Home() {
   {/* ACHIEVEMENTS */}
   <div className="card highlight-card">
     <div className="card-image">
-      <img src="/images/achievemnts.jpg" alt="Achievements" />
+      <img src="/images/achievements.jpg" alt="Achievements" />
     </div>
     <h3>Achievements</h3>
     <p>
