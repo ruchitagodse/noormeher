@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { API_BASE } from "../../utility_api";
+import { API_BASE } from "../../../utility_api";
 export default function GalleryPhotosPage() {
   const searchParams = useSearchParams();
 
