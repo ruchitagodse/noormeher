@@ -21,7 +21,7 @@
 @media (max-width: 992px) {
   .page-layout {
     display: block;
-    padding: 30px 20px;
+    padding: 30px 30px;
   }
 }
 
@@ -32,7 +32,6 @@
 
 .page-hero {
   position: relative;
-  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,9 +90,7 @@
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
-  .page-hero {
-    min-height: 220px;
-  }
+
 
   .page-hero h1 {
     font-size: 28px;
@@ -222,23 +219,251 @@ width: 30%;
 }
 
 /* ================= SLIDES ================= */
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 1s ease, transform 1.5s ease;
-}
 
 /* ACTIVE SLIDE */
 .hero-slide.active {
   opacity: 1;
   transform: scale(1);
   z-index: 1;
+}
+/* ================= STUDENT DETAILS PAGE ================= */
+
+.student-details-wrapper {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 60px 50px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.student-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 10px;
+}
+
+.student-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  margin-top: 12px;
+  border-radius: 10px;
+}
+
+.student-image {
+  border-radius: 22px;
+  overflow: hidden;
+
+  transition: transform 0.4s ease;
+}
+
+.student-image img {
+  width: 100%;
+  display: block;
+}
+
+.student-image:hover {
+  transform: scale(1.05);
+}
+
+/* Introduction section */
+.student-intro {
+  margin-top: 40px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.student-intro h4 {
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Personal Info Card */
+.student-info-card {
+  margin-top: 40px;
+  background: #f9fffc;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.student-info-card h4 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Proper aligned grid */
+.student-info-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  row-gap: 16px;
+  column-gap: 20px;
+}
+
+.student-info-grid strong {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.student-info-grid span {
+  color: #475569;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .student-details-wrapper {
+    padding: 30px 20px;
+  }
+
+  .student-title {
+    font-size: 28px;
+  }
+
+  .student-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ==========================================
+   STUDENT DETAILS PAGE – PREMIUM UI
+========================================== */
+
+.student-wrapper {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 60px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* Title */
+.student-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.student-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  border-radius: 10px;
+  animation: widthGrow 0.8s ease forwards;
+}
+
+@keyframes widthGrow {
+  from { width: 0; }
+  to { width: 80px; }
+}
+
+/* Introduction */
+.student-intro {
+  margin-top: 40px;
+}
+
+.student-intro h4 {
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.student-intro p {
+  color: #475569;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* Profile Grid */
+.student-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 60px;
+  margin-top: 50px;
+}
+
+/* Image */
+.student-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.student-image img:hover {
+  transform: scale(1.03);
+}
+
+/* Info Section */
+.student-info h3 {
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 40px;
+}
+
+.info-item {
+  background: #f8fafc;
+  padding: 18px 20px;
+  border-radius: 16px;
+  transition: 0.3s ease;
+}
+
+.info-item:hover {
+  background: #f0fff7;
+  transform: translateY(-4px);
+}
+
+.info-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-wrapper {
+    padding: 40px 25px;
+  }
+
+  .student-title {
+    font-size: 30px;
+  }
 }
 
 /* ================= SLIDER ARROWS ================= */
@@ -302,17 +527,52 @@ width: 30%;
   height: 420px;
 }
 
-/* Slides */
-.slide {
+/* ================= MOBILE HERO SLIDER IMPROVED ================= */
+/* ================= HERO SLIDE UPDATED ================= */
+
+.hero-slide {
   position: absolute;
-  width: 320px;
-  height: 220px;
+  inset: 0;
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.6s ease;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  transition: opacity 0.8s ease;
+  z-index: 0;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ACTIVE */
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Overlay */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.6)
+  );
+}
+
+@media (max-width: 768px) {
+
+
+
+  .hero-slide {
+    transition: opacity 0.6s ease;
+  }
+
+  .slider-arrow {
+    display: none;
+  }
 }
 
 .slide img {
@@ -373,6 +633,24 @@ width: 30%;
 }
 
 /* ================= TEXT BELOW ================= */
+@media (max-width: 768px) {
+
+  .hero-slider {
+    height: 65vh;
+  }
+
+  .slider-arrow {
+    display: none;
+  }
+}
+.hero-slide.active img {
+  animation: slowZoom 6s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
 
 .hero-text {
   text-align: center;

@@ -1,27 +1,30 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 
 export default function About() {
   return (
     <Layout title="About Us | Noormeher Charitable Trust">
 
-      {/* HERO */}
-      <section
-        className="page-hero about-hero"
-        style={{ backgroundImage: "url(/images/AboutUs.jpg)" }}
-      >
-        <div className="overlay">
-          <div className="container">
-            <h1 className="page-title">About Us</h1>
-          </div>
-        </div>
-      </section>
+      {/* ================= GLASS HERO ================= */}
+      {/* ================= HERO ================= */}
+<section className="about-hero">
+  <div className="about-hero-overlay"></div>
+</section>
 
-      {/* CONTENT */}
-      <section className="container section white-bg about-section">
+<div className="about-heading container">
+  <h1>About Us</h1>
+  <p>Serving with Faith, Education & Compassion Since 2001</p>
+</div>
 
-        <hr className="section-divider" />
 
-        <div className="about-content">
+    
+
+      {/* ================= CONTENT ================= */}
+      <section className="container section about-section">
+
+        <div className="about-content reveal">
 
           <p>
             Noor Meher Charitable Trust is a non-profit organization based in Mumbai,
@@ -97,15 +100,78 @@ export default function About() {
 
           <h3 className="about-subheading">Administration</h3>
 
-          <ul className="about-admin-list">
-            <li>Total Trustees: <strong>10</strong></li>
-            <li>Teaching Staff: <strong>19</strong></li>
-            <li>Non-Teaching Staff: <strong>2</strong></li>
-            <li>Total Children: <strong>141</strong></li>
-          </ul>
+          <div className="admin-grid">
+            <AdminCard title="Total Trustees" value="10" />
+            <AdminCard title="Teaching Staff" value="19" />
+            <AdminCard title="Non-Teaching Staff" value="2" />
+            <AdminCard title="Total Children" value="141" />
+          </div>
 
         </div>
       </section>
+
+      {/* ================= FOUNDER QUOTE ================= */}
+      <section className="founder-section reveal">
+        <div className="founder-card">
+          <p className="quote">
+            "Every child deserves dignity, care and opportunity to grow in a safe and nurturing environment."
+          </p>
+        </div>
+      </section>
+
     </Layout>
+  );
+}
+
+/* ================= COUNTER COMPONENT ================= */
+
+
+
+function Counter({ number, label, suffix = "" }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setVisible(true),
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+    let start = 0;
+    const duration = 2000;
+    const increment = number / (duration / 16);
+
+    const interval = setInterval(() => {
+      start += increment;
+      if (start >= number) {
+        setCount(number);
+        clearInterval(interval);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(interval);
+  }, [visible]);
+
+  return (
+    <div className="impact-card" ref={ref}>
+      <h3>{count}{suffix}</h3>
+      <p>{label}</p>
+    </div>
+  );
+}
+
+function AdminCard({ title, value }) {
+  return (
+    <div className="admin-card">
+      <h3>{value}</h3>
+      <p>{title}</p>
+    </div>
   );
 }

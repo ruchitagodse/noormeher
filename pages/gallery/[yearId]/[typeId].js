@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { API_BASE } from "@/utility_api";
 
 export default function GalleryPhotosPage() {
   const router = useRouter();
@@ -13,47 +14,66 @@ export default function GalleryPhotosPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!router.isReady) return;
     if (!yearId || !typeId) return;
 
-    fetch(
-      `http://localhost/noormeher-backend/api/gallery/photos.php?yid=${yearId}&galtype=${typeId}`
-    )
-      .then((res) => res.json())
-      .then((result) => {
+    const fetchPhotos = async () => {
+      try {
+        const res = await fetch(
+          `${API_BASE}/api/gallery/photos.php?yid=${yearId}&galtype=${typeId}`
+        );
+
+        const result = await res.json();
+
         if (result.success) {
           setPhotos(result.data);
+        } else {
+          console.error(result.message);
         }
+      } catch (error) {
+        console.error("Fetch error:", error);
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, [yearId, typeId]);
+      }
+    };
 
-  return (
-    <>
-      <Header />
+    fetchPhotos();
+  }, [router.isReady, yearId, typeId]);
 
-      <div className="container my-5">
-        <h3>Gallery Photos</h3>
+return (
+  <>
+    <Header />
 
-        {loading && <p>Loading photos...</p>}
-        {!loading && photos.length === 0 && <p>No photos found.</p>}
+    <section className="gallery-wrapper">
+      <div className="gallery-container">
 
-    <div className="row">
-  {photos.map((photo) => (
-    <div className="col-md-4 mb-4" key={photo.id}>
-      <div className="gallery-card gallery-photo-card">
-        <img src={photo.image} alt="Gallery Photo" />
+        <h2 className="gallery-title">Gallery Photos</h2>
+        <div className="title-line"></div>
+
+        {loading && <div className="gallery-message">Loading photos...</div>}
+
+        {!loading && photos.length === 0 && (
+          <div className="gallery-message">No photos found.</div>
+        )}
+
+        <div className="gallery-grid">
+          {photos.map((photo) => (
+            <div className="gallery-photo-card" key={photo.id}>
+              <div className="gallery-img">
+                <img src={photo.image} alt={photo.name} />
+              </div>
+              <div className="gallery-footer">
+                {photo.name}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
-    </div>
-  ))}
-</div>
+    </section>
 
-      </div>
+    <Footer />
+  </>
+);
 
-      <Footer />
-    </>
-  );
 }

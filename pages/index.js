@@ -1,4 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+ import {    FaCalendarAlt, 
+  FaHandsHelping, 
+  FaPhoneAlt, 
+  FaGraduationCap  } from "react-icons/fa";
 
 
 import Layout from "../components/Layout";
@@ -48,23 +53,121 @@ export default function Home() {
     if (touchStartX.current - touchEndX.current > 50) nextSlide();
     if (touchEndX.current - touchStartX.current > 50) prevSlide();
   };
+function Counter({ number, label, suffix }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+
+    let start = 0;
+    const duration = 2000;
+    const increment = number / (duration / 16);
+
+    const counter = setInterval(() => {
+      start += increment;
+      if (start >= number) {
+        setCount(number);
+        clearInterval(counter);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(counter);
+  }, [visible, number]);
+
+  return (
+    <div className="impact-card" ref={ref}>
+      <h3>
+        {count}
+        {suffix}
+      </h3>
+      <p>{label}</p>
+    </div>
+  );
+}
 
   return (
     <Layout>
       {/* ================= HERO SLIDER ================= */}
+     
+<section className="modern-hero">
+  <div className="hero-left">
+    <h1 className="hero-title">
+      Empowering <br />
+      Through <br />
+      Education & Faith
+    </h1>
+
+    <p className="hero-subtext">
+      Noormeher Charitable Trust is dedicated to providing quality Islamic
+      education, community support, and building a brighter future for
+      students.
+    </p>
+
+    <div className="hero-buttons">
+      <a href="/about" className="read">Learn More</a>
+      <a href="/donate" className="btn-outline">Get Involved</a>
+    </div>
+  </div>
+
+<div className="hero-right">
+
+  <Link href="/activities" className="color-card purple">
+    <FaCalendarAlt />
+  </Link>
+
+  <Link href="/services" className="color-card pink">
+    <FaHandsHelping />
+  </Link>
+
+  <Link href="/contact" className="color-card blue">
+    <FaPhoneAlt />
+  </Link>
+
+  <Link href="/achievements" className="color-card green">
+    <FaGraduationCap />
+  </Link>
+
+</div>
+
+</section>
+
       <section
         className="hero-slider"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         {/* SLIDES */}
+        
         {images.map((img, index) => (
-          <div
-            key={index}
-            className={`hero-slide ${index === current ? "active" : ""}`}
-            style={{ backgroundImage: `url(${img})` }}
-          />
-        ))}
+  <div
+    key={index}
+    className={`hero-slide ${index === current ? "active" : ""}`}
+  >
+    <img src={img} alt={`Slide ${index + 1}`} />
+
+    <div className="slide-overlay" />
+  </div>
+))}
+
 
         {/* OVERLAY */}
      
@@ -73,14 +176,14 @@ export default function Home() {
      {/* REMOVE hero-overlay div completely */}
 
 <div className="hero-content glass-box">
-  <h1>Noormeher Charitable Trust</h1>
+  {/* <h1>Noormeher Charitable Trust</h1> */}
   {/* <p>
     Working for Religious Education & Welfare of Orphan and Poor Muslim
     Children since 2001
   </p> */}
-  <a href="/about" className="donate-btn">
+  {/* <a href="/about" className="donate-btn">
     Read More
-  </a>
+  </a> */}
 </div>
 
 
@@ -121,49 +224,65 @@ export default function Home() {
     </p>
   </div>
 </section>
+{/* ================= IMPACT COUNTERS ================= */}
+<section className="impact-section">
+  <div className="container impact-grid">
+
+    <Counter number={2001} label="Established" suffix="" />
+    <Counter number={182} label="Hafiz Graduates" suffix="+" />
+    <Counter number={141} label="Total Students" suffix="+" />
+    <Counter number={24} label="CCTV Cameras" suffix="" />
+
+  </div>
+</section>
 
       {/* ================= VISION / MISSION / ACHIEVEMENTS ================= */}
-  <section className="container section grid-3 highlights">
-  {/* VISION */}
-  <div className="card highlight-card">
-    <div className="card-image">
-      <img src="/images/vision.jpg" alt="Our Vision" />
-    </div>
-    <h3>Our Vision</h3>
-    <p>
-      Our vision is to provide quality education, basic computer education,
-      medical support, and essential facilities to poor and needy Muslim
-      children, helping them grow with dignity and confidence.
-    </p>
-    <a href="/vision" className="link">Read More →</a>
-  </div>
+<section className="container section highlights">
+     <h2 className="center"> About Us </h2>
+  <div className="grid-3 highlight-grid">
 
-  {/* MISSION */}
-  <div className="card highlight-card">
-    <div className="card-image">
-      <img src="/images/mission.jpg" alt="Our Mission" />
+    <div className="card highlight-card">
+      <div className="highlight-img">
+        <img src="/images/vision.jpg" alt="Our Vision" />
+      </div>
+      <div className="highlight-content">
+        <h3>Our Vision</h3>
+        <p>
+          Our vision is to provide quality education, basic computer education,
+          medical support, and essential facilities to poor and needy Muslim
+          children.
+        </p>
+        <a href="/vision" className="highlight-btn">Read More</a>
+      </div>
     </div>
-    <h3>Our Mission</h3>
-    <p>
-      Our mission is to work for the care, education, and overall
-      development of children from our community and to improve their
-      quality of life through structured education and moral guidance.
-    </p>
-    <a href="/mission" className="link">Read More →</a>
-  </div>
 
-  {/* ACHIEVEMENTS */}
-  <div className="card highlight-card">
-    <div className="card-image">
-      <img src="/images/achievements.jpg" alt="Achievements" />
+    <div className="card highlight-card">
+      <div className="highlight-img">
+        <img src="/images/mission.jpg" alt="Our Mission" />
+      </div>
+      <div className="highlight-content">
+        <h3>Our Mission</h3>
+        <p>
+          Our mission is to work for the care, education, and overall
+          development of children through structured education and moral guidance.
+        </p>
+        <a href="/mission" className="highlight-btn">Read More</a>
+      </div>
     </div>
-    <h3>Achievements</h3>
-    <p>
-      Alhamdulillah, since 2001 more than <strong>182 children</strong> have
-      memorized the Holy Quran. In 2025, the number of students increased
-      to <strong>165+</strong>.
-    </p>
-    <a href="/achievements" className="link">Read More →</a>
+
+    <div className="card highlight-card">
+      <div className="highlight-img">
+        <img src="/images/achievements.jpg" alt="Achievements" />
+      </div>
+      <div className="highlight-content">
+        <h3>Achievements</h3>
+        <p>
+          Since 2001 more than <strong>182 children</strong> have memorized the Quran.
+        </p>
+        <a href="/achievements" className="highlight-btn">Read More</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -173,31 +292,35 @@ export default function Home() {
       <section className="container section highlights">
         <h2 className="center">What We Do</h2>
 
-        <div className="grid-3">
-          <div className="card">
-            <h4>Religious Education</h4>
-            <p>
-              Jamia Tajveedul Quran provides Hifz, Nazra, and Islamic education
-              with strong moral values.
-            </p>
-          </div>
+        <div className="grid-3 services-grid">
+  <div className="card service-card">
+    <div className="icon-box green">📖</div>
+    <h4>Religious Education</h4>
+    <p>
+      Jamia Tajveedul Quran provides Hifz, Nazra, and Islamic education
+      with strong moral values.
+    </p>
+  </div>
 
-          <div className="card">
-            <h4>Formal Schooling</h4>
-            <p>
-              Noor Meher Urdu School & Maktab focuses on academic excellence
-              along with character building.
-            </p>
-          </div>
+  <div className="card service-card">
+    <div className="icon-box blue">🏫</div>
+    <h4>Formal Schooling</h4>
+    <p>
+      Noor Meher Urdu School & Maktab focuses on academic excellence
+      along with character building.
+    </p>
+  </div>
 
-          <div className="card">
-            <h4>Welfare & Support</h4>
-            <p>
-              Food, shelter, medical care, uniforms, books, and guidance for
-              orphan and needy children.
-            </p>
-          </div>
-        </div>
+  <div className="card service-card">
+    <div className="icon-box purple">🤝</div>
+    <h4>Welfare & Support</h4>
+    <p>
+      Food, shelter, medical care, uniforms, books, and guidance for
+      orphan and needy children.
+    </p>
+  </div>
+</div>
+
       </section>
 
       {/* ================= CALL TO ACTION ================= */}

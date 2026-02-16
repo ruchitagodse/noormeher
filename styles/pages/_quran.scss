@@ -150,3 +150,59 @@
     font-size: 14.5px;
   }
 }
+
+.vision-section {
+  margin-top: 20px;
+}
+
+
+
+/* ================= LIST STYLE ================= */
+
+.vision-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vision-list li {
+  position: relative;
+  padding-left: 55px;
+  margin-bottom: 22px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #334155;
+  transition: all 0.3s ease;
+}
+
+/* Custom green circle bullet */
+.vision-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg,#16a34a,#22c55e);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
+}
+
+/* Hover polish */
+.vision-list li:hover {
+  transform: translateX(6px);
+  color: #0f172a;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .vision-card {
+    padding: 35px 25px;
+  }
+
+  .about-heading h1 {
+    font-size: 30px;
+    padding: 15px 30px;
+  }
+}

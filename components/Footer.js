@@ -30,7 +30,11 @@ export default function Footer() {
             <li><Link href="/achievements">Achievements</Link></li>
             <li><Link href="/contact">Contact Us</Link></li>
             <li><Link href="/donate">Donate</Link></li>
-            <li><Link href="/hafiz">Hafiz</Link></li>
+     <li>
+  <Link href="/student-lists/Hafiz Student">
+    Hafiz
+  </Link>
+</li>
           </ul>
         </div>
 

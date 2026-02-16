@@ -1,102 +1,101 @@
 import Layout from "../components/Layout";
+import {
+  FaTshirt,
+  FaLaptop,
+  FaTint,
+  FaUtensils,
+  FaHeartbeat,
+  FaBook,
+  FaLock,
+  FaSchool,
+  FaUserShield,
+  FaFireExtinguisher,
+} from "react-icons/fa";
 
 export default function Services() {
   return (
     <Layout title="Services | Noormeher Charitable Trust">
+<section className="services-hero">
+  <div className="about-hero-overlay"></div>
+</section>
 
-      {/* HERO */}
-      <section
-        className="page-hero services-hero"
-        style={{ backgroundImage: "url(/images/services.jpg)" }}
-      >
-        <div className="overlay">
-          <div className="container">
-            <h1 className="page-title">Services</h1>
-          </div>
+<div className="about-heading container">
+   <h1>Our Services</h1>
+          <p>
+            Providing care, education, protection and opportunities for every child.
+          </p>
+</div>
+
+      {/* ================= HERO ================= */}
+  
+
+      {/* ================= FACILITIES ================= */}
+      <section className="container section services-section">
+
+        <h2 className="section-title center">Facilities for Residence Children</h2>
+
+        <div className="services-cards">
+
+          <div className="service-box"><FaTshirt /><span>Clothing</span></div>
+          <div className="service-box"><FaLaptop /><span>Basic Computer Training</span></div>
+          <div className="service-box"><FaTint /><span>Aqua Water Purifier</span></div>
+          <div className="service-box"><FaUtensils /><span>Food</span></div>
+          <div className="service-box"><FaHeartbeat /><span>Medical Checkups</span></div>
+          <div className="service-box"><FaBook /><span>Religious & Academic Education</span></div>
+          <div className="service-box"><FaLock /><span>Locker Facility</span></div>
+          <div className="service-box"><FaSchool /><span>School Supplies</span></div>
+
         </div>
       </section>
 
-      {/* CONTENT */}
-      <section className="container section white-bg services-section">
+      {/* ================= ACADEMIC ================= */}
+      <section className="academic-section">
 
-        <hr className="section-divider" />
+        <div className="container">
 
-        {/* FACILITIES */}
-        <h3 className="section-heading">FACILITIES FOR RESIDENCE CHILDREN</h3>
+          <h2 className="section-title center">Academic Excellence</h2>
 
-        <div className="grid-2 services-grid">
-          <ul className="service-list">
-            <li>Clothing.</li>
-            <li>Basic computer training.</li>
-            <li>Aqua water purifier for drinking</li>
-            <li>Food</li>
-            <li>24 hrs water facilities</li>
-            <li>Religious and academic education.</li>
-            <li>Medical check - ups.</li>
-            <li>AI Whiteboard provided for education.</li>
-          </ul>
+          <div className="academic-split">
 
-          <ul className="service-list">
-            <li>Locker.</li>
-            <li>School bags and supplies</li>
-            <li>Staff (26 teachers / 2 non-teaching)</li>
-            <li>Bedding</li>
-            <li>24 hrs medical facilities.</li>
-            <li>Accommodation.</li>
-            <li>Air Conditioner facilities.</li>
-          </ul>
-        </div>
+            <div className="academic-text">
+              <p>
+                The Noor Meher Charitable Trust offers both religious and formal
+                education. Jamiya Tajveedul Quran provides Quranic recitation
+                classes at three levels (Noorani Qaida, Nazera, Hifz) and a full
+                academic syllabus with quarterly, half-term, and annual exams.
+              </p>
 
-        <hr className="section-divider" />
+              <p>
+                The Trust also runs Noor Meher Urdu Maktab and High School
+                (Grades 1-10, Maharashtra State Board), conducting unit tests,
+                semester exams and final exams.
+              </p>
+            </div>
 
-        {/* ACADEMIC */}
-        <h3 className="section-heading">ACADEMIC</h3>
+            <div className="academic-card">
+              <h4>Health & Hygiene</h4>
+              <ul>
+                <li>Nutrition & Medicine</li>
+                <li>Toiletries</li>
+                <li>Professional water tank cleaning</li>
+                <li>Wall-to-wall carpet</li>
+              </ul>
+            </div>
 
-        <p className="service-text">
-          The Noor Meher Charitable Trust offers both religious and formal
-          education. Jamiya Tajveedul Quran provides Quranic recitation classes
-          at three levels (Noorani Qaida, Nazera, Hifz) and a full academic
-          syllabus with quarterly, half-term, and annual exams.
-        </p>
+            <div className="academic-card">
+              <h4>Safety & Security</h4>
+              <ul>
+                <li>24/7 teacher supervision</li>
+                <li>24 CCTV monitoring</li>
+                <li>Fire extinguishers installed</li>
+              </ul>
+            </div>
 
-        <p className="service-text">
-          The Trust also runs Noor Meher Urdu Maktab and High School (Grades 1-10,
-          Maharashtra State Board), which conducts two unit tests, semester
-          exams, and a final exam.
-        </p>
-
-        <div className="grid-2 services-subgrid">
-          {/* HEALTH */}
-          <div className="service-card">
-            <h4 className="service-subtitle">HEALTH & HYGIENE</h4>
-            <ul className="service-list">
-              <li>Nutrition</li>
-              <li>Medicine</li>
-              <li>Toiletries</li>
-              <li>Wall to wall carpet</li>
-              <li>
-                Water storage tanks clean every six month by professionals.
-              </li>
-            </ul>
           </div>
 
-          {/* SAFETY */}
-          <div className="service-card">
-            <h4 className="service-subtitle">SAFETY & SECURITY</h4>
-            <ul className="service-list">
-              <li>
-                Two Teachers are available 24 / 7 for supervision.
-              </li>
-              <li>
-                Twenty-six Teachers surveillance web cams 24/7 for monitoring
-              </li>
-              <li>
-                Five Fire extinguishers in the institute
-              </li>
-            </ul>
-          </div>
         </div>
       </section>
+
     </Layout>
   );
 }

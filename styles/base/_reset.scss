@@ -17,10 +17,14 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #ecfff6, #f6fffb);
+  
+ background-color: #EDF1F4;
+
   color: var(--text-dark);
-  overflow-x: hidden; /* 🔑 prevents mobile side gaps */
+  overflow-x: hidden;
+}
+body {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* =========================================================

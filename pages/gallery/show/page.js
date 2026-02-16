@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
+import { API_BASE } from "../../utility_api";
 export default function GalleryPhotosPage() {
   const searchParams = useSearchParams();
 
@@ -19,7 +19,7 @@ export default function GalleryPhotosPage() {
     if (!yid || !galtype) return;
 
     fetch(
-      `http://localhost/noormeher-backend/api/gallery/photos.php?yid=${yid}&galtype=${galtype}`
+      `${API_BASE}/api/gallery/photos.php?yid=${yid}&galtype=${galtype}`
     )
       .then((res) => res.json())
       .then((result) => {

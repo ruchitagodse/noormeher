@@ -198,3 +198,20 @@
   font-size: 14px;
   line-height: 1.6;
 }
+
+.mission-hero {
+  height: 60vh;
+  background:
+              url("/images/bmission.jpg") center/cover no-repeat;
+  position: relative;
+}
+
+/* Soft gradient overlay */
+.mission-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(11, 46, 26, 0.55),
+    rgba(11, 46, 26, 0.75)
+  );
+}

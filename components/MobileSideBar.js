@@ -1,6 +1,24 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { API_BASE } from "../utility_api";
 export default function MobileSidebar({ open, setOpen }) {
+  const [achievements, setAchievements] = useState([]);
+
+  useEffect(() => {
+   fetch(`${API_BASE}/api/achievements/graduation.php`)
+
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          setAchievements(result.data);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []); 
+
+
   return (
     <>
       {open && (
@@ -39,32 +57,30 @@ export default function MobileSidebar({ open, setOpen }) {
               <li><Link href="/activities" onClick={() => setOpen(false)}>Admission & Education</Link></li>
               <li><Link href="/services" onClick={() => setOpen(false)}>Facility & Safety</Link></li>
               <li><Link href="/achievements" onClick={() => setOpen(false)}>Progress & Success</Link></li>
-                <li>
-              <Link href="/help" onClick={() => setOpen(false)}>
-              Alms / How You Can Help
-              </Link>
-            </li>    
-             <li>
-              <Link href="/student-info" onClick={() => setOpen(false)}>
-              Get Students Info
-              </Link>
-            </li>    
-             <li>
-              <Link href="/faq" onClick={() => setOpen(false)}>
-              FAQ's
-              </Link>
-            </li>                      
+              <li><Link href="/help" onClick={() => setOpen(false)}>Alms / How You Can Help</Link></li>
+              <li><Link href="/student-info" onClick={() => setOpen(false)}>Get Students Info</Link></li>
+              <li><Link href="/faq" onClick={() => setOpen(false)}>FAQ's</Link></li>
             </ul>
           </details>
 
           {/* ===== STUDENT ACHIEVEMENTS ===== */}
           <details className="mobile-panel">
             <summary>Student Achievements</summary>
-            <ul className="mobile-achievements">
-              <li>SSC Result 100% (2025)</li>
-              <li>Dastarbandi Ceremony</li>
-              <li>Engineering & Medical Admissions</li>
-            </ul>
+        <div className="mobile-marquee">
+  <ul className="mobile-scroll-list">
+    {[...achievements, ...achievements].map((item, index) => (
+      <li key={index}>
+        <Link
+          href={`/student-details/${item.id}`}
+          onClick={() => setOpen(false)}
+        >
+          {item.title}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
           </details>
 
         </nav>

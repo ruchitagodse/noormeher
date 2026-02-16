@@ -1,124 +1,333 @@
-/* =========================================================
-   ABOUT PAGE
-========================================================= */
+/* ================= HERO ================= */
 
-.about-section {
-  padding-top: 40px;
+/* ================= HERO IMAGE ================= */
+
+.about-hero {
+  height: 60vh;
+  background: url("/images/AboutUs.jpg") center / cover no-repeat;
+  position: relative;
 }
 
-/* Divider */
-.section-divider {
-  border: none;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #d1fae5, transparent);
-  margin: 50px 0;
+/* Soft gradient overlay */
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(11, 46, 26, 0.55),
+    rgba(11, 46, 26, 0.75)
+  );
 }
 
-/* =========================================================
-   CONTENT WRAPPER
-========================================================= */
+/* ================= HEADING BELOW IMAGE ================= */
 
-.about-content {
-  max-width: 900px;
+.about-heading {
+  text-align: center;
+  margin-top: -80px; /* pulls up slightly over image */
+  position: relative;
+  z-index: 5;
+}
+
+.about-heading h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #14532d;
+  background: #ffffff;
+  display: inline-block;
+  padding: 20px 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+  animation: fadeUp 0.8s ease both;
+}
+
+.about-heading p {
+  margin-top: 14px;
+  font-size: 16px;
+  color: #64748b;
+}
+@media (max-width: 576px) {
+
+  .admin-card {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .admin-card h3 {
+    font-size: 28px;
+  }
+
+  .admin-card p {
+    font-size: 13.5px;
+  }
+
+}
+
+
+.about-hero-glass {
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.1);
+  padding: 40px 60px;
+  border-radius: 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.about-hero-glass h1 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.about-hero-glass p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* ================= SPLIT SECTION ================= */
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 100px 0;
+}
+
+.split-image img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.split-content h2 {
+  font-size: 32px;
+  color: #14532d;
+  margin-bottom: 20px;
+}
+
+.split-content p {
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline-section {
+  padding: 100px 0;
+  background: #f0fff7;
+}
+
+.timeline {
+  max-width: 800px;
   margin: auto;
 }
 
-/* Paragraphs */
-.about-content p {
-  font-size: 15.8px;
-  color: #475569;
-  line-height: 1.85;
-  margin-bottom: 18px;
+.timeline-item {
+  padding: 20px;
+  border-left: 4px solid #22c55e;
+  margin-bottom: 20px;
+  background: #fff;
+  border-radius: 16px;
 }
 
-/* =========================================================
-   SUB HEADINGS
-========================================================= */
+/* ================= FOUNDER ================= */
+
+.founder-section {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.founder-card {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.quote {
+  font-size: 20px;
+  font-style: italic;
+  color: #14532d;
+}
+
+/* ================= ADMIN ================= */
+/* ================= ADMIN GRID ================= */
+
+
+.admin-card {
+  background: #ffffff;
+  padding: 32px 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.admin-card h3 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.admin-card p {
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #475569;
+}
+
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 992px) {
+  .about-split {
+    grid-template-columns: 1fr;
+  }
+
+
+}
+
+@media (max-width: 768px) {
+ 
+
+  .about-hero-glass h1 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 768px) {
+
+  .about-heading h1 {
+    font-size: 28px;
+    padding: 16px 24px;
+  }
+
+  .about-heading {
+    margin-top: -50px;
+  }
+}
+.about-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(34,197,94,0.15), transparent 70%);
+  top: -100px;
+  right: -100px;
+  z-index: 0;
+}
+
+.about-content {
+  position: relative;
+  z-index: 2;
+}
+/* ================= CONTENT IMPROVEMENT ================= */
+
+.about-content {
+  max-width: 900px;
+  margin: 80px auto;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #475569;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+}
+
+.about-content p:hover {
+  transform: translateX(6px);
+  color: #14532d;
+}
+
+/* Better Subheading */
 
 .about-subheading {
-  margin-top: 50px;
-  margin-bottom: 22px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
+  margin-top: 60px;
+  margin-bottom: 20px;
   color: #0f172a;
   position: relative;
 }
 
 .about-subheading::after {
   content: "";
-  display: block;
-  width: 48px;
+  width: 60px;
   height: 4px;
+  display: block;
   margin-top: 10px;
   border-radius: 4px;
   background: linear-gradient(90deg, #22c55e, #0aa84f);
 }
 
-/* =========================================================
-   ICON LIST
-========================================================= */
-
-.about-icon-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+/* Icon list upgrade */
 
 .about-icon-list li {
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 14px;
-  font-size: 15.5px;
-  color: #475569;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .about-icon-list li::before {
   content: "✔";
   position: absolute;
   left: 0;
-  top: 0;
   color: #22c55e;
-  font-weight: 700;
+  font-weight: 800;
 }
 
-/* =========================================================
-   ADMIN LIST
-========================================================= */
+/* ================= ADMIN CARDS ================= */
+/* ================= ADMIN GRID ================= */
 
-.about-admin-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
 }
 
-.about-admin-list li {
-  padding: 14px 18px;
-  margin-bottom: 10px;
-  background: #f8fffb;
-  border-left: 4px solid #22c55e;
-  border-radius: 10px;
-  font-size: 15.5px;
-  color: #475569;
+/* Tablet */
+@media (max-width: 1024px) {
+  .admin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-  .about-content {
-    padding: 0 4px;
+/* Mobile (FORCE SINGLE COLUMN) */
+@media (max-width: 600px) {
+  .admin-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
   }
+}
 
-  .about-content p {
-    font-size: 14.5px;
-  }
+.admin-card {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
 
-  .about-subheading {
-    font-size: 20px;
-  }
+.admin-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(34,197,94,0.25);
+}
 
-  .about-admin-list li {
-    font-size: 14.5px;
-  }
+.admin-card h3 {
+  font-size: 32px;
+  color: #16a34a;
+}
+
+.admin-card p {
+  margin-top: 10px;
+  font-weight: 600;
 }

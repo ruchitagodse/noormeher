@@ -1,9 +1,25 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { useEffect, useState } from "react";
+import { API_BASE } from "../utility_api";
 export default function PageSidebar() {
   const router = useRouter();
   const isActive = (path) => router.pathname === path;
+
+  const [achievements, setAchievements] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      `${API_BASE}/api/achievements/graduation.php`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          setAchievements(result.data);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <aside className="page-sidebar">
@@ -38,37 +54,32 @@ export default function PageSidebar() {
             </li>
             <li>
               <Link href="/achievements" className={isActive("/achievements") ? "active" : ""}>
-                Progress & Success	
+                Progress & Success
               </Link>
             </li>
-              <li>
+            <li>
               <Link href="/help" className={isActive("/help") ? "active" : ""}>
-              Alms / How You Can Help
+                Alms / How You Can Help
               </Link>
             </li>
-              <li>
-              <Link href="/student-info" className={isActive("/student-info") ? "active" : ""}>
-              Get Students Info
-              </Link>
-            </li>    
-             <li>
-              <Link href="/faq" className={isActive("/faq") ? "active" : ""}>
-              FAQ's
-              </Link>
-            </li>   
           </ul>
         </div>
       </details>
 
       <details className="panel">
         <summary>Student Achievements</summary>
-        <div className="panel-body marquee">
-          <ul>
-            <li>SSC Result 100% (2025)</li>
-            <li>Dastarbandi Ceremony</li>
-            <li>Engineering & Medical Admissions</li>
-          </ul>
-        </div>
+      <div className="panel-body marquee">
+  <ul className="scroll-list">
+    {[...achievements, ...achievements].map((item, index) => (
+      <li key={index}>
+        <Link href={`/student-details/${item.id}`}>
+          {item.title}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
       </details>
     </aside>
   );

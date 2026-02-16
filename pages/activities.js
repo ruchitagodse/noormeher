@@ -1,105 +1,124 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
+import {
+  FaUserGraduate,
+  FaBookOpen,
+  FaLaptop,
+  FaTrophy,
+  FaCalendarAlt,
+  FaMosque,
+} from "react-icons/fa";
 
 export default function Activities() {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  /* ================= SCROLL REVEAL ================= */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+  }, []);
+
   return (
     <Layout title="Activities | Noormeher Charitable Trust">
+    <section className="activity-hero">
+  <div className="activity-hero-overlay"></div>
+</section>
 
-      {/* HERO */}
+<div className="about-heading container">
+   <h1>Activities</h1>
+          <p>Empowering children through structured education & meaningful programs</p>
+</div>
+  
+      {/* ================= HERO ================= */}
+    
+      {/* ================= MAIN CONTENT ================= */}
       <section
-        className="page-hero activities-hero"
-        style={{ backgroundImage: "url(/images/activities.jpg)" }}
+        ref={sectionRef}
+        className={`activities-section ${visible ? "show" : ""}`}
       >
-        <div className="overlay">
-          <div className="container">
-            <h1 className="page-title">Activities</h1>
-          </div>
-        </div>
-      </section>
 
-      {/* CONTENT */}
-      <section className="container section white-bg activities-section">
+        {/* ================= ADMISSION & EDUCATION ================= */}
+        <div className="activities-grid">
 
-        <hr className="section-divider" />
-
-        <div className="grid-2 activities-grid">
-          {/* ADMISSION */}
           <div className="activity-card">
-            <h3 className="activity-title">ADMISSION</h3>
-
-            <ul className="activity-list">
+            <FaUserGraduate />
+            <h3>Admission</h3>
+            <ul>
               <li>Age Limit 8 – 14 years</li>
-              <li>
-                8 - 10 years of age for Norani Qaida and for Noor Meher Urdu
-                School.
-              </li>
-              <li>
-                8 - 12 years of age for Nurani Qaida.
-              </li>
-              <li>
-                Upto 14 years of age for Shobe-Hifz (Memorizing of Holy Quran).
-              </li>
-              <li>
-                New Admission start & End on the same day (6th Day of
-                Eid-Ul-Fitr).
-              </li>
-              <li>
-                Medical Check-Ups are done after Admission.
-              </li>
-              <li>
-                Adoption Facilitation – No
-              </li>
+              <li>Admission on 6th Day of Eid-Ul-Fitr</li>
+              <li>Medical Check-Ups after Admission</li>
+              <li>Shobe-Hifz up to 14 years</li>
             </ul>
           </div>
 
-          {/* EDUCATION */}
           <div className="activity-card">
-            <h3 className="activity-title">EDUCATION</h3>
-            <p className="activity-intro">
-              Education covers the following areas :
-            </p>
-
-            <ul className="activity-list">
-              <li>Formal School</li>
-              <li>Non-formal School</li>
+            <FaBookOpen />
+            <h3>Education</h3>
+            <ul>
+              <li>Formal & Non-formal School</li>
               <li>Educational Visits</li>
-              <li>Inter Islamic school competition</li>
-              <li>Basic Computer training</li>
+              <li>Islamic Competitions</li>
+              <li>Basic Computer Training</li>
             </ul>
+          </div>
+
+        </div>
+
+        {/* ================= PROGRAMME TIMELINE ================= */}
+        <h2 className="section-title">Programme Highlights</h2>
+
+        <div className="timeline">
+
+          <div className="timeline-item">
+            <FaMosque />
+            <div>
+              <h4>Eid Celebrations</h4>
+              <p>Celebrate Eid-ul-Fitr & Eid-al-Adha with community gatherings.</p>
+            </div>
+          </div>
+
+          <div className="timeline-item">
+            <FaTrophy />
+            <div>
+              <h4>Inter School Competitions</h4>
+              <p>Musabeqa, Hifz-ul-Quran, Qirat, Speech & Islamic Events.</p>
+            </div>
+          </div>
+
+          <div className="timeline-item">
+            <FaCalendarAlt />
+            <div>
+              <h4>Annual Events</h4>
+              <p>Sports Day, Annual Function, Republic & Independence Day.</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ================= STATS ================= */}
+        <div className="activities-stats">
+          <div className="stat-box">
+            <h3>24+</h3>
+            <p>Annual Events</p>
+          </div>
+          <div className="stat-box">
+            <h3>10+</h3>
+            <p>Islamic Competitions</p>
+          </div>
+          <div className="stat-box">
+            <h3>100%</h3>
+            <p>Student Participation</p>
           </div>
         </div>
 
-        <hr className="section-divider" />
-
-        {/* PROGRAMME */}
-        <h3 className="activity-title centered">PROGRAMME</h3>
-
-        <div className="grid-2 activities-grid">
-          <ul className="activity-list">
-            <li>Celebrate EID-UL-FITR</li>
-            <li>Celebrate EID-AL-ADHA</li>
-            <li>
-              Weekly Inter Competition known as Bazme Noormeher conducted every
-              Thursday Evening.
-            </li>
-            <li>Education Day & Teachers Day are celebrated.</li>
-            <li>Yearly picnic for students.</li>
-            <li>Annual function for students.</li>
-            <li>Flag hoisting on 26 January (Republic Day).</li>
-            <li>Flag hoisting on 15 August (Independence Day).</li>
-            <li>Sports Day</li>
-          </ul>
-
-          <ul className="activity-list">
-            <li>
-              Yearly speech competition on Seeratun Nabawi (pbuh).
-            </li>
-            <li>
-              Yearly All Mumbai Islamic Inter School Competition (Musabeqa) for
-              Hifz ul Quran, Qirat ul Quran, Hamd-O-Naat, Speech in Urdu /
-              English / Hindi / Marathi / Khutbe Jummah / Azaan.
-            </li>
-          </ul>
-        </div>
       </section>
     </Layout>
   );

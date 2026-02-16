@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-
+import { API_BASE } from "../../../utility_api";
 export default function GalleryTypesPage() {
   const router = useRouter();
   const { yearId } = router.query;
@@ -17,7 +17,7 @@ export default function GalleryTypesPage() {
     if (!yearId) return;
 
     fetch(
-      `http://localhost/noormeher-backend/api/gallery/types.php?year_id=${yearId}`
+      `${API_BASE}/api/gallery/types.php?year_id=${yearId}`
     )
       .then((res) => res.json())
       .then((result) => {

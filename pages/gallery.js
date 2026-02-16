@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Layout from "@/components/Layout";
-
+import { API_BASE } from "../utility_api";
 export default function GalleryPage() {
   const [galleryYears, setGalleryYears] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost/noormeher-backend/api/gallery/years.php")
+    fetch(`${API_BASE}/api/gallery/years.php`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response not ok");
         return res.json();
@@ -27,53 +27,55 @@ export default function GalleryPage() {
       });
   }, []);
 
-  return (
-    <>
-      <Layout>
-    <section className="page-hero">
-        <div className="container">
-          <h1>Gallery</h1>
-        
-        </div>
-      </section>
+return (
+  <Layout>
+   <section
+        className="page-hero contact-hero"
+        style={{ backgroundImage: "url(/images/conact.png)" }}
+      >
+        <div className="overlay">
+          <div className="container">
+            <h2 className="center">Gallery</h2>
 
-
-      <div className="container my-5">
-        <div className="row bg-white p-4">
-          <div className="col-md-9">
-            <h3>Photos Gallery</h3>
-            <hr />
-
-            {loading && <p>Loading gallery...</p>}
-
-            {!loading && galleryYears.length === 0 && (
-              <p>No gallery data found.</p>
-            )}
-
-            <div className="row">
-              {galleryYears.map((item) => (
-                <div className="col-md-4 mb-4" key={item.id}>
-                  <Link href={`/gallery/${item.id}`}>
-                 <div className="card gallery-card h-100">
-
-                      <img
-                        src={item.image}
-                        alt={item.year}
-                        className="img-fluid"
-                      />
-                      <div className="card-footer text-center fw-bold">
-                        {item.year}
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
-      </div>
+      </section>
+    <div className="container gallery-wrapper">
+      <div className="gallery-container">
 
-      </Layout>
-    </>
-  );
+        <h3 className="gallery-title">Photos Gallery</h3>
+        <div className="title-line" />
+
+        {loading && <p>Loading gallery...</p>}
+
+        {!loading && galleryYears.length === 0 && (
+          <p>No gallery data found.</p>
+        )}
+
+        <div className="gallery-grid">
+          {galleryYears.map((item) => (
+            <Link
+              href={`/gallery/${item.id}`}
+              key={item.id}
+              className="gallery-card"
+            >
+              <div className="gallery-img">
+                <img
+                  src={item.image}
+                  alt={item.year}
+                />
+              </div>
+
+              <div className="gallery-footer">
+                {item.year}
+              </div>
+            </Link>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </Layout>
+);
+
 }
