@@ -690,3 +690,26 @@ overflow-y: auto;
   bottom: 0;
   background: linear-gradient(to top, #ffffff, transparent);
 }
+.color-card {
+ 
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 600;
+  gap: 6px;
+  transition: 0.3s ease;
+}
+
+.color-card span {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.color-card:hover {
+  transform: translateY(-6px);
+}

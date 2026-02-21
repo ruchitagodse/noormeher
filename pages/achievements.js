@@ -132,10 +132,7 @@ export default function Achievements() {
         {/* ===== Timeline ===== */}
         <div className="timeline alt-timeline">
           {timelineData.slice(0, visibleCount).map((item, index) => (
-            <div
-              key={index}
-              className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
-            >
+            <div className="timeline-item">
               <div className="timeline-content">
                 <h4>{item.year}</h4>
                 <p>{item.text}</p>

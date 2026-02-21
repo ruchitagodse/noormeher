@@ -57,11 +57,20 @@ function Counter({ number, label, suffix }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [played, setPlayed] = useState(false);
 
   useEffect(() => {
+    const alreadyPlayed = sessionStorage.getItem(label);
+
+    if (alreadyPlayed) {
+      setCount(number);
+      setPlayed(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !played) {
           setVisible(true);
         }
       },
@@ -71,10 +80,10 @@ function Counter({ number, label, suffix }) {
     if (ref.current) observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, []);
+  }, [number, played, label]);
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible || played) return;
 
     let start = 0;
     const duration = 2000;
@@ -82,16 +91,19 @@ function Counter({ number, label, suffix }) {
 
     const counter = setInterval(() => {
       start += increment;
+
       if (start >= number) {
         setCount(number);
         clearInterval(counter);
+        sessionStorage.setItem(label, "true");
+        setPlayed(true);
       } else {
         setCount(Math.floor(start));
       }
     }, 16);
 
     return () => clearInterval(counter);
-  }, [visible, number]);
+  }, [visible, number, played, label]);
 
   return (
     <div className="impact-card" ref={ref}>
@@ -103,7 +115,6 @@ function Counter({ number, label, suffix }) {
     </div>
   );
 }
-
   return (
     <Layout>
       {/* ================= HERO SLIDER ================= */}
@@ -132,18 +143,22 @@ function Counter({ number, label, suffix }) {
 
   <Link href="/activities" className="color-card purple">
     <FaCalendarAlt />
+    <span>Activities</span>
   </Link>
 
   <Link href="/services" className="color-card pink">
     <FaHandsHelping />
+    <span>Services</span>
   </Link>
 
   <Link href="/contact" className="color-card blue">
     <FaPhoneAlt />
+    <span>Contact</span>
   </Link>
 
   <Link href="/achievements" className="color-card green">
     <FaGraduationCap />
+    <span>Achievements</span>
   </Link>
 
 </div>

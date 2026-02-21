@@ -11,9 +11,9 @@ header {
    MAIN HEADER
 ========================================================= */
 .main-header {
-  // background: linear-gradient(135deg, #eafff3, #f4fff9);
+  background: rgba(255,255,255,0.7);
   backdrop-filter: blur(10px);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s ease;
 }
 
 /* SCROLLED STATE */
@@ -46,9 +46,9 @@ header {
 .logo img {
   height: 52px;
   width: auto;
-  padding: 6px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.6);
+  object-fit: contain;
+  background: transparent;
+  mix-blend-mode: multiply;
 }
 
 /* =========================================================
@@ -226,13 +226,11 @@ header {
   }
 
   /* Logo clean */
-  .logo img {
-    height: 36px;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
+@media (max-width:992px){
+  .logo img{
+    mix-blend-mode: normal;
   }
-
+}
  
 
   /* Hide desktop elements */

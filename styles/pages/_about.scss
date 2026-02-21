@@ -109,24 +109,106 @@
 
 /* ================= TIMELINE ================= */
 
-.timeline-section {
-  padding: 100px 0;
-  background: #f0fff7;
-}
+/* ================= CLEAN SINGLE TIMELINE ================= */
 
 .timeline {
-  max-width: 800px;
-  margin: auto;
+  position: relative;
+  max-width: 850px;
+  margin: 80px auto;
+  padding-left: 70px;
 }
 
+/* VERTICAL LINE */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg,#22c55e,#16a34a);
+  border-radius: 10px;
+  z-index: 0;   /* 👈 VERY IMPORTANT */
+}
+
+/* TIMELINE ITEM */
 .timeline-item {
-  padding: 20px;
-  border-left: 4px solid #22c55e;
-  margin-bottom: 20px;
-  background: #fff;
-  border-radius: 16px;
+  position: relative;
+  margin-bottom: 40px;
 }
 
+/* DOT */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -47px;
+  top: 26px;
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 4px solid #ecfdf5;
+  z-index: 2;
+}
+
+/* CARD */
+.timeline-content {
+  position: relative;
+  z-index: 3;   /* 👈 CARD ABOVE LINE */
+  background: #ffffff;
+  padding: 20px 26px;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0; /* 👈 BORDER KEPT */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+/* YEAR */
+.timeline-content h4 {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #065f46;
+  background: #ecfdf5;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+/* TEXT */
+.timeline-content p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* HOVER */
+.timeline-content:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(34,197,94,0.2);
+}
+@media (max-width:768px){
+
+  .timeline{
+    padding-left:55px;
+  }
+
+  .timeline::before{
+    left:20px;
+  }
+
+  .timeline-item::before{
+    left:-35px;
+  }
+
+  .timeline-content{
+    padding:16px 18px;
+    border-radius:14px;
+    border:1px solid #e2e8f0;  /* 👈 FULL BORDER VISIBLE */
+  }
+
+}
 /* ================= FOUNDER ================= */
 
 .founder-section {
