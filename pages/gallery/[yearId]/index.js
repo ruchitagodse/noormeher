@@ -16,9 +16,7 @@ export default function GalleryTypesPage() {
   useEffect(() => {
     if (!yearId) return;
 
-    fetch(
-      `${API_BASE}/api/gallery/types.php?year_id=${yearId}`
-    )
+   fetch(`/api/gallery-types?year_id=${yearId}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {

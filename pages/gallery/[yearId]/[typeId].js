@@ -19,9 +19,7 @@ export default function GalleryPhotosPage() {
 
     const fetchPhotos = async () => {
       try {
-        const res = await fetch(
-          `${API_BASE}/api/gallery/photos.php?yid=${yearId}&galtype=${typeId}`
-        );
+        const res = await ffetch(`/api/gallery-photos?yid=${yearId}&galtype=${typeId}`);
 
         const result = await res.json();
 

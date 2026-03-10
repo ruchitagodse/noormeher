@@ -21,9 +21,7 @@ export default function StudentInfo() {
     try {
       setLoading(true);
 
-      const res = await fetch(
-        `${API_BASE}/api/student/search.php?dob=${dob}`
-      );
+     const res = await fetch(`/api/student-search?dob=${dob}`);
 
       const result = await res.json();
 

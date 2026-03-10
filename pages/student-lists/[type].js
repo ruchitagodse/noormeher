@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import { API_BASE } from "../../utility_api";
 
 export default function StudentList() {
   const router = useRouter();
@@ -16,9 +15,7 @@ export default function StudentList() {
   useEffect(() => {
     if (!type) return;
 
-    fetch(
-      `${API_BASE}/api/student/list.php?type=${type}`
-    )
+    fetch(`/api/student-list?type=${type}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -32,72 +29,72 @@ export default function StudentList() {
   if (loading) return <Layout><p>Loading...</p></Layout>;
 
   return (
-  <Layout>
-    <div className="container student-list-wrapper">
+    <Layout>
+      <div className="container student-list-wrapper">
 
-      <h2 className="student-list-title">{type}</h2>
+        <h2 className="student-list-title">{type}</h2>
 
-      <div className="student-grid">
+        <div className="student-grid">
 
-        {students.map((student) => (
-          <div className="student-card" key={student.id}>
+          {students.map((student) => (
+            <div className="student-card" key={student.id}>
 
-            <div className="student-badge">
-              {student.type}
+              <div className="student-badge">
+                {student.type}
+              </div>
+
+              <div className="student-card-img">
+                <img
+                  src={student.image}
+                  alt={student.name}
+                />
+              </div>
+
+              <div className="student-card-body">
+                <h5>{student.name}</h5>
+
+                {student.type === "Hafiz Student" && (
+                  <p className="student-meta">
+                    <strong>Year:</strong> {student.hafiz_year}
+                  </p>
+                )}
+
+                {student.type === "SSC/HSC Student" && (
+                  <>
+                    <p className="student-meta">
+                      <strong>SSC:</strong> {student.ssc} ({student.ssc_year})
+                    </p>
+                    <p className="student-meta">
+                      <strong>HSC:</strong> {student.hsc}
+                    </p>
+                  </>
+                )}
+
+                {student.type === "Graduation Student" && (
+                  <>
+                    <p className="student-meta">
+                      <strong>Stream:</strong> {student.stream}
+                    </p>
+                    <p className="student-meta">
+                      <strong>Year:</strong> {student.year}
+                    </p>
+                  </>
+                )}
+
+                <Link
+                  href={`/student-details/${student.id}`}
+                  className="student-btn"
+                >
+                  About Me →
+                </Link>
+
+              </div>
+
             </div>
+          ))}
 
-            <div className="student-card-img">
-              <img
-                src={student.image}
-                alt={student.name}
-              />
-            </div>
-
-            <div className="student-card-body">
-              <h5>{student.name}</h5>
-
-              {student.type === "Hafiz Student" && (
-                <p className="student-meta">
-                  <strong>Year:</strong> {student.hafiz_year}
-                </p>
-              )}
-
-              {student.type === "SSC/HSC Student" && (
-                <>
-                  <p className="student-meta">
-                    <strong>SSC:</strong> {student.ssc} ({student.ssc_year})
-                  </p>
-                  <p className="student-meta">
-                    <strong>HSC:</strong> {student.hsc}
-                  </p>
-                </>
-              )}
-
-              {student.type === "Graduation Student" && (
-                <>
-                  <p className="student-meta">
-                    <strong>Stream:</strong> {student.stream}
-                  </p>
-                  <p className="student-meta">
-                    <strong>Year:</strong> {student.year}
-                  </p>
-                </>
-              )}
-
-              <Link
-                href={`/student-details/${student.id}`}
-                className="student-btn"
-              >
-                About Me →
-              </Link>
-            </div>
-
-          </div>
-        ))}
-
+        </div>
       </div>
-    </div>
-  </Layout>
-);
-
+    </Layout>
+  );
 }

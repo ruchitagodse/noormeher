@@ -6,9 +6,9 @@ import { API_BASE } from "../utility_api";
 export default function MobileSidebar({ open, setOpen }) {
   const [achievements, setAchievements] = useState([]);
 
+ 
   useEffect(() => {
-   fetch(`${API_BASE}/api/achievements/graduation.php`)
-
+    fetch("/api/graduation")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -16,8 +16,7 @@ export default function MobileSidebar({ open, setOpen }) {
         }
       })
       .catch((err) => console.error(err));
-  }, []); 
-
+  }, []);
 
   return (
     <>

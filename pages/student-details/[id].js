@@ -16,9 +16,7 @@ export default function StudentDetails() {
     if (!router.isReady) return;
     if (!id) return;
 
-    fetch(
-      `${API_BASE}/api/student/details.php?id=${id}`
-    )
+   fetch(`/api/student-details?id=${id}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -50,7 +48,7 @@ return (
 
         <div className="student-image">
           <img
-            src={`${API_BASE}/sm-admin/dist/img/Student-Achievement/${student.Image}`}
+           src={`https://api.noormeher.org/sm-admin/dist/img/Student-Achievement/${student.Image}`}
             alt={student.Name}
           />
         </div>

@@ -18,9 +18,7 @@ export default function GalleryPhotosPage() {
   useEffect(() => {
     if (!yid || !galtype) return;
 
-    fetch(
-      `${API_BASE}/api/gallery/photos.php?yid=${yid}&galtype=${galtype}`
-    )
+   fetch(`/api/gallery-photos?yid=${yid}&galtype=${galtype}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {

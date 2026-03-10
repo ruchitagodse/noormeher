@@ -9,24 +9,24 @@ export default function GalleryPage() {
   const [galleryYears, setGalleryYears] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch(`${API_BASE}/api/gallery/years.php`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response not ok");
-        return res.json();
-      })
-      .then((result) => {
-        if (result.success) {
-          setGalleryYears(result.data);
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Gallery fetch error:", err);
-        setLoading(false);
-      });
-  }, []);
 
+useEffect(() => {
+  fetch("/api/gallery-years")
+    .then((res) => {
+      if (!res.ok) throw new Error("Network response not ok");
+      return res.json();
+    })
+    .then((result) => {
+      if (result.success) {
+        setGalleryYears(result.data);
+      }
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Gallery fetch error:", err);
+      setLoading(false);
+    });
+}, []);
 return (
   <Layout>
    <section
