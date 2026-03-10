@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { API_BASE } from "../utility_api";
+
 export default function PageSidebar() {
   const router = useRouter();
   const isActive = (path) => router.pathname === path;
@@ -9,9 +9,7 @@ export default function PageSidebar() {
   const [achievements, setAchievements] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `${API_BASE}/api/achievements/graduation.php`
-    )
+    fetch("/api/graduation")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -68,18 +66,18 @@ export default function PageSidebar() {
 
       <details className="panel">
         <summary>Student Achievements</summary>
-      <div className="panel-body marquee">
-  <ul className="scroll-list">
-    {[...achievements, ...achievements].map((item, index) => (
-      <li key={index}>
-        <Link href={`/student-details/${item.id}`}>
-          {item.title}
-        </Link>
-      </li>
-    ))}
-  </ul>
-</div>
 
+        <div className="panel-body marquee">
+          <ul className="scroll-list">
+            {[...achievements, ...achievements].map((item, index) => (
+              <li key={index}>
+                <Link href={`/student-details/${item.id}`}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </details>
     </aside>
   );
