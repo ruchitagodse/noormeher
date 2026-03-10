@@ -48,7 +48,7 @@ return (
 
         <div className="student-image">
           <img
-           src={`https://api.noormeher.org/sm-admin/dist/img/Student-Achievement/${student.Image}`}
+           src={`http://api.noormeher.org/sm-admin/dist/img/Student-Achievement/${student.Image}`}
             alt={student.Name}
           />
         </div>

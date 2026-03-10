@@ -1,7 +1,7 @@
 export async function GET() {
   try {
     const res = await fetch(
-      "https://api.noormeher.org/api/gallery/years.php",
+      "http://api.noormeher.org/api/gallery/years.php",
       { cache: "no-store" }
     );
 

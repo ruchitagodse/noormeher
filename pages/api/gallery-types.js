@@ -4,7 +4,7 @@ export async function GET(req) {
 
   try {
     const res = await fetch(
-      `https://api.noormeher.org/api/gallery/types.php?year_id=${yearId}`,
+      `http://api.noormeher.org/api/gallery/types.php?year_id=${yearId}`,
       { cache: "no-store" }
     );
 

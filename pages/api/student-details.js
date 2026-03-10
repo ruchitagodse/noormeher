@@ -1,20 +1,21 @@
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
-
+export default async function handler(req, res) {
   try {
-    const res = await fetch(
-      `https://api.noormeher.org/api/student/details.php?id=${id}`,
-      { cache: "no-store" }
+    const { id } = req.query;
+
+    const response = await fetch(
+      `http://api.noormeher.org/api/student/details.php?id=${id}`
     );
 
-    const data = await res.json();
+    const data = await response.json();
 
-    return Response.json(data);
+    res.status(200).json(data);
+
   } catch (error) {
-    return Response.json(
-      { success: false, message: "Proxy error" },
-      { status: 500 }
-    );
+    console.error("Proxy Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Proxy API failed",
+    });
   }
 }
