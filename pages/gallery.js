@@ -53,28 +53,33 @@ export default function GalleryPage() {
           )}
 
           <div className="gallery-grid">
-            {galleryYears.map((item) => (
-              <Link
-                href={`/gallery/${item.id}`}
-                key={item.id}
-                className="gallery-card"
-              >
-                <div className="gallery-img">
-                  <img
-                    src={encodeURI(item.image)}
-                    alt={item.year}
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.src = "/images/no-image.png";
-                    }}
-                  />
-                </div>
+            {galleryYears.map((item) => {
 
-                <div className="gallery-footer">
-                  {item.year}
-                </div>
-              </Link>
-            ))}
+              const imageUrl = `/api/image?url=${encodeURIComponent(item.image)}`;
+
+              return (
+                <Link
+                  href={`/gallery/${item.id}`}
+                  key={item.id}
+                  className="gallery-card"
+                >
+                  <div className="gallery-img">
+                    <img
+                      src={imageUrl}
+                      alt={item.year}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.src = "/images/no-image.png";
+                      }}
+                    />
+                  </div>
+
+                  <div className="gallery-footer">
+                    {item.year}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
         </div>
