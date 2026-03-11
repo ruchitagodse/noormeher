@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { API_BASE } from "../../../utility_api";
+
 export default function GalleryPhotosPage() {
   const searchParams = useSearchParams();
 
@@ -18,7 +18,7 @@ export default function GalleryPhotosPage() {
   useEffect(() => {
     if (!yid || !galtype) return;
 
-   fetch(`/api/gallery-photos?yid=${yid}&galtype=${galtype}`)
+    fetch(`/api/gallery-photos?yid=${yid}&galtype=${galtype}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -42,19 +42,30 @@ export default function GalleryPhotosPage() {
           <p>No photos found.</p>
         )}
 
-       <div className="row">
-  {photos.map((photo) => (
-    <div className="col-md-4 mb-4" key={photo.id}>
-      <div className="card gallery-card gallery-photo-card">
-        <img
-          src={photo.image}
-          alt={photo.name}
-          className="img-fluid"
-        />
-      </div>
-    </div>
-  ))}
-</div>
+        <div className="row">
+          {photos.map((photo) => {
+
+            const imageUrl = `/api/image?url=${encodeURIComponent(photo.image)}`;
+
+            return (
+              <div className="col-md-4 mb-4" key={photo.id}>
+                <div className="card gallery-card gallery-photo-card">
+
+                  <img
+                    src={imageUrl}
+                    alt={photo.name}
+                    className="img-fluid"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.src = "/images/no-image.png";
+                    }}
+                  />
+
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
       </div>
 

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { API_BASE } from "@/utility_api";
 
 export default function GalleryPhotosPage() {
   const router = useRouter();
@@ -19,7 +18,7 @@ export default function GalleryPhotosPage() {
 
     const fetchPhotos = async () => {
       try {
-        const res = await ffetch(`/api/gallery-photos?yid=${yearId}&galtype=${typeId}`);
+        const res = await fetch(`/api/gallery-photos?yid=${yearId}&galtype=${typeId}`);
 
         const result = await res.json();
 
@@ -28,6 +27,7 @@ export default function GalleryPhotosPage() {
         } else {
           console.error(result.message);
         }
+
       } catch (error) {
         console.error("Fetch error:", error);
       } finally {
@@ -38,40 +38,54 @@ export default function GalleryPhotosPage() {
     fetchPhotos();
   }, [router.isReady, yearId, typeId]);
 
-return (
-  <>
-    <Header />
+  return (
+    <>
+      <Header />
 
-    <section className="gallery-wrapper">
-      <div className="gallery-container">
+      <section className="gallery-wrapper">
+        <div className="gallery-container">
 
-        <h2 className="gallery-title">Gallery Photos</h2>
-        <div className="title-line"></div>
+          <h2 className="gallery-title">Gallery Photos</h2>
+          <div className="title-line"></div>
 
-        {loading && <div className="gallery-message">Loading photos...</div>}
+          {loading && (
+            <div className="gallery-message">Loading photos...</div>
+          )}
 
-        {!loading && photos.length === 0 && (
-          <div className="gallery-message">No photos found.</div>
-        )}
+          {!loading && photos.length === 0 && (
+            <div className="gallery-message">No photos found.</div>
+          )}
 
-        <div className="gallery-grid">
-          {photos.map((photo) => (
-            <div className="gallery-photo-card" key={photo.id}>
-              <div className="gallery-img">
-                <img src={photo.image} alt={photo.name} />
-              </div>
-              <div className="gallery-footer">
-                {photo.name}
-              </div>
-            </div>
-          ))}
+          <div className="gallery-grid">
+            {photos.map((photo) => {
+
+              const imageUrl = `/api/image?url=${encodeURIComponent(photo.image)}`;
+
+              return (
+                <div className="gallery-photo-card" key={photo.id}>
+                  <div className="gallery-img">
+                    <img
+                      src={imageUrl}
+                      alt={photo.name}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.src = "/images/no-image.png";
+                      }}
+                    />
+                  </div>
+
+                  <div className="gallery-footer">
+                    {photo.name}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <Footer />
-  </>
-);
-
+      <Footer />
+    </>
+  );
 }
