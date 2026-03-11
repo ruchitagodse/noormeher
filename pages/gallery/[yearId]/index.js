@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { API_BASE } from "../../../utility_api";
+
 export default function GalleryTypesPage() {
   const router = useRouter();
   const { yearId } = router.query;
@@ -16,7 +16,7 @@ export default function GalleryTypesPage() {
   useEffect(() => {
     if (!yearId) return;
 
-   fetch(`/api/gallery-types?year_id=${yearId}`)
+    fetch(`/api/gallery-types?year_id=${yearId}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -41,24 +41,36 @@ export default function GalleryTypesPage() {
 
         {!loading && types.length === 0 && <p>No albums found.</p>}
 
-      <div className="row">
-  {types.map((item) => (
-    <div className="col-md-4 mb-4" key={item.id}>
-      <Link href={`/gallery/${yearId}/${item.id}`}>
-        <div className="card gallery-card gallery-type-card h-100">
-          <img
-            src={item.image}
-            alt={item.name}
-            className="img-fluid"
-          />
-          <div className="card-footer text-center fw-bold">
-            {item.name}
-          </div>
+        <div className="row">
+          {types.map((item) => {
+
+            const imageUrl = `/api/image?url=${encodeURIComponent(item.image)}`;
+
+            return (
+              <div className="col-md-4 mb-4" key={item.id}>
+                <Link href={`/gallery/${yearId}/${item.id}`}>
+                  <div className="card gallery-card gallery-type-card h-100">
+
+                    <img
+                      src={imageUrl}
+                      alt={item.name}
+                      className="img-fluid"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.src = "/images/no-image.png";
+                      }}
+                    />
+
+                    <div className="card-footer text-center fw-bold">
+                      {item.name}
+                    </div>
+
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
         </div>
-      </Link>
-    </div>
-  ))}
-</div>
 
       </div>
 
