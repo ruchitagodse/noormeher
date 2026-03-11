@@ -1,20 +1,31 @@
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const dob = searchParams.get("dob");
+export default async function handler(req, res) {
+  const { dob } = req.query;
+
+  if (!dob) {
+    return res.status(400).json({
+      success: false,
+      message: "dob parameter missing",
+    });
+  }
 
   try {
-    const res = await fetch(
-      `http://api.noormeher.org/api/student/search.php?dob=${dob}`,
-      { cache: "no-store" }
+    const response = await fetch(
+      `http://api.noormeher.org/api/student/search.php?dob=${dob}`
     );
 
-    const data = await res.json();
+    const text = await response.text();
 
-    return Response.json(data);
+    res.status(response.status);
+    res.setHeader("Content-Type", "application/json");
+    res.send(text);
+
   } catch (error) {
-    return Response.json(
-      { success: false, message: "Proxy error" },
-      { status: 500 }
-    );
+    console.error("Proxy error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Proxy error",
+      error: error.message,
+    });
   }
 }

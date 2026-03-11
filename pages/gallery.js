@@ -1,81 +1,84 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
 import Layout from "@/components/Layout";
-import { API_BASE } from "../utility_api";
+
 export default function GalleryPage() {
   const [galleryYears, setGalleryYears] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetch("/api/gallery-years")
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response not ok");
+        return res.json();
+      })
+      .then((result) => {
+        if (result.success) {
+          setGalleryYears(result.data);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Gallery fetch error:", err);
+        setLoading(false);
+      });
+  }, []);
 
-useEffect(() => {
-  fetch("/api/gallery-years")
-    .then((res) => {
-      if (!res.ok) throw new Error("Network response not ok");
-      return res.json();
-    })
-    .then((result) => {
-      if (result.success) {
-        setGalleryYears(result.data);
-      }
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error("Gallery fetch error:", err);
-      setLoading(false);
-    });
-}, []);
-return (
-  <Layout>
-   <section
+  return (
+    <Layout>
+      {/* HERO SECTION */}
+      <section
         className="page-hero contact-hero"
-        style={{ backgroundImage: "url(/images/conact.png)" }}
+        style={{ backgroundImage: "url(/images/contact.png)" }}
       >
         <div className="overlay">
           <div className="container">
             <h2 className="center">Gallery</h2>
-
           </div>
         </div>
       </section>
-    <div className="container gallery-wrapper">
-      <div className="gallery-container">
 
-        <h3 className="gallery-title">Photos Gallery</h3>
-        <div className="title-line" />
+      <div className="container gallery-wrapper">
+        <div className="gallery-container">
 
-        {loading && <p>Loading gallery...</p>}
+          <h3 className="gallery-title">Photos Gallery</h3>
+          <div className="title-line" />
 
-        {!loading && galleryYears.length === 0 && (
-          <p>No gallery data found.</p>
-        )}
+          {loading && <p>Loading gallery...</p>}
 
-        <div className="gallery-grid">
-          {galleryYears.map((item) => (
-            <Link
-              href={`/gallery/${item.id}`}
-              key={item.id}
-              className="gallery-card"
-            >
-              <div className="gallery-img">
-                <img
-                  src={item.image}
-                  alt={item.year}
-                />
-              </div>
+          {!loading && galleryYears.length === 0 && (
+            <p>No gallery data found.</p>
+          )}
 
-              <div className="gallery-footer">
-                {item.year}
-              </div>
-            </Link>
-          ))}
+          <div className="gallery-grid">
+            {galleryYears.map((item) => (
+              <Link
+                href={`/gallery/${item.id}`}
+                key={item.id}
+                className="gallery-card"
+              >
+                <div className="gallery-img">
+                  <img
+                    src={encodeURI(item.image)}
+                    alt={item.year}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.src = "/images/no-image.png";
+                    }}
+                  />
+                </div>
+
+                <div className="gallery-footer">
+                  {item.year}
+                </div>
+              </Link>
+            ))}
+          </div>
+
         </div>
-
       </div>
-    </div>
-  </Layout>
-);
-
+    </Layout>
+  );
 }

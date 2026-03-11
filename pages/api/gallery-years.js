@@ -1,17 +1,21 @@
-export async function GET() {
+export default async function handler(req, res) {
   try {
-    const res = await fetch(
-      "http://api.noormeher.org/api/gallery/years.php",
-      { cache: "no-store" }
+    const response = await fetch(
+      "http://api.noormeher.org/api/gallery/years.php"
     );
 
-    const data = await res.json();
+    const text = await response.text();
 
-    return Response.json(data);
+    res.status(200).setHeader("Content-Type", "application/json");
+    res.send(text);
+
   } catch (error) {
-    return Response.json(
-      { success: false, message: "Proxy error" },
-      { status: 500 }
-    );
+    console.error("Proxy error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Proxy API failed",
+      error: error.message,
+    });
   }
 }
