@@ -84,7 +84,7 @@ export default function Contact() {
               <h3>Contact Details</h3>
 
               <ul>
-                <li><strong>Telephone:</strong> 91-22-28810448</li>
+              
                 <li><strong>Mobile:</strong> 09967759266</li>
                 <li>
                   <strong>Email:</strong>{" "}

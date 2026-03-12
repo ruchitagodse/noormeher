@@ -93,7 +93,7 @@ export default function Services() {
               <h4>Safety & Security</h4>
               <ul>
                 <li>Two Teachers available 24/7</li>
-                <li>24 CCTV Monitoring</li>
+                <li>40 CCTV Monitoring</li>
                 <li><FaFireExtinguisher /> Fire Extinguishers Installed</li>
               </ul>
             </div>

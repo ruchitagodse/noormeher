@@ -113,7 +113,7 @@ export default function Donate() {
         <div className="info-box">
           <p>
             <strong>Kindly Note:</strong> Donations are accepted only in INR.
-            International / NRE / NRO payments are not accepted.
+            International / NRE payments are not accepted.
           </p>
         </div>
 

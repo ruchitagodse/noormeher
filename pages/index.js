@@ -312,7 +312,7 @@ function Counter({ number, label, suffix }) {
     <div className="icon-box green">📖</div>
     <h4>Religious Education</h4>
     <p>
-      Jamia Tajveedul Quran provides Hifz, Nazra, and Islamic education
+      Jamia Tajveedul Quran provides Hifz, Nazra, and Islamic Secular education
       with strong moral values.
     </p>
   </div>

@@ -19,8 +19,21 @@ export default function StudentList() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setStudents(result.data);
+
+          // 🔹 SORT STUDENTS YEAR-WISE (LATEST FIRST)
+          const sortedStudents = result.data.sort((a, b) => {
+            const yearA =
+              a.hafiz_year || a.ssc_year || a.year || 0;
+
+            const yearB =
+              b.hafiz_year || b.ssc_year || b.year || 0;
+
+            return yearB - yearA;
+          });
+
+          setStudents(sortedStudents);
         }
+
         setLoading(false);
       })
       .catch(() => setLoading(false));

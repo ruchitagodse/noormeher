@@ -31,7 +31,7 @@ export default function About() {
             dedicated to providing religious, academic education and overall welfare
             to orphaned and underprivileged Muslim children. Established in 2001
             with just two orphan children, the Trust has grown steadily and today
-            supports more than 140 children.
+            supports more than 160 children.
           </p>
 
           <p>
@@ -64,20 +64,20 @@ export default function About() {
           <p>
             To ensure students’ well-being, the Trust regularly conducts free
             medical, dental and eye check-up camps. The premises are secured with
-            24 CCTV cameras with live monitoring to ensure the safety of children.
+            40 CCTV cameras with live monitoring to ensure the safety of children.
           </p>
 
           <p>
             Our SSC results have consistently been excellent. Multiple batches of
             students from 2013 onwards have passed with 100% results, while also
-            completing memorization of the Holy Quran. Since 2001, over 85 students
+            completing memorization of the Holy Quran. Since 2001, over 182 students
             have become Hafiz — a remarkable achievement in Mumbai.
           </p>
 
           <p>
             The Trust also organizes the annual <strong>Musabeqatul Quran</strong>,
             a Quran recitation competition among religious institutions across
-            Mumbai and Thane, promoting excellence in Islamic education.
+            Mumbai and Thane, promoting excellence in Islamic secular education.
           </p>
 
           <p>
@@ -102,9 +102,9 @@ export default function About() {
 
           <div className="admin-grid">
             <AdminCard title="Total Trustees" value="10" />
-            <AdminCard title="Teaching Staff" value="19" />
+            <AdminCard title="Teaching Staff" value="24" />
             <AdminCard title="Non-Teaching Staff" value="2" />
-            <AdminCard title="Total Children" value="141" />
+            <AdminCard title="Total Children" value="160" />
           </div>
 
         </div>
