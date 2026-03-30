@@ -59,7 +59,7 @@ export default function QuranPage() {
             <div className="row">
               <div className="image-box">
                 <img
-                  src="/images/achievemnts2.jpg"
+                  src="/images/achievements2.jpg"
                   alt="Hadith"
                   className="img-responsive"
                 />
