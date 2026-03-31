@@ -39,18 +39,18 @@ export default function StudentInfo() {
           data = [data];
         }
 
-        // ✅ 🔥 FIX: MAP API → UI FORMAT
+        // ✅ mapping (NOW MATCHES YOUR PHP)
         const mappedStudents = data.map((s) => ({
-          id: s.STUA_ID,
-          name: s.Name,
-          image: s.Image,
-          type: s.Type,
-          hafiz_year: s.Hafiz,
-          ssc: s.SSC,
-          ssc_year: s.SSC_Year,
-          hsc: s.HSC,
-          stream: s.Stream,
-          year: s.Year,
+          id: s.id,
+          name: s.name,
+          image: s.image,
+          type: s.type,
+          hafiz_year: s.hafiz_year,
+          ssc: s.ssc,
+          ssc_year: s.ssc_year,
+          hsc: s.hsc,
+          stream: s.stream,
+          year: s.year,
         }));
 
         // ✅ sort latest first
@@ -121,14 +121,11 @@ export default function StudentInfo() {
           <div className="student-grid mt-4">
             {students.map((student, index) => {
 
-              // ✅ IMAGE FIX
-              let imageUrl = "/images/no-image.png";
-
-              if (student.image && student.image !== "null") {
-                const fileName = student.image.split("/").pop();
-
-                imageUrl = `http://api.noormeher.org/sm-admin/dist/img/Student-Achievement/${fileName}`;
-              }
+              // ✅ IMAGE FIX (already full URL from PHP)
+              const imageUrl =
+                student.image && student.image !== "null"
+                  ? student.image
+                  : "/images/no-image.png";
 
               return (
                 <div className="student-card fade-in" key={student.id || index}>
