@@ -97,7 +97,7 @@ export default function Activities() {
             <FaCalendarAlt />
             <div>
               <h4>Annual Events</h4>
-              <p>Sports Day, Annual Function, Republic & Independence Day.</p>
+              <p>Sports day, Gandhi Jayanti, Education Day, Childrens day. republic day, independance day.</p>
             </div>
           </div>
 
@@ -111,7 +111,7 @@ export default function Activities() {
           </div>
           <div className="stat-box">
             <h3>10+</h3>
-            <p>Islamic Competitions</p>
+            <p>Islamic Competitions,Madarsa Competitions,Inter School Competitions</p>
           </div>
           <div className="stat-box">
             <h3>100%</h3>

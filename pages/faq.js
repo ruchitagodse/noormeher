@@ -10,12 +10,12 @@ export default function FAQ() {
 
   const faqs = [
     {
-      q: "What is Jamiya Tajweedul Quran?",
-      a: "Jamiya Tajweedul Quran is an Islamic School (Madrasa) where orphan and poor Muslim children can stay and receive free education."
+      q: "What is Jamia Tajweedul Quran?",
+      a: "Jamia Tajweedul Quran is an Islamic School (Madrasa) where orphan and poor Muslim children can stay and receive free education."
     },
     {
       q: "How much money do you charge if a poor orphan Muslim child wants admission?",
-      a: "Jamiya Tajweedul Quran runs under Noor Meher Charitable Trust and we do not take any money from poor or orphan children."
+      a: "Jamia Tajweedul Quran runs under Noor Meher Charitable Trust and we do not take any money from poor or orphan children."
     },
     {
       q: "What are the conditions for admission?",
@@ -23,13 +23,13 @@ export default function FAQ() {
     },
     {
       q: "Can orphan or poor Muslim girls take admission?",
-      a: "No, Jamiya admits only poor and orphan Muslim boys."
+      a: "No, Jamia admits only poor and orphan Muslim boys."
     },
     {
       q: "If I want to donate, how can I reach you?",
       a: (
         <>
-          Jamiya has a 24/7 helpline and its address is available on the{" "}
+          Jamia has a 24/7 helpline and its address is available on the{" "}
           <a href="/contact">Contact Us</a> page.
           <br />
           You can also donate online via the <a href="/donate">Donate</a> page.
@@ -65,7 +65,7 @@ export default function FAQ() {
       )
     },
     {
-      q: "Does Jamiya provide food, clothes, and bedding?",
+      q: "Does Jamia provide food, clothes, and bedding?",
       a: "Yes, free breakfast, lunch, snacks, dinner, bedding, and clothing are provided."
     }
   ];

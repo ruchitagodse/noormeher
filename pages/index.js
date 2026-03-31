@@ -246,7 +246,7 @@ function Counter({ number, label, suffix }) {
     <Counter number={2001} label="Established" suffix="" />
     <Counter number={182} label="Hafiz Graduates" suffix="+" />
     <Counter number={141} label="Total Students" suffix="+" />
-    <Counter number={24} label="CCTV Cameras" suffix="" />
+    <Counter number={40} label="CCTV Cameras" suffix="" />
 
   </div>
 </section>

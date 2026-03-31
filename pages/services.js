@@ -63,7 +63,7 @@ export default function Services() {
 
             <p>
               The Noor Meher Charitable Trust offers both religious and formal
-              education. Jamiya Tajveedul Quran provides Quranic recitation
+              education. Jamia Tajveedul Quran provides Quranic recitation
               classes at three levels (Noorani Qaida, Nazera, Hifz) and a full
               academic syllabus with quarterly, half-term, and annual exams.
             </p>

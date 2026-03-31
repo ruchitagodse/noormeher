@@ -4,47 +4,48 @@ import { useState, useEffect, useRef } from "react";
 import Layout from "../components/Layout";
 
 export default function Achievements() {
-
-  const [visibleCount, setVisibleCount] = useState(10);
   const [statsVisible, setStatsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [visibleItems, setVisibleItems] = useState([]);
+
   const statsRef = useRef(null);
 
+  // ================= TIMELINE =================
   const timelineData = [
-    { year: "2001", text: "Trust started with 2 Orphan children." },
-    { year: "2002", text: "Academic activity started with languages." },
-    { year: "2004", text: "Resident children increased to 32." },
-    { year: "2005", text: "First batch of Huffaz completed." },
-    { year: "2006", text: "Resident children increased to 44." },
-    { year: "2007", text: "Primary School started." },
-    { year: "2008", text: "1st Musabeqatul Quran organized." },
-    { year: "2009", text: "2nd Musabeqatul Quran competition held." },
-    { year: "2010", text: "3rd Musabeqatul Quran competition." },
-    { year: "2011", text: "Resident children reached 100." },
-    { year: "2012", text: "Sports Week and Craft Show organized." },
-    { year: "2013", text: "First SSC batch – 100% result." },
-    { year: "2014", text: "Second SSC batch – 100% result." },
-    { year: "2015", text: "Students secured seats in Engineering & Medical." },
-    { year: "2016", text: "Science Fair organized." },
-    { year: "2017", text: "First Hafiz students cleared 12th board." },
-    { year: "2018", text: "NIOS permission granted." },
-    { year: "2019", text: "21st Annual Dastarbandi Ceremony." },
-    { year: "2020", text: "Online education started during COVID." },
-    { year: "2021", text: "Ninth SSC batch – 100% result." },
-    { year: "2022", text: "Azadi Ka Amrit Mahotsav celebration." },
-    { year: "2023", text: "Interactive Whiteboards installed." },
-    { year: "2024", text: "AC installed and PDL activities." },
-    { year: "2025", text: "Silver Jubilee Celebration." },
+    { year: "2001", text: "Trust started with 2 Orphan children.", icon: "🏁" },
+    { year: "2002", text: "Academic activity started with languages.", icon: "📚" },
+    { year: "2004", text: "Resident children increased to 32.", icon: "👨‍👧‍👦" },
+    { year: "2005", text: "First batch of Huffaz completed.", icon: "🎓" },
+    { year: "2006", text: "Resident children increased to 44.", icon: "📈" },
+    { year: "2007", text: "Primary School started.", icon: "🏫" },
+    { year: "2008", text: "1st Musabeqatul Quran organized.", icon: "📖" },
+    { year: "2009", text: "2nd Musabeqatul Quran competition held.", icon: "🏆" },
+    { year: "2010", text: "3rd Musabeqatul Quran competition.", icon: "🏆" },
+    { year: "2011", text: "Resident children reached 100.", icon: "💯" },
+    { year: "2012", text: "Sports Week and Craft Show organized.", icon: "🎨" },
+    { year: "2013", text: "First SSC batch – 100% result.", icon: "🥇" },
+    { year: "2014", text: "Second SSC batch – 100% result.", icon: "🥇" },
+    { year: "2015", text: "Students secured seats in Engineering & Medical.", icon: "🧑‍⚕️" },
+    { year: "2016", text: "Science Fair organized.", icon: "🔬" },
+    { year: "2017", text: "First Hafiz students cleared 12th board.", icon: "🎓" },
+    { year: "2018", text: "NIOS permission granted.", icon: "📜" },
+    { year: "2019", text: "21st Annual Dastarbandi Ceremony.", icon: "🎉" },
+    { year: "2020", text: "Online education started during COVID.", icon: "💻" },
+    { year: "2021", text: "Ninth SSC batch – 100% result.", icon: "🥇" },
+    { year: "2022", text: "Azadi Ka Amrit Mahotsav celebration.", icon: "🇮🇳" },
+    { year: "2023", text: "Interactive Whiteboards installed.", icon: "🖥️" },
+    { year: "2024", text: "AC installed and PDL activities.", icon: "❄️" },
+    { year: "2025", text: "Silver Jubilee Celebration.", icon: "🎊" },
   ];
 
-  // Scroll progress bar
+  // ================= SCROLL PROGRESS =================
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      const progress =
-        (window.scrollY / totalHeight) * 100;
+
+      const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
     };
 
@@ -52,48 +53,101 @@ export default function Achievements() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Stats visibility
+  // ================= FIXED OBSERVER =================
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setStatsVisible(true);
+        if (entry.isIntersecting) {
+          setStatsVisible(true);
+          observer.disconnect(); // ✅ run once
+        }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 } // ✅ lower threshold
     );
 
-    if (statsRef.current) observer.observe(statsRef.current);
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  const Counter = ({ end }) => {
-    const [count, setCount] = useState(0);
+  // ✅ FALLBACK (important for mobile)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStatsVisible(true);
+    }, 1200);
 
-    useEffect(() => {
-      if (!statsVisible) return;
+    return () => clearTimeout(timer);
+  }, []);
 
-      let start = 0;
-      const duration = 2000;
-      const increment = end / (duration / 16);
+  // ================= STAGGER TIMELINE =================
+  useEffect(() => {
+    const handleScroll = () => {
+      const items = document.querySelectorAll(".journey-card");
 
-      const counter = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(counter);
-        } else {
-          setCount(Math.ceil(start));
+      items.forEach((item, index) => {
+        const rect = item.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight - 80) {
+          setTimeout(() => {
+            setVisibleItems((prev) => {
+              if (prev.includes(index)) return prev;
+              return [...prev, index];
+            });
+          }, index * 120);
         }
-      }, 16);
+      });
+    };
 
-      return () => clearInterval(counter);
-    }, [statsVisible]);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
-    return <span>{count}</span>;
-  };
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  // ================= COUNTER =================
+const Counter = ({ end, id }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const key = `counter_${id}`;
+
+    // ✅ Check if already calculated
+    const saved = sessionStorage.getItem(key);
+    if (saved) {
+      setCount(Number(saved));
+      return; // ❌ don't run again
+    }
+
+    let startTimestamp = null;
+    const duration = 2000;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const value = Math.floor(progress * end);
+
+      setCount(value);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        setCount(end);
+        sessionStorage.setItem(key, end); // ✅ store final value
+      }
+    };
+
+    requestAnimationFrame(step);
+  }, [end, id]);
+
+  return <span>{count}</span>;
+};
   return (
     <Layout title="Achievements | Noormeher Charitable Trust">
 
-      {/* Scroll Progress */}
+      {/* Progress Bar */}
       <div
         className="scroll-progress"
         style={{ width: `${scrollProgress}%` }}
@@ -101,17 +155,20 @@ export default function Achievements() {
 
       <section className="container section white-bg">
 
-         <section className="achieve-hero">
-  <div className="achieve-hero-overlay"></div>
-</section>
+        <section className="achieve-hero">
+          <div className="achieve-hero-overlay"></div>
+        </section>
 
-<div className="about-heading container">
-   <h1>Achievements</h1>
-          <p>Empowering children through structured education & meaningful programs</p>
-</div>
-  
+        {/* Heading */}
+        <div className="about-heading achieve-heading">
+          <h1>Our Journey of Impact</h1>
+          <p className="subtitle">
+            From 2001 to today, we have grown step by step—empowering children,
+            building futures, and creating meaningful change.
+          </p>
+        </div>
 
-        {/* ===== Animated Stats ===== */}
+        {/* Stats */}
         <div className="stats-section" ref={statsRef}>
           <div className="stat-box">
             <h3><Counter end={182} /></h3>
@@ -129,28 +186,24 @@ export default function Achievements() {
           </div>
         </div>
 
-        {/* ===== Timeline ===== */}
-        <div className="timeline alt-timeline">
-          {timelineData.slice(0, visibleCount).map((item, index) => (
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>{item.year}</h4>
-                <p>{item.text}</p>
+        {/* Timeline */}
+        <div className="journey-timeline">
+          {timelineData.map((item, index) => (
+            <div
+              key={index}
+              className={`journey-card ${
+                visibleItems.includes(index) ? "show" : ""
+              }`}
+            >
+              <div className="journey-header">
+                <span className="journey-icon">{item.icon}</span>
+                <h3 className="journey-title">{item.year}</h3>
               </div>
+
+              <p className="journey-desc">{item.text}</p>
             </div>
           ))}
         </div>
-
-        {visibleCount < timelineData.length && (
-          <div className="timeline-buttons">
-            <button
-              className="read-more-btn"
-              onClick={() => setVisibleCount(prev => prev + 5)}
-            >
-              Load More
-            </button>
-          </div>
-        )}
 
       </section>
     </Layout>

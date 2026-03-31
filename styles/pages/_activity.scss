@@ -1,12 +1,13 @@
+/* ================= HERO ================= */
 
 .activity-hero {
-  height: 60vh;
-  background:
-              url("/images/activities.jpg") center/cover no-repeat;
   position: relative;
+  min-height: 250px;
+  height: 60vh;
+  background: url("/images/activities.jpg") center/cover no-repeat;
 }
 
-/* Soft gradient overlay */
+/* Overlay */
 .activity-hero-overlay {
   position: absolute;
   inset: 0;
@@ -16,13 +17,12 @@
   );
 }
 
-
 /* ================= SECTION ================= */
 
 .activities-section {
-  padding: 100px 0;
-  opacity: 0;
-  transform: translateY(40px);
+  padding: 60px 0; /* reduced for better scroll */
+  opacity: 1;       /* ✅ FIX: no hidden content */
+  transform: none;
   transition: 0.8s ease;
 }
 
@@ -35,9 +35,9 @@
 
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .activity-card {
@@ -98,9 +98,9 @@
 
 .activities-stats {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 .stat-box {
@@ -122,7 +122,26 @@
   color: #475569;
 }
 
-/* ================= MOBILE ================= */
+/* ================= ACTIVITY LIST ================= */
+
+.activity-list {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.activity-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* ================= GLOBAL FIX ================= */
+
+body {
+  overflow-x: hidden; /* ✅ prevent horizontal scroll */
+}
+
+/* ================= TABLET ================= */
 
 @media (max-width: 992px) {
   .activities-grid {
@@ -134,12 +153,35 @@
   }
 }
 
-@media (max-width: 600px) {
-  .hero-glass {
-    padding: 30px 25px;
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .activity-hero {
+    height: 220px; /* ✅ FIX scroll jump */
   }
 
-  .hero-glass h1 {
-    font-size: 28px;
+  .activities-section {
+    padding: 40px 0;
+  }
+
+  .timeline-item {
+    flex-direction: column; /* ✅ FIX overflow */
+  }
+
+  .activity-list {
+    padding-left: 16px;
+  }
+
+  .activity-list li {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .activity-card {
+    padding: 25px;
+  }
+
+  .stat-box {
+    padding: 25px;
   }
 }

@@ -20,8 +20,8 @@ export default function Vision() {
     
     
 
-       <div className="vision-card">
-  <ul className="vision-list">
+     
+  <ul className="activity-list">
 
           <li>
             Education with residential accommodation and arrangement of food
@@ -78,7 +78,7 @@ export default function Vision() {
             Monetary assistance for poor Muslim girls for marriage.
           </li>
         </ul>
-        </div>
+    
       </section>
     </Layout>
   );

@@ -31,7 +31,7 @@ export default function GalleryPage() {
       {/* HERO SECTION */}
       <section
         className="page-hero contact-hero"
-        style={{ backgroundImage: "url(/images/contact.png)" }}
+    
       >
         <div className="overlay">
           <div className="container">

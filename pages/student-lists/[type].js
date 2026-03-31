@@ -20,15 +20,12 @@ export default function StudentList() {
       .then((result) => {
         if (result.success) {
 
-          // 🔹 SORT STUDENTS YEAR-WISE (LATEST FIRST)
-          const sortedStudents = result.data.sort((a, b) => {
-            const yearA =
-              a.hafiz_year || a.ssc_year || a.year || 0;
+          // ✅ SAFE + CORRECT SORTING (LATEST YEAR FIRST)
+          const sortedStudents = [...result.data].sort((a, b) => {
+            const getYear = (student) =>
+              Number(student.hafiz_year || student.ssc_year || student.year || 0);
 
-            const yearB =
-              b.hafiz_year || b.ssc_year || b.year || 0;
-
-            return yearB - yearA;
+            return getYear(b) - getYear(a);
           });
 
           setStudents(sortedStudents);
@@ -39,7 +36,17 @@ export default function StudentList() {
       .catch(() => setLoading(false));
   }, [type]);
 
-  if (loading) return <Layout><p>Loading...</p></Layout>;
+  // 🔥 PREMIUM LOADER
+  if (loading) {
+    return (
+      <Layout>
+        <div className="loader-wrapper">
+          <div className="loader"></div>
+          <p>Loading Students...</p>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -50,15 +57,12 @@ export default function StudentList() {
         <div className="student-grid">
 
           {students.map((student) => {
-
             const imageUrl = `/api/image?url=${encodeURIComponent(student.image)}`;
 
             return (
-              <div className="student-card" key={student.id}>
+              <div className="student-card fade-in" key={student.id}>
 
-                <div className="student-badge">
-                  {student.type}
-                </div>
+              
 
                 <div className="student-card-img">
                   <img

@@ -23,7 +23,7 @@ export default function MissionPage() {
         </p>
 
         <p>
-          Noor Meher Charitable Trust, founder of Jamiya Tajveedul Quran, started
+          Noor Meher Charitable Trust, founder of Jamia Tajveedul Quran, started
           its mission with two children in the year 2001. Today in 2026, we are
           serving 165 children.
         </p>
