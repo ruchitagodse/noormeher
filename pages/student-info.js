@@ -21,25 +21,21 @@ export default function StudentInfo() {
     try {
       setLoading(true);
 
-      console.log("Sending DOB:", dob);
-
       const res = await fetch(
         `/api/student-search?dob=${encodeURIComponent(dob)}`
       );
 
       const result = await res.json();
 
-      console.log("API Result:", result);
-
       if (result.success && result.data) {
         let data = result.data;
 
-        // ✅ ensure array
+        // ensure array
         if (!Array.isArray(data)) {
           data = [data];
         }
 
-        // ✅ mapping (NOW MATCHES YOUR PHP)
+        // mapping
         const mappedStudents = data.map((s) => ({
           id: s.id,
           name: s.name,
@@ -53,7 +49,7 @@ export default function StudentInfo() {
           year: s.year,
         }));
 
-        // ✅ sort latest first
+        // sorting
         const sortedStudents = [...mappedStudents].sort((a, b) => {
           const getYear = (s) =>
             Number(s.hafiz_year || s.ssc_year || s.year || 0);
@@ -121,10 +117,10 @@ export default function StudentInfo() {
           <div className="student-grid mt-4">
             {students.map((student, index) => {
 
-              // ✅ IMAGE FIX (already full URL from PHP)
+              // ✅ 🔥 FINAL IMAGE FIX (USE PROXY ROUTE LIKE GALLERY)
               const imageUrl =
                 student.image && student.image !== "null"
-                  ? student.image
+                  ? `/api/image?url=${encodeURIComponent(student.image)}`
                   : "/images/no-image.png";
 
               return (
