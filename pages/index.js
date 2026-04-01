@@ -118,53 +118,7 @@ function Counter({ number, label, suffix }) {
   return (
     <Layout>
       {/* ================= HERO SLIDER ================= */}
-     
-<section className="modern-hero">
-  <div className="hero-left">
-    <h1 className="hero-title">
-      Empowering <br />
-      Through <br />
-      Education & Faith
-    </h1>
-
-    <p className="hero-subtext">
-      Noormeher Charitable Trust is dedicated to providing quality Islamic
-      education, community support, and building a brighter future for
-      students.
-    </p>
-
-    <div className="hero-buttons">
-      <a href="/about" className="read">Learn More</a>
-      <a href="/donate" className="btn-outline">Get Involved</a>
-    </div>
-  </div>
-
-<div className="hero-right">
-
-  <Link href="/activities" className="color-card purple">
-    <FaCalendarAlt />
-    <span>Activities</span>
-  </Link>
-
-  <Link href="/services" className="color-card pink">
-    <FaHandsHelping />
-    <span>Services</span>
-  </Link>
-
-  <Link href="/contact" className="color-card blue">
-    <FaPhoneAlt />
-    <span>Contact</span>
-  </Link>
-
-  <Link href="/achievements" className="color-card green">
-    <FaGraduationCap />
-    <span>Achievements</span>
-  </Link>
-
-</div>
-
-</section>
-
+   
       <section
         className="hero-slider"
         onTouchStart={handleTouchStart}
@@ -210,6 +164,52 @@ function Counter({ number, label, suffix }) {
           ›
         </button>
       </section>
+  
+<section className="modern-hero">
+  <div className="hero-left">
+    <h1 className="hero-title">
+      Empowering <br />
+      Through <br />
+      Education & Faith
+    </h1>
+
+    <p className="hero-subtext">
+      Noormeher Charitable Trust is dedicated to providing quality Islamic
+      education, community support, and building a brighter future for
+      students.
+    </p>
+
+    <div className="hero-buttons">
+      <a href="/about" className="read">Learn More</a>
+      <a href="/donate" className="btn-outline">Get Involved</a>
+    </div>
+  </div>
+
+<div className="hero-right">
+
+  <Link href="/activities" className="color-card purple">
+    <FaCalendarAlt />
+    <span>Activities</span>
+  </Link>
+
+  <Link href="/services" className="color-card pink">
+    <FaHandsHelping />
+    <span>Services</span>
+  </Link>
+
+  <Link href="/contact" className="color-card blue">
+    <FaPhoneAlt />
+    <span>Contact</span>
+  </Link>
+
+  <Link href="/achievements" className="color-card green">
+    <FaGraduationCap />
+    <span>Achievements</span>
+  </Link>
+
+</div>
+
+</section>
 
    
 
