@@ -40,7 +40,7 @@ export default function Activities() {
   <div className="about-overlay"></div>
 
   <div className="about-inner container">
-    <span className="tag">✦ Who We Are</span>
+  <span className="tag">✦ What We Do</span>
 
     <div className="about-flex">
       <h1>Activities</h1>

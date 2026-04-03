@@ -16,7 +16,7 @@ export default function MissionPage() {
   <div className="about-overlay"></div>
 
   <div className="about-inner container">
-    <span className="tag">✦ Who We Are</span>
+    <span className="tag">✦ Our Purpose</span>
 
     <div className="about-flex">
       <h1>Our Mission</h1>

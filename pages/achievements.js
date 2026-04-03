@@ -166,10 +166,10 @@ const Counter = ({ end, id }) => {
   <div className="about-overlay"></div>
 
   <div className="about-inner container">
-    <span className="tag">✦ Who We Are</span>
+  <span className="tag">✦ Our Impact</span>
 
     <div className="about-flex">
-      <h1>Our Journey of Impact</h1>
+      <h1>Achievements</h1>
 
       <p>
    From 2001 to today, we have grown step by step—empowering children,

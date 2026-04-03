@@ -1,22 +1,70 @@
 import Link from "next/link";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-container">
+        
         {/* ================= CONTACT US ================= */}
         <div className="footer-col">
           <h4>CONTACT US</h4>
           <p className="footer-title">NOOR MEHER HOUSE</p>
-          <p>
-            Bungalow No. 12 RSC 20, Near Akashwani Ground,
-            <br />
-            Malvani, Malad - West, Mumbai - 400095,
-            <br />
-            Maharashtra, India
+
+          <p className="footer-item">
+            <FaMapMarkerAlt className="icon" />
+            <span>
+              Bungalow No. 12 RSC 20, Near Akashwani Ground,
+              <br />
+              Malvani, Malad - West, Mumbai - 400095,
+              <br />
+              Maharashtra, India
+            </span>
           </p>
-          <p>📞 +91 99677 59266</p>
-          <p>✉️ info@noormeher.org</p>
+
+          <p className="footer-item">
+            <FaPhoneAlt className="icon" />
+            <span>+91 99677 59266</span>
+          </p>
+
+          <p className="footer-item">
+            <FaEnvelope className="icon" />
+            <span>info@noormeher.org</span>
+          </p>
+
+          {/* ================= SOCIAL ICONS ================= */}
+         <div className="social-icons">
+  <a
+    href="https://www.facebook.com/noormehercharitabletrust"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://www.instagram.com/noormehertrust/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaInstagram />
+  </a>
+
+  <a
+    href="https://x.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaXTwitter />
+  </a>
+</div>
         </div>
 
         {/* ================= SHORT LINKS ================= */}
@@ -30,11 +78,9 @@ export default function Footer() {
             <li><Link href="/achievements">Achievements</Link></li>
             <li><Link href="/contact">Contact Us</Link></li>
             <li><Link href="/donate">Donate</Link></li>
-     <li>
-  <Link href="/student-lists/Hafiz Student">
-    Hafiz
-  </Link>
-</li>
+            <li>
+              <Link href="/student-lists/Hafiz Student">Hafiz</Link>
+            </li>
           </ul>
         </div>
 
@@ -61,7 +107,7 @@ export default function Footer() {
           Charitable Trust.
         </p>
         <p>
-          Handcrafted with <span style={{ color: "red" }}>❤</span> by{" "}
+          Handcrafted with <span className="heart-icon">❤</span> by{" "}
           <span className="brand">Ruchita Godse</span>
         </p>
       </div>

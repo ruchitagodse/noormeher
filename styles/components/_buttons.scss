@@ -1,1 +1,24 @@
 /* _buttons.scss */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  background: #2e7d4f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+  background: #1b5e20;
+}

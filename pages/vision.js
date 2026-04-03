@@ -16,7 +16,7 @@ export default function Vision() {
   <div className="about-overlay"></div>
 
   <div className="about-inner container">
-    <span className="tag">✦ Who We Are</span>
+    <span className="tag">✦ A Better Tomorrow</span>
 
     <div className="about-flex">
       <h1>Our Visio</h1>
