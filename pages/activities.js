@@ -28,15 +28,30 @@ export default function Activities() {
 
   return (
     <Layout title="Activities | Noormeher Charitable Trust">
-    <section className="activity-hero">
-  <div className="activity-hero-overlay"></div>
-</section>
+        <section
+  className="about-hero"
+  style={{
+    backgroundImage: "url('/images/activities.jpg')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="about-overlay"></div>
 
-<div className="about-heading container">
-   <h1>Activities</h1>
-          <p>Empowering children through structured education & meaningful programs</p>
-</div>
-  
+  <div className="about-inner container">
+    <span className="tag">✦ Who We Are</span>
+
+    <div className="about-flex">
+      <h1>Activities</h1>
+
+      <p>
+     Empowering children through structured education & meaningful programs
+      </p>
+    </div>
+  </div>
+</section>
+   
       {/* ================= HERO ================= */}
     
       {/* ================= MAIN CONTENT ================= */}

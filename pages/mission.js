@@ -4,16 +4,31 @@ export default function MissionPage() {
   return (
     <Layout title="Mission | Noormeher Charitable Trust">
       {/* HERO */}
-   
-  <section className="mission-hero">
-  <div className="mission-hero-overlay"></div>
+         <section
+  className="about-hero"
+  style={{
+    backgroundImage: "url('/images/mission.jpg')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="about-overlay"></div>
+
+  <div className="about-inner container">
+    <span className="tag">✦ Who We Are</span>
+
+    <div className="about-flex">
+      <h1>Our Mission</h1>
+
+      <p>
+  Empowering children through structured education & meaningful programs
+      </p>
+    </div>
+  </div>
 </section>
-
-<div className="about-heading container">
-    <h1>Our Mission</h1>
-          <p>Empowering children through structured education & meaningful programs</p>
-</div>
-
+   
+ 
       {/* CONTENT */}
       <section className="container section white-bg">
       

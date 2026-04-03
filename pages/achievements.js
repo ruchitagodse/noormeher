@@ -153,20 +153,33 @@ const Counter = ({ end, id }) => {
         style={{ width: `${scrollProgress}%` }}
       ></div>
 
-      <section className="container section white-bg">
+      
+        <section
+  className="about-hero"
+  style={{
+    backgroundImage: "url('/images/Achievements.jpg')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="about-overlay"></div>
 
-        <section className="achieve-hero">
-          <div className="achieve-hero-overlay"></div>
-        </section>
+  <div className="about-inner container">
+    <span className="tag">✦ Who We Are</span>
 
-        {/* Heading */}
-        <div className="about-heading achieve-heading">
-          <h1>Our Journey of Impact</h1>
-          <p className="subtitle">
-            From 2001 to today, we have grown step by step—empowering children,
+    <div className="about-flex">
+      <h1>Our Journey of Impact</h1>
+
+      <p>
+   From 2001 to today, we have grown step by step—empowering children,
             building futures, and creating meaningful change.
-          </p>
-        </div>
+      </p>
+    </div>
+  </div>
+</section>
+   
+      
 
         {/* Stats */}
         <div className="stats-section" ref={statsRef}>
@@ -205,7 +218,7 @@ const Counter = ({ end, id }) => {
           ))}
         </div>
 
-      </section>
+  
     </Layout>
   );
 }

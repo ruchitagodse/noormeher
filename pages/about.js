@@ -7,19 +7,32 @@ export default function About() {
   return (
     <Layout title="About Us | Noormeher Charitable Trust">
 
-      {/* ================= GLASS HERO ================= */}
-      {/* ================= HERO ================= */}
-<section className="about-hero">
-  <div className="about-hero-overlay"></div>
+      
+   <section
+  className="about-hero"
+  style={{
+    backgroundImage: "url('/images/AboutUs.jpg')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="about-overlay"></div>
+
+  <div className="about-inner container">
+    <span className="tag">✦ Who We Are</span>
+
+    <div className="about-flex">
+      <h1>About Us</h1>
+
+      <p>
+        Serving with Faith, <br />
+        Education & Compassion <br />
+        Since 2001
+      </p>
+    </div>
+  </div>
 </section>
-
-<div className="about-heading container">
-  <h1>About Us</h1>
-  <p>Serving with Faith, Education & Compassion Since 2001</p>
-</div>
-
-
-    
 
       {/* ================= CONTENT ================= */}
       <section className="container section about-section">

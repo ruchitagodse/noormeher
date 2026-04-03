@@ -19,15 +19,30 @@ export default function Services() {
     <Layout title="Services | Noormeher Charitable Trust">
 
       {/* HERO */}
-      <section className="services-hero">
-        <div className="about-hero-overlay"></div>
-      </section>
+   
+   <section
+  className="about-hero"
+  style={{
+    backgroundImage: "url('/images/services.jpg')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="about-overlay"></div>
 
-      <div className="about-heading container">
-        <h1>Our Services</h1>
-        <p>Providing care, education, protection and opportunities for every child.</p>
-      </div>
+  <div className="about-inner container">
+    <span className="tag">✦ Who We Are</span>
 
+    <div className="about-flex">
+      <h1>Our Services</h1>
+
+      <p>
+       Providing care, education, protection and opportunities for every child.
+      </p>
+    </div>
+  </div>
+</section>
       {/* FACILITIES */}
       <section className="container section services-section">
 

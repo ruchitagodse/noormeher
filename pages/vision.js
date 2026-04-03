@@ -4,15 +4,32 @@ export default function Vision() {
   return (
     <Layout>
       {/* ================= HERO / TITLE SECTION ================= */}
-     <section className="activity-hero">
-  <div className="activity-hero-overlay"></div>
-</section>
+         <section
+  className="about-hero"
+  style={{
+    backgroundImage: "url('/images/vision.jpg')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="about-overlay"></div>
 
-        
-<div className="about-heading container">
-    <h1>Our Vision</h1>
-          
-</div>
+  <div className="about-inner container">
+    <span className="tag">✦ Who We Are</span>
+
+    <div className="about-flex">
+      <h1>Our Visio</h1>
+
+      <p>
+   From 2001 to today, we have grown step by step—empowering children,
+            building futures, and creating meaningful change.
+      </p>
+    </div>
+  </div>
+</section>
+   
+  
 
     
       {/* ================= VISION CONTENT ================= */}
