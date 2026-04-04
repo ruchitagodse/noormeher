@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 
 export default function GalleryPhotosPage() {
   const router = useRouter();
@@ -40,12 +41,12 @@ export default function GalleryPhotosPage() {
 
   return (
     <>
-      <Header />
+      <Layout />
 
       <section className="gallery-wrapper">
         <div className="gallery-container">
 
-          <h2 className="gallery-title">Gallery Photos</h2>
+          <h2 className="gallery-title">Gallery</h2>
           <div className="title-line"></div>
 
           {loading && (

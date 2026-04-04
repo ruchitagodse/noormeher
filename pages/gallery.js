@@ -43,9 +43,9 @@ export default function GalleryPage() {
       </section>
 
       <div className="container gallery-wrapper">
-        <div className="gallery-container">
+        <div >
 
-          <h3 className="gallery-title">Photos Gallery</h3>
+       
           <div className="title-line" />
 
           {loading && <p>Loading gallery...</p>}
