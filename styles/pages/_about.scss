@@ -169,7 +169,10 @@
 .about-flex h1 {
   font-size: 60px;
   font-weight: 700;
-  color: #e6f4ea;
+    margin-bottom: 24px;
+    background: linear-gradient(90deg, #0b2e1a, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* RIGHT TEXT */
@@ -187,11 +190,12 @@
 
   .about-flex {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
   }
 
   .about-flex h1 {
     font-size: 36px;
+      color: #e6f4ea;
   }
 
   .about-flex p {

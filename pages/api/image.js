@@ -6,13 +6,31 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0", // ✅ FIX: prevents blocking
+      },
+    });
+
+    if (!response.ok) {
+      return res.status(400).send("Failed to fetch image");
+    }
+
     const buffer = await response.arrayBuffer();
 
-    res.setHeader("Content-Type", response.headers.get("content-type"));
-    res.send(Buffer.from(buffer));
+    // ✅ FIX: fallback content-type
+    const contentType =
+      response.headers.get("content-type") || "image/jpeg";
+
+    res.setHeader("Content-Type", contentType);
+
+    // ✅ BONUS: caching for performance
+    res.setHeader("Cache-Control", "public, max-age=86400");
+
+    return res.send(Buffer.from(buffer));
 
   } catch (error) {
-    res.status(500).send("Image proxy error");
+    console.error("Image proxy error:", error);
+    return res.status(500).send("Image proxy error");
   }
 }
