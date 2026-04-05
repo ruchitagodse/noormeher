@@ -385,7 +385,35 @@
               url("/images/Achievements.jpg") center/cover no-repeat;
   position: relative;
 }
+.clickable {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.journey-details {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 3px solid #16a34a;
+  animation: fadeIn 0.3s ease;
+}
+
+.journey-desc {
+  margin: 6px 0;
+  color: #444;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Soft gradient overlay */
 .achieve-hero-overlay {
   position: absolute;

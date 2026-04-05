@@ -75,20 +75,24 @@ export default function Services() {
           <h2 className="section-title center">Academic</h2>
 
           <div className="academic-text">
+<p>
+  The Noor Meher Charitable Trust offers both religious and formal education. 
+  Jamia Tajveedul Quran provides Quranic recitation classes at three levels 
+  (Noorani Qaida, Nazera, Hifz) along with a structured academic syllabus 
+  including quarterly, half-term, and annual examinations.
+</p>
 
-            <p>
-              The Noor Meher Charitable Trust offers both religious and formal
-              education. Jamia Tajveedul Quran provides Quranic recitation
-              classes at three levels (Noorani Qaida, Nazera, Hifz) and a full
-              academic syllabus with quarterly, half-term, and annual exams.
-            </p>
+<p>
+  The Trust also runs Noor Meher Urdu Maktab and High School (Grades 1–10, 
+  Maharashtra State Board), where students undergo two unit tests, semester 
+  examinations, and a final examination.
+</p>
 
-            <p>
-              The Trust also runs Noor Meher Urdu Maktab and High School
-              (Grades 1-10, Maharashtra State Board), which conducts two
-              unit tests, semester exams and a final exam.
-            </p>
-
+<p>
+  In addition, the Trust is registered with NIOS (National Institute of Open Schooling), 
+  providing students with flexible learning opportunities. Many students have successfully 
+  completed their academic programs through NIOS.
+</p>
           </div>
 
           <div className="academic-split">

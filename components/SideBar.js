@@ -21,45 +21,119 @@ export default function Sidebar() {
         <details className="panel" open>
           <summary>Quick Links</summary>
 
-          <div className="panel-body">
-            <ul className="quick-links">
-              <li>
-                <Link href="/quran" className={isActive("/quran") ? "active" : ""}>
-                  Quranic Verses & Hadith
-                </Link>
-              </li>
-              <li>
-                <Link href="/mission" className={isActive("/mission") ? "active" : ""}>
-                  Why Do We Exist?
-                </Link>
-              </li>
-              <li>
-                <Link href="/vision" className={isActive("/vision") ? "active" : ""}>
-                  Aims & Objectives
-                </Link>
-              </li>
-              <li>
-                <Link href="/activities" className={isActive("/activities") ? "active" : ""}>
-                  Admission & Education
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className={isActive("/services") ? "active" : ""}>
-                  Facility & Safety
-                </Link>
-              </li>
-              <li>
-                <Link href="/achievements" className={isActive("/achievements") ? "active" : ""}>
-                  Progress & Success
-                </Link>
-              </li>
-              <li>
-                <Link href="/help" className={isActive("/help") ? "active" : ""}>
-                  Alms / How You Can Help
-                </Link>
-              </li>
-            </ul>
-          </div>
+         <div className="panel-body">
+  <ul className="quick-links">
+
+    <li>
+      <Link href="/" className={isActive("/") ? "active" : ""}>
+        Home
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/about" className={isActive("/about") ? "active" : ""}>
+        About Us
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/services" className={isActive("/services") ? "active" : ""}>
+        Facility & Safety
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/activities" className={isActive("/activities") ? "active" : ""}>
+        Admission & Education
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/achievements" className={isActive("/achievements") ? "active" : ""}>
+        Progress & Success
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/gallery" className={isActive("/gallery") ? "active" : ""}>
+        Gallery
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/student-info" className={isActive("/student-info") ? "active" : ""}>
+        Get Student Info
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/student-lists/Hafiz Student" className={isActive("/student-lists") ? "active" : ""}>
+        Hafiz Students
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/vision" className={isActive("/vision") ? "active" : ""}>
+        Aims & Objectives
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/mission" className={isActive("/mission") ? "active" : ""}>
+        Why Do We Exist?
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/faq" className={isActive("/faq") ? "active" : ""}>
+        FAQ
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/contact" className={isActive("/contact") ? "active" : ""}>
+        Contact Us
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/donate" className={isActive("/donate") ? "active" : ""}>
+        Donate
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/privacy-policy" className={isActive("/privacy-policy") ? "active" : ""}>
+        Privacy Policy
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/disclaimer-policy" className={isActive("/disclaimer-policy") ? "active" : ""}>
+        Disclaimer Policy
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/terms-conditions" className={isActive("/terms-conditions") ? "active" : ""}>
+        Terms & Conditions
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/quran" className={isActive("/quran") ? "active" : ""}>
+        Quranic Verses & Hadith
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/help" className={isActive("/help") ? "active" : ""}>
+        Alms / How You Can Help
+      </Link>
+    </li>
+
+  </ul>
+</div>
         </details>
 
         {/* ===== STUDENT ACHIEVEMENTS (ACCORDION) ===== */}

@@ -423,8 +423,7 @@ width: 30%;
 
 /* Profile Grid */
 .student-grid {
-  display: grid;
-  grid-template-columns: 320px 1fr;
+ 
   gap: 60px;
   margin-top: 50px;
 }
@@ -484,9 +483,7 @@ width: 30%;
 
 /* Responsive */
 @media (max-width: 992px) {
-  .student-grid {
-    grid-template-columns: 1fr;
-  }
+
 
   .info-grid {
     grid-template-columns: 1fr;

@@ -7,35 +7,61 @@ export default function Achievements() {
   const [statsVisible, setStatsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleItems, setVisibleItems] = useState([]);
+  const [openYear, setOpenYear] = useState(null);
 
   const statsRef = useRef(null);
 
-  // ================= TIMELINE =================
+  // ================= TIMELINE (UPDATED) =================
   const timelineData = [
-    { year: "2001", text: "Trust started with 2 Orphan children.", icon: "🏁" },
-    { year: "2002", text: "Academic activity started with languages.", icon: "📚" },
-    { year: "2004", text: "Resident children increased to 32.", icon: "👨‍👧‍👦" },
-    { year: "2005", text: "First batch of Huffaz completed.", icon: "🎓" },
-    { year: "2006", text: "Resident children increased to 44.", icon: "📈" },
-    { year: "2007", text: "Primary School started.", icon: "🏫" },
-    { year: "2008", text: "1st Musabeqatul Quran organized.", icon: "📖" },
-    { year: "2009", text: "2nd Musabeqatul Quran competition held.", icon: "🏆" },
-    { year: "2010", text: "3rd Musabeqatul Quran competition.", icon: "🏆" },
-    { year: "2011", text: "Resident children reached 100.", icon: "💯" },
-    { year: "2012", text: "Sports Week and Craft Show organized.", icon: "🎨" },
-    { year: "2013", text: "First SSC batch – 100% result.", icon: "🥇" },
-    { year: "2014", text: "Second SSC batch – 100% result.", icon: "🥇" },
-    { year: "2015", text: "Students secured seats in Engineering & Medical.", icon: "🧑‍⚕️" },
-    { year: "2016", text: "Science Fair organized.", icon: "🔬" },
-    { year: "2017", text: "First Hafiz students cleared 12th board.", icon: "🎓" },
-    { year: "2018", text: "NIOS permission granted.", icon: "📜" },
-    { year: "2019", text: "21st Annual Dastarbandi Ceremony.", icon: "🎉" },
-    { year: "2020", text: "Online education started during COVID.", icon: "💻" },
-    { year: "2021", text: "Ninth SSC batch – 100% result.", icon: "🥇" },
-    { year: "2022", text: "Azadi Ka Amrit Mahotsav celebration.", icon: "🇮🇳" },
-    { year: "2023", text: "Interactive Whiteboards installed.", icon: "🖥️" },
-    { year: "2024", text: "AC installed and PDL activities.", icon: "❄️" },
-    { year: "2025", text: "Silver Jubilee Celebration.", icon: "🎊" },
+    {
+      year: "2001",
+      short: "Trust started with 2 orphan children.",
+      items: [
+        "Noor Meher Charitable Trust started its activity.",
+        "Jamia Tajveedul Quran established."
+      ],
+      icon: "🏁"
+    },
+    {
+      year: "2002",
+      short: "Academic activity started.",
+      items: [
+        "Started English, Urdu & Hindi education."
+      ],
+      icon: "📚"
+    },
+    {
+      year: "2009",
+      short: "Growth and multiple activities.",
+      items: [
+        "2nd Musabeqatul Quran competition.",
+        "Students increased to 85.",
+        "Orientation Day organized.",
+        "Picnic organized for students."
+      ],
+      icon: "🏆"
+    },
+    {
+      year: "2018",
+      short: "NIOS and major upgrades.",
+      items: [
+        "NIOS permission granted.",
+        "Student strength increased.",
+        "New laptops introduced.",
+        "Eye checkup camp organized."
+      ],
+      icon: "📜"
+    },
+    {
+      year: "2025",
+      short: "Silver Jubilee milestone.",
+      items: [
+        "25th Annual Function conducted.",
+        "Silver Jubilee celebration.",
+        "13th batch SSC result 100%."
+      ],
+      icon: "🎊"
+    }
   ];
 
   // ================= SCROLL PROGRESS =================
@@ -53,35 +79,29 @@ export default function Achievements() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ================= FIXED OBSERVER =================
+  // ================= STATS =================
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setStatsVisible(true);
-          observer.disconnect(); // ✅ run once
+          observer.disconnect();
         }
       },
-      { threshold: 0.2 } // ✅ lower threshold
+      { threshold: 0.2 }
     );
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
+    if (statsRef.current) observer.observe(statsRef.current);
 
     return () => observer.disconnect();
   }, []);
 
-  // ✅ FALLBACK (important for mobile)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setStatsVisible(true);
-    }, 1200);
-
+    const timer = setTimeout(() => setStatsVisible(true), 1200);
     return () => clearTimeout(timer);
   }, []);
 
-  // ================= STAGGER TIMELINE =================
+  // ================= STAGGER =================
   useEffect(() => {
     const handleScroll = () => {
       const items = document.querySelectorAll(".journey-card");
@@ -91,10 +111,9 @@ export default function Achievements() {
 
         if (rect.top < window.innerHeight - 80) {
           setTimeout(() => {
-            setVisibleItems((prev) => {
-              if (prev.includes(index)) return prev;
-              return [...prev, index];
-            });
+            setVisibleItems((prev) =>
+              prev.includes(index) ? prev : [...prev, index]
+            );
           }, index * 120);
         }
       });
@@ -107,118 +126,127 @@ export default function Achievements() {
   }, []);
 
   // ================= COUNTER =================
-const Counter = ({ end, id }) => {
-  const [count, setCount] = useState(0);
+  const Counter = ({ end, id }) => {
+    const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    const key = `counter_${id}`;
+    useEffect(() => {
+      const key = `counter_${id}`;
+      const saved = sessionStorage.getItem(key);
 
-    // ✅ Check if already calculated
-    const saved = sessionStorage.getItem(key);
-    if (saved) {
-      setCount(Number(saved));
-      return; // ❌ don't run again
-    }
-
-    let startTimestamp = null;
-    const duration = 2000;
-
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const value = Math.floor(progress * end);
-
-      setCount(value);
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        setCount(end);
-        sessionStorage.setItem(key, end); // ✅ store final value
+      if (saved) {
+        setCount(Number(saved));
+        return;
       }
-    };
 
-    requestAnimationFrame(step);
-  }, [end, id]);
+      let startTimestamp = null;
+      const duration = 2000;
 
-  return <span>{count}</span>;
-};
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * end);
+
+        setCount(value);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          setCount(end);
+          sessionStorage.setItem(key, end);
+        }
+      };
+
+      requestAnimationFrame(step);
+    }, [end, id]);
+
+    return <span>{count}</span>;
+  };
+
   return (
     <Layout title="Achievements | Noormeher Charitable Trust">
 
       {/* Progress Bar */}
-      <div
-        className="scroll-progress"
-        style={{ width: `${scrollProgress}%` }}
-      ></div>
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
 
-      
-        <section
-  className="about-hero"
-  style={{
-    backgroundImage: "url('/images/Achievements.jpg')",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  }}
->
-  <div className="about-overlay"></div>
+      {/* HERO */}
+      <section
+        className="about-hero"
+        style={{
+          backgroundImage: "url('/images/Achievements.jpg')",
+        }}
+      >
+        <div className="about-overlay"></div>
 
-  <div className="about-inner container">
-  <span className="tag">✦ Our Impact</span>
+        <div className="about-inner container">
+          <span className="tag">✦ Our Impact</span>
 
-    <div className="about-flex">
-      <h1>Achievements</h1>
-
-      <p>
-   From 2001 to today, we have grown step by step—empowering children,
-            building futures, and creating meaningful change.
-      </p>
-    </div>
-  </div>
-</section>
-   
-      
-
-        {/* Stats */}
-        <div className="stats-section" ref={statsRef}>
-          <div className="stat-box">
-            <h3><Counter end={182} /></h3>
-            <p>Huffaz Completed</p>
-          </div>
-
-          <div className="stat-box">
-            <h3><Counter end={100} />%</h3>
-            <p>SSC Success Rate</p>
-          </div>
-
-          <div className="stat-box">
-            <h3><Counter end={25} /></h3>
-            <p>Years of Service</p>
+          <div className="about-flex">
+            <h1>Achievements</h1>
+            <p>
+              From 2001 to today, we have grown step by step—empowering children,
+              building futures, and creating meaningful change.
+            </p>
           </div>
         </div>
+      </section>
 
-        {/* Timeline */}
-        <div className="journey-timeline">
-          {timelineData.map((item, index) => (
+      {/* STATS */}
+      <div className="stats-section" ref={statsRef}>
+        <div className="stat-box">
+          <h3><Counter end={182} id="1" /></h3>
+          <p>Huffaz Completed</p>
+        </div>
+
+        <div className="stat-box">
+          <h3><Counter end={100} id="2" />%</h3>
+          <p>SSC Success Rate</p>
+        </div>
+
+        <div className="stat-box">
+          <h3><Counter end={25} id="3" /></h3>
+          <p>Years of Service</p>
+        </div>
+      </div>
+
+      {/* TIMELINE */}
+      <div className="journey-timeline">
+        {timelineData.map((item, index) => {
+          const isOpen = openYear === index;
+
+          return (
             <div
               key={index}
               className={`journey-card ${
                 visibleItems.includes(index) ? "show" : ""
               }`}
             >
-              <div className="journey-header">
-                <span className="journey-icon">{item.icon}</span>
-                <h3 className="journey-title">{item.year}</h3>
+              {/* HEADER */}
+              <div
+                className="journey-header clickable"
+                onClick={() => setOpenYear(isOpen ? null : index)}
+              >
+                <span>{item.icon}</span>
+                <h3>{item.year}</h3>
+                <span>{isOpen ? "▲" : "▼"}</span>
               </div>
 
-              <p className="journey-desc">{item.text}</p>
-            </div>
-          ))}
-        </div>
+              {/* SHORT DESC */}
+              <p className="journey-desc">{item.short}</p>
 
-  
+              {/* EXPAND */}
+              {isOpen && (
+                <div className="journey-details">
+                  {item.items.map((desc, i) => (
+                    <p key={i}>• {desc}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
     </Layout>
   );
 }
