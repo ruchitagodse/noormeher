@@ -106,24 +106,7 @@ export default function MobileSidebar({ open, setOpen }) {
         </Link>
       </li>
 
-      <li>
-        <Link href="/privacy-policy" onClick={() => setOpen(false)}>
-          Privacy Policy
-        </Link>
-      </li>
-
-      <li>
-        <Link href="/disclaimer-policy" onClick={() => setOpen(false)}>
-          Disclaimer Policy
-        </Link>
-      </li>
-
-      <li>
-        <Link href="/terms-conditions" onClick={() => setOpen(false)}>
-          Terms & Conditions
-        </Link>
-      </li>
-
+    
       <li>
         <Link href="/help" onClick={() => setOpen(false)}>
           Alms / How You Can Help

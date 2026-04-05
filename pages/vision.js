@@ -19,7 +19,7 @@ export default function Vision() {
     <span className="tag">✦ A Better Tomorrow</span>
 
     <div className="about-flex">
-      <h1>Our Visio</h1>
+      <h1>Our Vision</h1>
 
       <p>
    From 2001 to today, we have grown step by step—empowering children,

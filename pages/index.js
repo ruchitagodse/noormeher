@@ -119,23 +119,35 @@ function Counter({ number, label, suffix }) {
     <Layout>
       {/* ================= HERO SLIDER ================= */}
    
-      <section
-        className="hero-slider"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        {/* SLIDES */}
-        
-        {images.map((img, index) => (
-  <div
-    key={index}
-    className={`hero-slide ${index === current ? "active" : ""}`}
-  >
-    <img src={img} alt={`Slide ${index + 1}`} />
+   <section
+  className="about-hero"
+  style={{
+    backgroundImage: `url(${images[current]})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  }}
+  onTouchStart={handleTouchStart}
+  onTouchEnd={handleTouchEnd}
+>
+  {/* OVERLAY */}
+  <div className="about-overlay"></div>
 
-    <div className="slide-overlay" />
+  {/* CONTENT */}
+  <div className="about-inner container">
+    <span className="tag">✦ Noormeher Trust</span>
+
+    <div className="about-flex">
+      <h1>Welcome</h1>
+
+      <p>
+        Serving with Faith, <br />
+        Education & Compassion <br />
+        Since 2001
+      </p>
+    </div>
   </div>
-))}
+
 
 
         {/* OVERLAY */}

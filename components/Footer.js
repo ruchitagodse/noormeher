@@ -4,7 +4,7 @@ import {
   FaInstagram,
   FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt,
+  FaMapMarkerAlt,FaYoutube,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -40,7 +40,7 @@ export default function Footer() {
           </p>
 
           {/* ================= SOCIAL ICONS ================= */}
-         <div className="social-icons">
+<div className="social-icons">
   <a
     href="https://www.facebook.com/noormehercharitabletrust"
     target="_blank"
@@ -58,11 +58,11 @@ export default function Footer() {
   </a>
 
   <a
-    href="https://x.com"
+    href="https://m.youtube.com/@noormeherhighschool"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <FaXTwitter />
+    <FaYoutube />
   </a>
 </div>
         </div>

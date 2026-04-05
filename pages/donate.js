@@ -156,12 +156,15 @@ export default function Donate() {
               </div>
 
               {/* BUTTONS */}
-              <div className="form-actions">
-                <button type="submit" className="btn-primary">
-                  Donate
-                </button>
-              </div>
+            <div className="form-actions">
+  <button type="submit" className="btn-primary">
+    Donate
+  </button>
+</div>
 
+<div className="donation-warning">
+  ⚠️ We accept only Indian (INR) payments. International transactions are not supported.
+</div>
             </form>
 
           </div>

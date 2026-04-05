@@ -43,13 +43,7 @@ header {
   max-width: 320px;
 }
 
-.logo img {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
-  background: transparent;
-  mix-blend-mode: multiply;
-}
+
 
 /* =========================================================
    NAVIGATION (DESKTOP)
@@ -231,7 +225,11 @@ header {
     mix-blend-mode: normal;
   }
 }
- 
+ .logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
 
   /* Hide desktop elements */
   .nav,
@@ -244,4 +242,9 @@ header {
   .hero-bg {
     padding-top: 64px;
   }
+}
+.logo img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
 }

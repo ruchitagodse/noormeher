@@ -10,6 +10,9 @@ export default function StudentList() {
   const { type } = router.query;
 
   const [students, setStudents] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,8 +23,10 @@ export default function StudentList() {
       .then((result) => {
         if (result.success) {
 
-          // ✅ SAFE + CORRECT SORTING (LATEST YEAR FIRST)
-          const sortedStudents = [...result.data].sort((a, b) => {
+          const data = result.data;
+
+          // ✅ SORT
+          const sortedStudents = [...data].sort((a, b) => {
             const getYear = (student) =>
               Number(student.hafiz_year || student.ssc_year || student.year || 0);
 
@@ -29,6 +34,28 @@ export default function StudentList() {
           });
 
           setStudents(sortedStudents);
+          setFilteredStudents(sortedStudents);
+
+       const extractYear = (value) => {
+  if (!value) return null;
+
+  // if already year like 2020
+  if (String(value).length === 4) return value;
+
+  // extract last 4 digits from date
+  const match = String(value).match(/\d{4}$/);
+  return match ? match[0] : null;
+};
+
+const uniqueYears = [
+  ...new Set(
+    sortedStudents.map((s) =>
+      extractYear(s.hafiz_year || s.ssc_year || s.year)
+    )
+  ),
+].filter(Boolean).sort((a, b) => b - a); // latest first
+
+          setYears(uniqueYears);
         }
 
         setLoading(false);
@@ -36,7 +63,26 @@ export default function StudentList() {
       .catch(() => setLoading(false));
   }, [type]);
 
-  // 🔥 PREMIUM LOADER
+  // ✅ FILTER LOGIC
+  useEffect(() => {
+    if (!selectedYear) {
+      setFilteredStudents(students);
+    } else {
+     const extractYear = (value) => {
+  if (!value) return null;
+  if (String(value).length === 4) return value;
+  const match = String(value).match(/\d{4}$/);
+  return match ? match[0] : null;
+};
+
+const filtered = students.filter((s) =>
+  extractYear(s.hafiz_year || s.ssc_year || s.year) == selectedYear
+);
+      setFilteredStudents(filtered);
+    }
+  }, [selectedYear, students]);
+
+  // 🔥 LOADER
   if (loading) {
     return (
       <Layout>
@@ -54,15 +100,27 @@ export default function StudentList() {
 
         <h2 className="student-list-title">{type}</h2>
 
-        <div className="student-grid">
+        {/* ✅ FILTER DROPDOWN */}
+        <div className="filter-bar">
+          <select
+            value={selectedYear}
+            onChange={(e) => setSelectedYear(e.target.value)}
+          >
+            <option value="">All Years</option>
+            {years.map((year, index) => (
+              <option key={index} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+        </div>
 
-          {students.map((student) => {
+        <div className="student-grid">
+          {filteredStudents.map((student) => {
             const imageUrl = `/api/image?url=${encodeURIComponent(student.image)}`;
 
             return (
               <div className="student-card fade-in" key={student.id}>
-
-              
 
                 <div className="student-card-img">
                   <img
@@ -112,13 +170,11 @@ export default function StudentList() {
                   >
                     About Me →
                   </Link>
-
                 </div>
 
               </div>
             );
           })}
-
         </div>
 
       </div>

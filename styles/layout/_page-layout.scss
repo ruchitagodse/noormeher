@@ -480,7 +480,19 @@ width: 30%;
   font-weight: 600;
   color: #0f172a;
 }
+.filter-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
 
+.filter-bar select {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  cursor: pointer;
+}
 /* Responsive */
 @media (max-width: 992px) {
 

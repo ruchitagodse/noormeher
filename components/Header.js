@@ -56,22 +56,23 @@ export default function Header() {
         <div className={`main-header ${scrolled ? "scrolled" : ""}`}>
           <div className="container header-inner">
             {/* Logo */}
-            <div className="logo">
-              <img src="/hero.jpg" alt="Noormeher Charitable Trust" />
-            </div>
+     <div className="logo">
+  <img src="/apple-touch-icon.png" alt="Noormeher Charitable Trust" />
+</div>
 
-            {/* Desktop Navigation */}
-            <nav className="nav">
-              <Link href="/">Home</Link>
-              <Link href="/about">About Us</Link>
-              <Link href="/services">Services</Link>
-              <Link href="/activities">Activities</Link>
-              <Link href="/achievements">Achievements</Link>
-              <Link href="/contact">Contact Us</Link>
-              <Link href="/donate" className="donate-btn">
-                Donate Us
-              </Link>
-            </nav>
+<nav className="nav">
+  <Link href="/">Home</Link>
+  <Link href="/about">About Us</Link>
+  <Link href="/services">Services</Link>
+  <Link href="/activities">Activities</Link>
+  <Link href="/achievements">Achievements</Link>
+  <Link href="/gallery">Gallery</Link> {/* ✅ ADDED */}
+  <Link href="/contact">Contact Us</Link>
+
+  <Link href="/donate" className="donate-btn pulse">
+    Donate Us
+  </Link>
+</nav>
 
             {/* ✅ MOBILE HAMBURGER (INSIDE HEADER) */}
             <button

@@ -30,11 +30,7 @@ export default function Sidebar() {
       </Link>
     </li>
 
-    <li>
-      <Link href="/about" className={isActive("/about") ? "active" : ""}>
-        About Us
-      </Link>
-    </li>
+  
 
     <li>
       <Link href="/services" className={isActive("/services") ? "active" : ""}>
@@ -54,11 +50,7 @@ export default function Sidebar() {
       </Link>
     </li>
 
-    <li>
-      <Link href="/gallery" className={isActive("/gallery") ? "active" : ""}>
-        Gallery
-      </Link>
-    </li>
+  
 
     <li>
       <Link href="/student-info" className={isActive("/student-info") ? "active" : ""}>
@@ -90,35 +82,10 @@ export default function Sidebar() {
       </Link>
     </li>
 
-    <li>
-      <Link href="/contact" className={isActive("/contact") ? "active" : ""}>
-        Contact Us
-      </Link>
-    </li>
+   
 
-    <li>
-      <Link href="/donate" className={isActive("/donate") ? "active" : ""}>
-        Donate
-      </Link>
-    </li>
 
-    <li>
-      <Link href="/privacy-policy" className={isActive("/privacy-policy") ? "active" : ""}>
-        Privacy Policy
-      </Link>
-    </li>
-
-    <li>
-      <Link href="/disclaimer-policy" className={isActive("/disclaimer-policy") ? "active" : ""}>
-        Disclaimer Policy
-      </Link>
-    </li>
-
-    <li>
-      <Link href="/terms-conditions" className={isActive("/terms-conditions") ? "active" : ""}>
-        Terms & Conditions
-      </Link>
-    </li>
+   
 
     <li>
       <Link href="/quran" className={isActive("/quran") ? "active" : ""}>
