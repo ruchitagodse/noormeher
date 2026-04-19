@@ -1,10 +1,57 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    mobile: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ type: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Failed to send message");
+      }
+
+      setStatus({ type: "success", message: result.message || "Message sent successfully" });
+      setFormData({
+        fullname: "",
+        email: "",
+        mobile: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatus({ type: "error", message: error.message || "Failed to send message" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <Layout title="Contact Us | Noormeher Charitable Trust">
-
-      {/* ================= PAGE HERO ================= */}
       <section
         className="page-hero contact-hero"
         style={{ backgroundImage: "url(/images/conact.png)" }}
@@ -12,7 +59,6 @@ export default function Contact() {
         <div className="overlay">
           <div className="container">
             <h2 className="center">Contact Us</h2>
-
             <p className="page-subtitle">
               We are here to help you. Reach out anytime.
             </p>
@@ -20,47 +66,57 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ================= CONTACT CONTENT ================= */}
       <section className="section contact-section">
         <div className="container">
-
-          {/* ================= CONTACT FORM ================= */}
           <div className="contact-card">
             <h3 className="card-title">Send us a message</h3>
 
-            <form className="contact-form" action="/api/contact" method="post">
+            {status.message ? (
+              <div className={status.type === "success" ? "alert alert-success" : "alert alert-danger"}>
+                {status.message}
+              </div>
+            ) : null}
+
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Full Name</label>
-                <input type="text" name="fullname" required />
+                <input type="text" name="fullname" value={formData.fullname} onChange={handleChange} required />
               </div>
 
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="email" name="email" required />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
               </div>
 
               <div className="form-group">
                 <label>Mobile / Phone</label>
-                <input type="text" name="mobile" required />
+                <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
               </div>
 
               <div className="form-group">
                 <label>Your Message</label>
-                <textarea name="message" rows="5" required />
+                <textarea name="message" rows="5" value={formData.message} onChange={handleChange} required />
               </div>
 
               <div className="form-actions">
-                <button type="submit" className="btn-primary">
-                  Send Message
+                <button type="submit" className="btn-primary" disabled={submitting}>
+                  {submitting ? "Sending..." : "Send Message"}
                 </button>
-                <button type="reset" className="btn-outline">
+                <button
+                  type="button"
+                  className="btn-outline"
+                  onClick={() => {
+                    setFormData({ fullname: "", email: "", mobile: "", message: "" });
+                    setStatus({ type: "", message: "" });
+                  }}
+                  disabled={submitting}
+                >
                   Reset
                 </button>
               </div>
             </form>
           </div>
 
-          {/* ================= MAP BELOW FORM ================= */}
           <div className="contact-card map-card" style={{ marginTop: "30px" }}>
             <iframe
               title="Noormeher Charitable Trust Location"
@@ -76,9 +132,7 @@ export default function Contact() {
             />
           </div>
 
-          {/* ================= CONTACT DETAILS ================= */}
           <div className="contact-info-grid">
-
             <div className="info-card">
               <h3>Contact Details</h3>
 
@@ -98,27 +152,23 @@ export default function Contact() {
 
               <p className="note">
                 For any questions, write to{" "}
-                <a href="mailto:admin@noormeher.org">
-                  admin@noormeher.org
-                </a>
+                <a href="mailto:admin@noormeher.org">admin@noormeher.org</a>
               </p>
             </div>
 
-            <div className="info-card">                 
+            <div className="info-card">
               <h3>Our Office</h3>
 
               <address>
                 NOOR MEHER HOUSE,<br />
                 Bungalow No. 12,<br />
                 RSC 20, Near Akashwani Ground,<br />
-                Malvani, Malad – West,<br />
-                Mumbai – 400095,<br />
+                Malvani, Malad - West,<br />
+                Mumbai - 400095,<br />
                 Maharashtra, India.
               </address>
             </div>
-
           </div>
-
         </div>
       </section>
     </Layout>

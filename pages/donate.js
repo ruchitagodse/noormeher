@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
 
-/* ================= LOAD RAZORPAY ================= */
 const loadRazorpay = () => {
   return new Promise((resolve) => {
     if (window.Razorpay) return resolve(true);
@@ -23,14 +22,14 @@ export default function Donate() {
     amount: "",
     purpose: "",
   });
+  const [processing, setProcessing] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  /* ================= HANDLE DONATE ================= */
-  const handleDonate = async (e) => {
-    e.preventDefault();
+  const handleDonate = async (event) => {
+    event.preventDefault();
 
     if (!formData.name || !formData.mobile || !formData.amount) {
       alert("Please fill all required fields");
@@ -42,63 +41,96 @@ export default function Donate() {
       return;
     }
 
-    const razorpayLoaded = await loadRazorpay();
-    if (!razorpayLoaded) {
-      alert("Failed to load Razorpay");
-      return;
+    setProcessing(true);
+
+    try {
+      const razorpayLoaded = await loadRazorpay();
+      if (!razorpayLoaded) {
+        throw new Error("Failed to load Razorpay");
+      }
+
+      const orderResponse = await fetch("/api/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: formData.amount }),
+      });
+
+      if (!orderResponse.ok) {
+        throw new Error("Payment initiation failed");
+      }
+
+      const orderData = await orderResponse.json();
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: orderData.amount,
+        currency: "INR",
+        name: "Noormeher Charitable Trust",
+        description: `Donation ${formData.purpose || ""}`,
+        order_id: orderData.id,
+        handler: async function (response) {
+          try {
+            const verifyResponse = await fetch("/api/verify-donation", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                order_id: response.razorpay_order_id,
+                payment_id: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
+                name: formData.name,
+                mobile: formData.mobile,
+                amount: formData.amount,
+                purpose: formData.purpose,
+              }),
+            });
+
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyResponse.ok || !verifyData.success) {
+              throw new Error(verifyData.message || "Payment verified but donation save failed");
+            }
+
+            alert("Payment successful. Thank you for your support!");
+            setFormData({ name: "", mobile: "", amount: "", purpose: "" });
+          } catch (error) {
+            alert(error.message || "Payment captured but donation save failed");
+          } finally {
+            setProcessing(false);
+          }
+        },
+        prefill: {
+          name: formData.name,
+          contact: formData.mobile,
+        },
+        notes: {
+          purpose: formData.purpose,
+        },
+        theme: {
+          color: "#2c7be5",
+        },
+        modal: {
+          ondismiss: function () {
+            setProcessing(false);
+          },
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      alert(error.message || "Payment initiation failed");
+      setProcessing(false);
     }
-
-    const res = await fetch("/api/create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: formData.amount }),
-    });
-
-    if (!res.ok) {
-      alert("Payment initiation failed");
-      return;
-    }
-
-    const orderData = await res.json();
-
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-      amount: orderData.amount,
-      currency: "INR",
-      name: "Noormeher Charitable Trust",
-      description: `Donation ${formData.purpose || ""}`,
-      order_id: orderData.id,
-
-      handler: function () {
-        alert("Payment successful ❤️ Thank you!");
-      },
-
-      prefill: {
-        name: formData.name,
-        contact: formData.mobile,
-      },
-
-      notes: {
-        purpose: formData.purpose,
-      },
-
-      theme: {
-        color: "#2c7be5",
-      },
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
   };
 
   return (
     <Layout title="Donate | Noormeher Charitable Trust">
-
       <section className="container section">
         <div className="donate-wrapper">
-
           <div className="donate-box">
             <h2>Donate Now</h2>
 
@@ -109,42 +141,21 @@ export default function Donate() {
             </div>
 
             <form className="donate-form" onSubmit={handleDonate}>
-
-              {/* NAME */}
               <div className="form-group">
                 <label>Name *</label>
-                <input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
+                <input name="name" value={formData.name} onChange={handleChange} required />
               </div>
 
-              {/* MOBILE */}
               <div className="form-group">
                 <label>Mobile Number *</label>
-                <input
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  required
-                />
+                <input name="mobile" value={formData.mobile} onChange={handleChange} required />
               </div>
 
-              {/* AMOUNT */}
               <div className="form-group">
-                <label>Amount (₹) *</label>
-                <input
-                  type="number"
-                  name="amount"
-                  value={formData.amount}
-                  onChange={handleChange}
-                  required
-                />
+                <label>Amount (INR) *</label>
+                <input type="number" name="amount" value={formData.amount} onChange={handleChange} required />
               </div>
 
-              {/* PURPOSE (OPTIONAL) */}
               <div className="form-group">
                 <label>Donate For (Optional)</label>
                 <input
@@ -155,18 +166,16 @@ export default function Donate() {
                 />
               </div>
 
-              {/* BUTTONS */}
-            <div className="form-actions">
-  <button type="submit" className="btn-primary">
-    Donate
-  </button>
-</div>
+              <div className="form-actions">
+                <button type="submit" className="btn-primary" disabled={processing}>
+                  {processing ? "Processing..." : "Donate"}
+                </button>
+              </div>
 
-<div className="donation-warning">
-  ⚠️ We accept only Indian (INR) payments. International transactions are not supported.
-</div>
+              <div className="donation-warning">
+                We accept only Indian (INR) payments. International transactions are not supported.
+              </div>
             </form>
-
           </div>
         </div>
       </section>
