@@ -130,7 +130,7 @@ export default function Donate() {
   return (
     <Layout title="Donate | Noormeher Charitable Trust">
       <section className="container section">
-        <div className="donate-wrapper">
+        <div className="donate-wrapper payment-options">
           <div className="donate-box">
             <h2>Donate Now</h2>
 
@@ -177,6 +177,25 @@ export default function Donate() {
               </div>
             </form>
           </div>
+
+          <aside className="scan-pay-card" aria-labelledby="scan-pay-title">
+            <h3 id="scan-pay-title">Scan &amp; Pay</h3>
+            <p className="scan-pay-text">
+              Scan this QR code using any UPI app to donate.
+            </p>
+
+            <div className="qr-frame">
+              <img
+                src="/qr.png"
+                alt="UPI QR code for donations"
+                className="qr-image"
+              />
+            </div>
+
+            <p className="scan-pay-note">
+              You can still use the Razorpay form for card, net banking, and other online payment methods.
+            </p>
+          </aside>
         </div>
       </section>
     </Layout>
