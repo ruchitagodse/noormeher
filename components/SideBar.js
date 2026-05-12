@@ -60,7 +60,7 @@ export default function Sidebar() {
 
     <li>
       <Link href="/student-lists/Hafiz Student" className={isActive("/student-lists") ? "active" : ""}>
-        Hafiz Students
+        Passout Students
       </Link>
     </li>
 
@@ -111,7 +111,7 @@ export default function Sidebar() {
             <ul>
               <li>
                 <Link href="/student-achievements/2025">
-                  Hafiz Students – SSC Result 100% (2025)
+                  Passout Students – SSC Result 100% (2025)
                 </Link>
               </li>
               <li>

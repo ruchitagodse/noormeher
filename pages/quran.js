@@ -38,7 +38,7 @@ export default function QuranPage() {
             <div className="row">
               <div className="text">
                 <p>
-                  Believe in Allah and His Messenger (PBUH) and spend (in charity)
+                  Believe in Almighty and His Messenger (PBUH) and spend (in charity)
                   out of the (substance) whereof He has made you heirs. For those
                   of you who believe and spend (in charity), for them is a great
                   Reward.
@@ -80,8 +80,8 @@ export default function QuranPage() {
                   <i>
                     {" "}
                     "Every day two angels come down from Heaven and one of them
-                    says, 'O Allah! Compensate every person who spends in Your
-                    Cause,' and the other angel says, 'O Allah! Destroy every
+                    says, 'O Almighty! Compensate every person who spends in Your
+                    Cause,' and the other angel says, 'O Almighty! Destroy every
                     miser.'"
                   </i>
                 </p>

@@ -88,15 +88,10 @@ export default function MobileSidebar({ open, setOpen }) {
         </Link>
       </li>
 
-      <li>
-        <Link href="/student-info" onClick={() => setOpen(false)}>
-          Get Student Info
-        </Link>
-      </li>
-
+      
       <li>
         <Link href="/student-lists/Hafiz Student" onClick={() => setOpen(false)}>
-          Hafiz Students
+          Passout Students
         </Link>
       </li>
 

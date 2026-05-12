@@ -71,15 +71,11 @@ export default function PageSidebar() {
     </li>
 
 
-    <li>
-      <Link href="/student-info" className={isActive("/student-info") ? "active" : ""}>
-        Get Student Info
-      </Link>
-    </li>
+
 
     <li>
       <Link href="/student-lists/Hafiz Student" className={isActive("/student-lists") ? "active" : ""}>
-        Hafiz Students
+        Passout Students
       </Link>
     </li>
 

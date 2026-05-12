@@ -235,7 +235,7 @@ function Counter({ number, label, suffix }) {
 
     <p>
       <strong>Noor Meher Charitable Trust</strong> is an organization based in
-      Mumbai, Maharashtra, India, primarily working to promote religious
+      Mumbai, Maharashtra, India, primarily working to promote dual
       education and welfare for orphan and poor Muslim children.
     </p>
 

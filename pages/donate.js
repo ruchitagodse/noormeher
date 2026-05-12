@@ -15,14 +15,18 @@ const loadRazorpay = () => {
   });
 };
 
+const initialFormState = {
+  name: "",
+  email: "",
+  mobile: "",
+  amount: "",
+  purpose: "",
+};
+
 export default function Donate() {
-  const [formData, setFormData] = useState({
-    name: "",
-    mobile: "",
-    amount: "",
-    purpose: "",
-  });
+  const [formData, setFormData] = useState(initialFormState);
   const [processing, setProcessing] = useState(false);
+  const [receiptInfo, setReceiptInfo] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -31,7 +35,7 @@ export default function Donate() {
   const handleDonate = async (event) => {
     event.preventDefault();
 
-    if (!formData.name || !formData.mobile || !formData.amount) {
+    if (!formData.name || !formData.mobile || !formData.email || !formData.amount) {
       alert("Please fill all required fields");
       return;
     }
@@ -42,6 +46,7 @@ export default function Donate() {
     }
 
     setProcessing(true);
+    setReceiptInfo(null);
 
     try {
       const razorpayLoaded = await loadRazorpay();
@@ -82,6 +87,7 @@ export default function Donate() {
                 payment_id: response.razorpay_payment_id,
                 signature: response.razorpay_signature,
                 name: formData.name,
+                email: formData.email,
                 mobile: formData.mobile,
                 amount: formData.amount,
                 purpose: formData.purpose,
@@ -94,8 +100,9 @@ export default function Donate() {
               throw new Error(verifyData.message || "Payment verified but donation save failed");
             }
 
+            setReceiptInfo(verifyData.data?.receipt || null);
             alert("Payment successful. Thank you for your support!");
-            setFormData({ name: "", mobile: "", amount: "", purpose: "" });
+            setFormData(initialFormState);
           } catch (error) {
             alert(error.message || "Payment captured but donation save failed");
           } finally {
@@ -104,6 +111,7 @@ export default function Donate() {
         },
         prefill: {
           name: formData.name,
+          email: formData.email,
           contact: formData.mobile,
         },
         notes: {
@@ -147,6 +155,11 @@ export default function Donate() {
               </div>
 
               <div className="form-group">
+                <label>Email *</label>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+              </div>
+
+              <div className="form-group">
                 <label>Mobile Number *</label>
                 <input name="mobile" value={formData.mobile} onChange={handleChange} required />
               </div>
@@ -176,6 +189,17 @@ export default function Donate() {
                 We accept only Indian (INR) payments. International transactions are not supported.
               </div>
             </form>
+
+            {receiptInfo ? (
+              <div className="info-box" style={{ marginTop: 20 }}>
+                <p><strong>Madrasa receipt ready:</strong> {receiptInfo.receipt_number}</p>
+                <p>You can open the receipt, print it, or share it on WhatsApp.</p>
+                <div className="form-actions" style={{ gap: 10, flexWrap: "wrap" }}>
+                  <a className="btn-primary" href={receiptInfo.receipt_url} target="_blank" rel="noreferrer">Open Receipt</a>
+                  <a className="btn-primary" href={receiptInfo.whatsapp_share_url} target="_blank" rel="noreferrer">Share on WhatsApp</a>
+                </div>
+              </div>
+            ) : null}
           </div>
 
           <aside className="scan-pay-card" aria-labelledby="scan-pay-title">

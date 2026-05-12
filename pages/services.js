@@ -12,6 +12,7 @@ import {
   FaUserShield,
   FaSnowflake,
   FaFireExtinguisher,
+  FaVideo, // add this
 } from "react-icons/fa";
 
 export default function Services() {
@@ -48,22 +49,26 @@ export default function Services() {
 
         <h2 className="section-title center">Facilities for Residence Children</h2>
 
-        <div className="services-cards">
+      <div className="services-cards">
 
-          <div className="service-box"><FaTshirt /><span>Clothing</span></div>
-          <div className="service-box"><FaLaptop /><span>Basic Computer Training</span></div>
-          <div className="service-box"><FaTint /><span>Aqua Water Purifier for Drinking</span></div>
-          <div className="service-box"><FaUtensils /><span>Food</span></div>
-          <div className="service-box"><FaHeartbeat /><span>Medical Check-Ups</span></div>
-          <div className="service-box"><FaBook /><span>Religious & Academic Education</span></div>
-          <div className="service-box"><FaLaptop /><span>AI Whiteboard for Education</span></div>
-          <div className="service-box"><FaLock /><span>Locker</span></div>
-          <div className="service-box"><FaSchool /><span>School Bags & Supplies</span></div>
-          <div className="service-box"><FaBed /><span>Bedding</span></div>
-          <div className="service-box"><FaUserShield /><span>Accommodation</span></div>
-          <div className="service-box"><FaSnowflake /><span>Air Conditioner Facility</span></div>
+  <div className="service-box"><FaTshirt /><span>Clothing</span></div>
+  <div className="service-box"><FaLaptop /><span>Basic Computer Training</span></div>
+  <div className="service-box"><FaTint /><span>Aqua Water Purifier for Drinking</span></div>
+  <div className="service-box"><FaUtensils /><span>Food</span></div>
+  <div className="service-box"><FaHeartbeat /><span>Medical Check-Ups</span></div>
+  <div className="service-box"><FaBook /><span>Religious & Academic Education</span></div>
+  <div className="service-box"><FaLaptop /><span>AI Whiteboard for Education</span></div>
+  <div className="service-box"><FaLock /><span>Locker</span></div>
+  <div className="service-box"><FaSchool /><span>School Bags & Supplies</span></div>
+  <div className="service-box"><FaBed /><span>Bedding</span></div>
+  <div className="service-box"><FaUserShield /><span>Accommodation</span></div>
+  <div className="service-box"><FaSnowflake /><span>Air Conditioner Facility</span></div>
 
-        </div>
+  {/* NEW ADDITIONS */}
+  <div className="service-box"><FaVideo /><span>CCTV Surveillance</span></div>
+  <div className="service-box"><FaFireExtinguisher /><span>Fire Safety System</span></div>
+
+</div>
 
       </section>
 
