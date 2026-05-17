@@ -3,19 +3,111 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import {
-  FaUserGraduate,
   FaBookOpen,
+  FaCalendarAlt,
+  FaChalkboardTeacher,
+  FaGraduationCap,
+  FaHandsHelping,
+  FaHeartbeat,
   FaLaptop,
-  FaTrophy,
-  FaCalendarAlt,FaGraduationCap,FaChalkboardTeacher,FaUsers,FaRunning,FaLightbulb,FaHeartbeat,FaHandsHelping,
+  FaLightbulb,
   FaMosque,
+  FaRunning,
+  FaTrophy,
+  FaUserGraduate,
+  FaUsers,
 } from "react-icons/fa";
+
+const highlightCards = [
+  {
+    icon: FaUserGraduate,
+    title: "Admission",
+    items: [
+      "Age limit: 8 to 18 years",
+      "Admissions begin on the 6th day of Eid-ul-Fitr",
+      "Medical check-ups after admission",
+      "Shobe-Hifz intake up to 14 years",
+    ],
+  },
+  {
+    icon: FaBookOpen,
+    title: "Education",
+    items: [
+      "Formal and non-formal schooling",
+      "Educational visits",
+      "Islamic competitions",
+      "Basic computer training",
+    ],
+  },
+];
+
+const timelineItems = [
+  {
+    icon: FaMosque,
+    title: "Eid Celebrations",
+    description: "Celebrate Eid-ul-Fitr and Eid-ul-Adha with community prayers and gatherings.",
+  },
+  {
+    icon: FaTrophy,
+    title: "Inter-School Competitions",
+    description: "Musabeqa, Hifz-ul-Quran, Qirat, speech, and Islamic competitions.",
+  },
+  {
+    icon: FaCalendarAlt,
+    title: "Annual Events",
+    description: "Sports Day, Gandhi Jayanti, Education Day, Children's Day, Republic Day, and Independence Day.",
+  },
+  {
+    icon: FaGraduationCap,
+    title: "Dastarbandi Ceremony",
+    description: "An annual ceremony honoring students who complete Hifz-ul-Quran.",
+  },
+  {
+    icon: FaBookOpen,
+    title: "Quranic Classes",
+    description: "Daily Quran recitation, Tajweed, Nazera, and Hifz programs.",
+  },
+  {
+    icon: FaChalkboardTeacher,
+    title: "Academic Programs",
+    description: "Formal education with SSC curriculum, regular exams, and assessments.",
+  },
+  {
+    icon: FaUsers,
+    title: "Orientation Programs",
+    description: "Welcoming and guiding new students through orientation sessions.",
+  },
+  {
+    icon: FaRunning,
+    title: "Sports and Physical Activities",
+    description: "Sports week, fitness activities, and outdoor games for students.",
+  },
+  {
+    icon: FaLightbulb,
+    title: "Workshops and Training",
+    description: "Skill development, personality development, and awareness workshops.",
+  },
+  {
+    icon: FaHeartbeat,
+    title: "Health and Welfare Camps",
+    description: "Medical check-ups, eye camps, and health awareness programs.",
+  },
+  {
+    icon: FaLaptop,
+    title: "Digital Learning",
+    description: "Smart classrooms, online education, and digital tools for learning.",
+  },
+  {
+    icon: FaHandsHelping,
+    title: "Community Support",
+    description: "Charity drives, support for needy families, and social initiatives.",
+  },
+];
 
 export default function Activities() {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  /* ================= SCROLL REVEAL ================= */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -23,187 +115,90 @@ export default function Activities() {
       },
       { threshold: 0.2 }
     );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <Layout title="Activities | Noormeher Charitable Trust">
-        <section
-  className="about-hero"
-  style={{
-    backgroundImage: "url('/images/activities.jpg')",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  }}
->
-  <div className="about-overlay"></div>
+      <section
+        className="feature-hero"
+        style={{ backgroundImage: "url('/images/15august.jpeg')" }}
+      >
+        <div className="feature-hero-overlay" />
+        <div className="container feature-hero-shell">
+          <span className="feature-hero-pill">What We Do</span>
+          <div className="feature-hero-text">
+            <h1>Activities</h1>
+            <p>
+              Empowering children through structured education and meaningful programs.
+            </p>
+          </div>
+        </div>
+      </section>
 
-  <div className="about-inner container">
-  <span className="tag">✦ What We Do</span>
-
-    <div className="about-flex">
-      <h1>Activities</h1>
-
-      <p>
-     Empowering children through structured education & meaningful programs
-      </p>
-    </div>
-  </div>
-</section>
-   
-      {/* ================= HERO ================= */}
-    
-      {/* ================= MAIN CONTENT ================= */}
       <section
         ref={sectionRef}
         className={`activities-section ${visible ? "show" : ""}`}
       >
-
-        {/* ================= ADMISSION & EDUCATION ================= */}
-        <div className="activities-grid">
-
-          <div className="activity-card">
-            <FaUserGraduate />
-            <h3>Admission</h3>
-            <ul>
-              <li>Age Limit 8 – 14 years</li>
-              <li>Admission on 6th Day of Eid-Ul-Fitr</li>
-              <li>Medical Check-Ups after Admission</li>
-              <li>Shobe-Hifz up to 14 years</li>
-            </ul>
+        <div className="container">
+          <div className="section-heading left">
+            <span>Daily Engagement</span>
+            <h2>Admission, education, and programs designed to build confidence.</h2>
           </div>
 
-          <div className="activity-card">
-            <FaBookOpen />
-            <h3>Education</h3>
-            <ul>
-              <li>Formal & Non-formal School</li>
-              <li>Educational Visits</li>
-              <li>Islamic Competitions</li>
-              <li>Basic Computer Training</li>
-            </ul>
+          <div className="activities-grid">
+            {highlightCards.map((card) => {
+              const Icon = card.icon;
+
+              return (
+                <article key={card.title} className="activity-card">
+                  <Icon />
+                  <h3>{card.title}</h3>
+                  <ul>
+                    {card.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
           </div>
 
-        </div>
+          <h2 className="section-title">Programme Highlights</h2>
+          <div className="timeline">
+            {timelineItems.map((item) => {
+              const Icon = item.icon;
 
-        {/* ================= PROGRAMME TIMELINE ================= */}
-        <h2 className="section-title">Programme Highlights</h2>
-<div className="timeline">
-
-  <div className="timeline-item">
-    <FaMosque />
-    <div>
-      <h4>Eid Celebrations</h4>
-      <p>Celebrate Eid-ul-Fitr & Eid-ul-Adha with community prayers and gatherings.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaTrophy />
-    <div>
-      <h4>Inter School Competitions</h4>
-      <p>Musabeqa, Hifz-ul-Quran, Qirat, Speech & Islamic competitions.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaCalendarAlt />
-    <div>
-      <h4>Annual Events</h4>
-      <p>Sports Day, Gandhi Jayanti, Education Day, Children's Day, Republic Day & Independence Day.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaGraduationCap />
-    <div>
-      <h4>Dastarbandi Ceremony</h4>
-      <p>Annual ceremony honoring students who complete Hifz-ul-Quran.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaBookOpen />
-    <div>
-      <h4>Quranic Classes</h4>
-      <p>Daily Quran recitation, Tajweed, Nazera and Hifz programs.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaChalkboardTeacher />
-    <div>
-      <h4>Academic Programs</h4>
-      <p>Formal education with SSC curriculum, regular exams and assessments.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaUsers />
-    <div>
-      <h4>Orientation Programs</h4>
-      <p>Welcoming and guiding new students with orientation sessions.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaRunning />
-    <div>
-      <h4>Sports & Physical Activities</h4>
-      <p>Sports week, fitness activities and outdoor games for students.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaLightbulb />
-    <div>
-      <h4>Workshops & Training</h4>
-      <p>Skill development, personality development and awareness workshops.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaHeartbeat />
-    <div>
-      <h4>Health & Welfare Camps</h4>
-      <p>Medical checkups, eye camps and health awareness programs.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaLaptop />
-    <div>
-      <h4>Digital Learning</h4>
-      <p>Smart classrooms, online education and digital tools for learning.</p>
-    </div>
-  </div>
-
-  <div className="timeline-item">
-    <FaHandsHelping />
-    <div>
-      <h4>Community Support</h4>
-      <p>Charity drives, support for needy families and social initiatives.</p>
-    </div>
-  </div>
-
-</div>
-        {/* ================= STATS ================= */}
-        <div className="activities-stats">
-          <div className="stat-box">
-            <h3>24+</h3>
-            <p>Annual Events</p>
+              return (
+                <div key={item.title} className="timeline-item">
+                  <Icon />
+                  <div>
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="stat-box">
-            <h3>10+</h3>
-            <p>Islamic Competitions,Madarsa Competitions,Inter School Competitions</p>
-          </div>
-          <div className="stat-box">
-            <h3>100%</h3>
-            <p>Student Participation</p>
+
+          <div className="activities-stats">
+            <div className="stat-box">
+              <h3>24+</h3>
+              <p>Annual Events</p>
+            </div>
+            <div className="stat-box">
+              <h3>10+</h3>
+              <p>Islamic, madrasa, and inter-school competitions</p>
+            </div>
+            <div className="stat-box">
+              <h3>100%</h3>
+              <p>Student participation encouraged</p>
+            </div>
           </div>
         </div>
-
       </section>
     </Layout>
   );

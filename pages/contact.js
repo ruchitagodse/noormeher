@@ -68,56 +68,61 @@ export default function Contact() {
 
       <section className="section contact-section">
         <div className="container">
-          <div className="contact-card">
-            <h3 className="card-title">Send us a message</h3>
+          <div className="contact-layout">
+            <div className="contact-card">
+              <h3 className="card-title">Send us a message</h3>
+              <p className="contact-support-text">
+                Reach out for admissions, support, donations, or general questions.
+              </p>
 
-            {status.message ? (
-              <div className={status.type === "success" ? "alert alert-success" : "alert alert-danger"}>
-                {status.message}
-              </div>
-            ) : null}
+              {status.message ? (
+                <div className={status.type === "success" ? "alert alert-success" : "alert alert-danger"}>
+                  {status.message}
+                </div>
+              ) : null}
 
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Full Name</label>
-                <input type="text" name="fullname" value={formData.fullname} onChange={handleChange} required />
-              </div>
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label>Full Name</label>
+                  <input type="text" name="fullname" value={formData.fullname} onChange={handleChange} required />
+                </div>
 
-              <div className="form-group">
-                <label>Email Address</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-              </div>
+                <div className="form-group">
+                  <label>Email Address</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                </div>
 
-              <div className="form-group">
-                <label>Mobile / Phone</label>
-                <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
-              </div>
+                <div className="form-group">
+                  <label>Mobile / Phone</label>
+                  <input type="text" name="mobile" value={formData.mobile} onChange={handleChange} required />
+                </div>
 
-              <div className="form-group">
-                <label>Your Message</label>
-                <textarea name="message" rows="5" value={formData.message} onChange={handleChange} required />
-              </div>
+                <div className="form-group">
+                  <label>Your Message</label>
+                  <textarea name="message" rows="5" value={formData.message} onChange={handleChange} required />
+                </div>
 
-              <div className="form-actions">
-                <button type="submit" className="btn-primary" disabled={submitting}>
-                  {submitting ? "Sending..." : "Send Message"}
-                </button>
-                <button
-                  type="button"
-                  className="btn-outline"
-                  onClick={() => {
-                    setFormData({ fullname: "", email: "", mobile: "", message: "" });
-                    setStatus({ type: "", message: "" });
-                  }}
-                  disabled={submitting}
-                >
-                  Reset
-                </button>
-              </div>
-            </form>
+                <div className="form-actions">
+                  <button type="submit" className="btn-primary" disabled={submitting}>
+                    {submitting ? "Sending..." : "Send Message"}
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-outline"
+                    onClick={() => {
+                      setFormData({ fullname: "", email: "", mobile: "", message: "" });
+                      setStatus({ type: "", message: "" });
+                    }}
+                    disabled={submitting}
+                  >
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
 
-          <div className="contact-card map-card" style={{ marginTop: "30px" }}>
+          <div className="contact-card map-card contact-map-section">
             <iframe
               title="Noormeher Charitable Trust Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.329375061922!2d72.812481!3d19.180811000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b684e7edf0ff%3A0x265da16c8e6da9ef!2sNoormeher+Charitable+Trust!5e0!3m2!1sen!2sin!4v1439553395159"

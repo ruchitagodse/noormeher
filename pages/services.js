@@ -12,122 +12,116 @@ import {
   FaUserShield,
   FaSnowflake,
   FaFireExtinguisher,
-  FaVideo, // add this
+  FaVideo,
 } from "react-icons/fa";
+
+const residentialServices = [
+  { icon: FaTshirt, title: "Clothing" },
+  { icon: FaLaptop, title: "Basic Computer Training" },
+  { icon: FaTint, title: "Aqua Water Purifier" },
+  { icon: FaUtensils, title: "Food" },
+  { icon: FaHeartbeat, title: "Medical Check-Ups" },
+  { icon: FaBook, title: "Religious and Academic Education" },
+  { icon: FaLaptop, title: "AI Whiteboard for Education" },
+  { icon: FaLock, title: "Locker Facility" },
+  { icon: FaSchool, title: "School Bags and Supplies" },
+  { icon: FaBed, title: "Bedding" },
+  { icon: FaUserShield, title: "Accommodation" },
+  { icon: FaSnowflake, title: "Air Conditioner Facility" },
+  { icon: FaVideo, title: "CCTV Surveillance" },
+  { icon: FaFireExtinguisher, title: "Fire Safety System" },
+];
 
 export default function Services() {
   return (
     <Layout title="Services | Noormeher Charitable Trust">
-
-      {/* HERO */}
-   
-   <section
-  className="about-hero"
-  style={{
-    backgroundImage: "url('/images/services.jpg')",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  }}
->
-  <div className="about-overlay"></div>
-
-  <div className="about-inner container">
-    <span className="tag">✦ What we do</span>
-
-    <div className="about-flex">
-      <h1>Our Services</h1>
-
-      <p>
-       Providing care, education, protection and opportunities for every child.
-      </p>
-    </div>
-  </div>
-</section>
-      {/* FACILITIES */}
-      <section className="container section services-section">
-
-        <h2 className="section-title center">Facilities for Residence Children</h2>
-
-      <div className="services-cards">
-
-  <div className="service-box"><FaTshirt /><span>Clothing</span></div>
-  <div className="service-box"><FaLaptop /><span>Basic Computer Training</span></div>
-  <div className="service-box"><FaTint /><span>Aqua Water Purifier for Drinking</span></div>
-  <div className="service-box"><FaUtensils /><span>Food</span></div>
-  <div className="service-box"><FaHeartbeat /><span>Medical Check-Ups</span></div>
-  <div className="service-box"><FaBook /><span>Religious & Academic Education</span></div>
-  <div className="service-box"><FaLaptop /><span>AI Whiteboard for Education</span></div>
-  <div className="service-box"><FaLock /><span>Locker</span></div>
-  <div className="service-box"><FaSchool /><span>School Bags & Supplies</span></div>
-  <div className="service-box"><FaBed /><span>Bedding</span></div>
-  <div className="service-box"><FaUserShield /><span>Accommodation</span></div>
-  <div className="service-box"><FaSnowflake /><span>Air Conditioner Facility</span></div>
-
-  {/* NEW ADDITIONS */}
-  <div className="service-box"><FaVideo /><span>CCTV Surveillance</span></div>
-  <div className="service-box"><FaFireExtinguisher /><span>Fire Safety System</span></div>
-
-</div>
-
+      <section
+        className="feature-hero"
+        style={{ backgroundImage: "url('/images/activities.jpg')" }}
+      >
+        <div className="feature-hero-overlay" />
+        <div className="container feature-hero-shell">
+          <span className="feature-hero-pill">What We Do</span>
+          <div className="feature-hero-text">
+            <h1>Our Services</h1>
+            <p>
+              Providing care, education, protection, and practical support for every child.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* ACADEMIC */}
+      <section className="container section services-section">
+        <div className="section-heading left">
+          <span>Residential Support</span>
+          <h2>Facilities provided for resident children</h2>
+        </div>
+
+        <div className="services-cards">
+          {residentialServices.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <div key={item.title} className="service-box">
+                <Icon />
+                <span>{item.title}</span>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       <section className="academic-section">
+        <div className="container academic-layout">
+          <div className="section-heading left">
+            <span>Academic Support</span>
+            <h2>Religious learning and formal education go hand in hand.</h2>
+          </div>
 
-        <div className="container">
+          <div className="academic-text content-card">
+            <p>
+              Noor Meher Charitable Trust offers both religious and formal education.
+              Jamia Tajveedul Quran provides Quranic recitation classes at three levels
+              including Noorani Qaida, Nazera, and Hifz, along with a structured academic
+              syllabus that includes quarterly, half-term, and annual examinations.
+            </p>
 
-          <h2 className="section-title center">Academic</h2>
+            <p>
+              The trust also runs Noor Meher Urdu Maktab and High School
+              (Grades 1-10, Maharashtra State Board), where students take unit tests,
+              semester examinations, and final examinations as part of their formal education.
+            </p>
 
-          <div className="academic-text">
-<p>
-  The Noor Meher Charitable Trust offers both religious and formal education. 
-  Jamia Tajveedul Quran provides Quranic recitation classes at three levels 
-  (Noorani Qaida, Nazera, Hifz) along with a structured academic syllabus 
-  including quarterly, half-term, and annual examinations.
-</p>
-
-<p>
-  The Trust also runs Noor Meher Urdu Maktab and High School (Grades 1–10, 
-  Maharashtra State Board), where students undergo two unit tests, semester 
-  examinations, and a final examination.
-</p>
-
-<p>
-  In addition, the Trust is registered with NIOS (National Institute of Open Schooling), 
-  providing students with flexible learning opportunities. Many students have successfully 
-  completed their academic programs through NIOS.
-</p>
+            <p>
+              In addition, the trust is registered with NIOS (National Institute of Open
+              Schooling), giving students flexible learning pathways. Many students have
+              successfully completed their academic programs through NIOS.
+            </p>
           </div>
 
           <div className="academic-split">
-
             <div className="academic-card">
-              <h4>Health & Hygiene</h4>
+              <h4>Health and Hygiene</h4>
               <ul>
-                <li>Nutrition</li>
-                <li>Medicine</li>
+                <li>Nutrition support</li>
+                <li>Medicines</li>
                 <li>Toiletries</li>
-                <li>Wall to wall carpet</li>
+                <li>Wall-to-wall carpeted spaces</li>
                 <li>Water storage tanks cleaned every six months</li>
               </ul>
             </div>
 
             <div className="academic-card">
-              <h4>Safety & Security</h4>
+              <h4>Safety and Security</h4>
               <ul>
-                <li>Two Teachers available 24/7</li>
-                <li>40 CCTV Monitoring</li>
-                <li><FaFireExtinguisher /> Fire Extinguishers Installed</li>
+                <li>Teachers available on-site for supervision</li>
+                <li>40-camera CCTV monitoring</li>
+                <li>Fire extinguishers installed</li>
               </ul>
             </div>
-
           </div>
-
         </div>
-
       </section>
-
     </Layout>
   );
 }

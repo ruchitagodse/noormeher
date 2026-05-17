@@ -1,58 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
- import {    FaCalendarAlt, 
-  FaHandsHelping, 
-  FaPhoneAlt, 
-  FaGraduationCap  } from "react-icons/fa";
-
-
+import {
+  FaCalendarAlt,
+  FaHandsHelping,
+  FaPhoneAlt,
+  FaGraduationCap,
+  FaBookOpen,
+  FaSchool,
+  FaHandHoldingHeart,
+} from "react-icons/fa";
 import Layout from "../components/Layout";
 
 const images = [
-  "/images/slide11.jpg",
-  "/images/slide2.jpg",
-  "/images/slide3.jpg",
-  "/images/slide6.jpg",
-  "/images/slide7.jpg",
-  "/images/slide4.jpg",
-  "/images/slide5.jpg",
-  "/images/slide1.jpg",
-  "/images/slide8.jpg", 
-    "/images/slide9.jpg",                             
-      "/images/slide10.jpg",       
+  "/images/s0.JPG",
+  "/images/s2.jpeg",
+  "/images/s3.jpeg",
+  "/images/s6.jpeg",
+  "/images/s7.jpeg",
+  "/images/s4.jpeg",
+  "/images/s5.jpeg",
+  "/images/s1.jpeg",
+  "/images/s8.jpeg",
+  "/images/s9.jpeg",
+  "/images/s10.jpeg",
 ];
 
-export default function Home() {
-  const [current, setCurrent] = useState(0);
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
-
-  const nextSlide = () =>
-    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-
-  const prevSlide = () =>
-    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-
-  /* ================= AUTOPLAY ================= */
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 4500);
-    return () => clearInterval(interval);
-  }, []);
-
-  /* ================= SWIPE SUPPORT ================= */
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e) => {
-    touchEndX.current = e.changedTouches[0].clientX;
-    handleSwipe();
-  };
-
-  const handleSwipe = () => {
-    if (touchStartX.current - touchEndX.current > 50) nextSlide();
-    if (touchEndX.current - touchStartX.current > 50) prevSlide();
-  };
 function Counter({ number, label, suffix }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -115,258 +87,303 @@ function Counter({ number, label, suffix }) {
     </div>
   );
 }
+
+export default function Home() {
+  const [current, setCurrent] = useState(0);
+  const [showYoutubePopup, setShowYoutubePopup] = useState(false);
+  const youtubeVideoId = "NXmTjJVQZ80";
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const nextSlide = () =>
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+
+  const prevSlide = () =>
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 4500);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    setShowYoutubePopup(true);
+  }, []);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    if (touchStartX.current - touchEndX.current > 50) nextSlide();
+    if (touchEndX.current - touchStartX.current > 50) prevSlide();
+  };
+
   return (
     <Layout>
-      {/* ================= HERO SLIDER ================= */}
-   
-   <section
-  className="about-hero"
-  style={{
-    backgroundImage: `url(${images[current]})`,
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  }}
-  onTouchStart={handleTouchStart}
-  onTouchEnd={handleTouchEnd}
->
-  {/* OVERLAY */}
-  <div className="about-overlay"></div>
+      <section
+        className="hero-slider home-slider"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {images.map((img, index) => (
+          <div
+            key={img}
+            className={`hero-slide ${index === current ? "active" : ""}`}
+          >
+            <img src={img} alt={`Noormeher Trust slide ${index + 1}`} />
+            <div className="slide-overlay" />
+          </div>
+        ))}
 
-  {/* CONTENT */}
-  <div className="about-inner container">
-    <span className="tag">✦ Noormeher Trust</span>
+        <div className="home-slider-content">
+          <div className="home-slider-pill">✦ Noormeher Trust</div>
+          <div className="home-slider-text">
+            <h1>Welcome</h1>
+            <p>
+              Serving with Faith,
+              <br />
+              Education & Compassion
+              <br />
+              Since 2001
+            </p>
+          </div>
+        </div>
 
-    <div className="about-flex">
-      <h1>Welcome</h1>
-
-      <p>
-        Serving with Faith, <br />
-        Education & Compassion <br />
-        Since 2001
-      </p>
-    </div>
-  </div>
-
-
-
-        {/* OVERLAY */}
-     
-
-        {/* TEXT ON IMAGE */}
-     {/* REMOVE hero-overlay div completely */}
-
-<div className="hero-content glass-box">
-  {/* <h1>Noormeher Charitable Trust</h1> */}
-  {/* <p>
-    Working for Religious Education & Welfare of Orphan and Poor Muslim
-    Children since 2001
-  </p> */}
-  {/* <a href="/about" className="donate-btn">
-    Read More
-  </a> */}
-</div>
-
-
-        {/* ARROWS (DESKTOP) */}
-        <button className="slider-arrow left" onClick={prevSlide}>
-          ‹
+        <button
+          type="button"
+          className="slider-arrow left"
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
+          &#8249;
         </button>
-        <button className="slider-arrow right" onClick={nextSlide}>
-          ›
+        <button
+          type="button"
+          className="slider-arrow right"
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
+          &#8250;
         </button>
+
+        {showYoutubePopup && youtubeVideoId && (
+          <div
+            className="youtube-corner-widget"
+            role="dialog"
+            aria-modal="false"
+            aria-label="Noormeher YouTube video"
+          >
+            <div className="youtube-corner-card">
+              <button
+                type="button"
+                className="youtube-popup-close"
+                onClick={() => setShowYoutubePopup(false)}
+                aria-label="Close video popup"
+              >
+                ×
+              </button>
+              <div className="youtube-popup-frame-wrap">
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0`}
+                  title="Noormeher YouTube video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </section>
-  
-<section className="modern-hero">
-  <div className="hero-left">
-    <h1 className="hero-title">
-      Empowering <br />
-      Through <br />
-      Education & Faith
-    </h1>
 
-    <p className="hero-subtext">
-      Noormeher Charitable Trust is dedicated to providing quality Islamic
-      education, community support, and building a brighter future for
-      students.
-    </p>
+      <section className="modern-hero">
+        <div className="hero-left">
+          <h1 className="hero-title">
+            Empowering <br />
+            Through <br />
+            Education & Faith
+          </h1>
 
-    <div className="hero-buttons">
-      <a href="/about" className="read">Learn More</a>
-      <a href="/donate" className="btn-outline">Get Involved</a>
-    </div>
-  </div>
+          <p className="hero-subtext">
+            Noormeher Charitable Trust is dedicated to providing quality Islamic
+            education, community support, and building a brighter future for
+            students.
+          </p>
 
-<div className="hero-right">
+          <div className="hero-buttons">
+            <a href="/about" className="read">
+              Learn More
+            </a>
+            <a href="/donate" className="btn-outline">
+              Get Involved
+            </a>
+          </div>
+        </div>
 
-  <Link href="/activities" className="color-card purple">
-    <FaCalendarAlt />
-    <span>Activities</span>
-  </Link>
+        <div className="hero-right">
+          <Link href="/activities" className="color-card purple">
+            <FaCalendarAlt />
+            <span>Activities</span>
+          </Link>
 
-  <Link href="/services" className="color-card pink">
-    <FaHandsHelping />
-    <span>Services</span>
-  </Link>
+          <Link href="/services" className="color-card pink">
+            <FaHandsHelping />
+            <span>Services</span>
+          </Link>
 
-  <Link href="/contact" className="color-card blue">
-    <FaPhoneAlt />
-    <span>Contact</span>
-  </Link>
+          <Link href="/contact" className="color-card blue">
+            <FaPhoneAlt />
+            <span>Contact</span>
+          </Link>
 
-  <Link href="/achievements" className="color-card green">
-    <FaGraduationCap />
-    <span>Achievements</span>
-  </Link>
+          <Link href="/achievements" className="color-card green">
+            <FaGraduationCap />
+            <span>Achievements</span>
+          </Link>
+        </div>
+      </section>
 
-</div>
+      <section className="container section welcome-section">
+        <div className="welcome-card">
+          <span className="welcome-tag">Since 2001</span>
 
-</section>
+          <h2>Welcome to Noormeher Charitable Trust</h2>
 
-   
+          <p>
+            <strong>Noor Meher Charitable Trust</strong> is an organization based in
+            Mumbai, Maharashtra, India, primarily working to promote dual
+            education and welfare for orphan and poor Muslim children.
+          </p>
 
+          <p>
+            The Trust is registered under the Bombay Public Trust Act, 1950 (Regd.
+            No. E-20745 Mumbai) and comes under the Income Tax Exemption Act, 1961
+            (12AA).
+          </p>
 
-      {/* ================= WELCOME ================= */}
-    <section className="container section welcome-section">
-  <div className="welcome-card">
-    <span className="welcome-tag">Since 2001</span>
+          <p className="highlight-line">
+            By the grace of Almighty, Noor Meher Charitable Trust has been serving the
+            community continuously since <strong>2001</strong>.
+          </p>
+        </div>
+      </section>
 
-    <h2>Welcome to Noormeher Charitable Trust</h2>
+      <section className="impact-section">
+        <div className="container impact-grid">
+          <Counter number={2001} label="Established" suffix="" />
+          <Counter number={191} label="Hafiz Graduates" suffix="+" />
+          <Counter number={141} label="Total Students" suffix="+" />
+          <Counter number={40} label="CCTV Cameras" suffix="" />
+        </div>
+      </section>
 
-    <p>
-      <strong>Noor Meher Charitable Trust</strong> is an organization based in
-      Mumbai, Maharashtra, India, primarily working to promote dual
-      education and welfare for orphan and poor Muslim children.
-    </p>
+      <section className="container section highlights">
+        <h2 className="center"> About Us </h2>
+        <div className="grid-3 highlight-grid">
+          <div className="card highlight-card">
+            <div className="highlight-img">
+              <img src="/images/vision.jpg" alt="Our Vision" />
+            </div>
+            <div className="highlight-content">
+              <h3>Our Vision</h3>
+              <p>
+                Our vision is to provide quality education, basic computer education,
+                medical support, and essential facilities to poor and needy Muslim
+                children.
+              </p>
+              <a href="/vision" className="highlight-btn">
+                Read More
+              </a>
+            </div>
+          </div>
 
-    <p>
-      The Trust is registered under the Bombay Public Trust Act, 1950 (Regd.
-      No. E-20745 Mumbai) and comes under the Income Tax Exemption Act, 1961
-      (12AA).
-    </p>
+          <div className="card highlight-card">
+            <div className="highlight-img">
+              <img src="/images/mission.jpg" alt="Our Mission" />
+            </div>
+            <div className="highlight-content">
+              <h3>Our Mission</h3>
+              <p>
+                Our mission is to work for the care, education, and overall
+                development of children through structured education and moral guidance.
+              </p>
+              <a href="/mission" className="highlight-btn">
+                Read More
+              </a>
+            </div>
+          </div>
 
-    <p className="highlight-line">
-      By the grace of Allah, Noor Meher Charitable Trust has been serving the
-      community continuously since <strong>2001</strong>.
-    </p>
-  </div>
-</section>
-{/* ================= IMPACT COUNTERS ================= */}
-<section className="impact-section">
-  <div className="container impact-grid">
+          <div className="card highlight-card">
+            <div className="highlight-img">
+              <img src="/images/achievement.jpg" alt="Achievements" />
+            </div>
+            <div className="highlight-content">
+              <h3>Achievements</h3>
+              <p>
+                Since 2001 more than <strong>191 children</strong> have memorized the Quran.
+              </p>
+              <a href="/achievements" className="highlight-btn">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <Counter number={2001} label="Established" suffix="" />
-    <Counter number={182} label="Hafiz Graduates" suffix="+" />
-    <Counter number={141} label="Total Students" suffix="+" />
-    <Counter number={40} label="CCTV Cameras" suffix="" />
-
-  </div>
-</section>
-
-      {/* ================= VISION / MISSION / ACHIEVEMENTS ================= */}
-<section className="container section highlights">
-     <h2 className="center"> About Us </h2>
-  <div className="grid-3 highlight-grid">
-
-    <div className="card highlight-card">
-      <div className="highlight-img">
-        <img src="/images/vision.jpg" alt="Our Vision" />
-      </div>
-      <div className="highlight-content">
-        <h3>Our Vision</h3>
-        <p>
-          Our vision is to provide quality education, basic computer education,
-          medical support, and essential facilities to poor and needy Muslim
-          children.
-        </p>
-        <a href="/vision" className="highlight-btn">Read More</a>
-      </div>
-    </div>
-
-    <div className="card highlight-card">
-      <div className="highlight-img">
-        <img src="/images/mission.jpg" alt="Our Mission" />
-      </div>
-      <div className="highlight-content">
-        <h3>Our Mission</h3>
-        <p>
-          Our mission is to work for the care, education, and overall
-          development of children through structured education and moral guidance.
-        </p>
-        <a href="/mission" className="highlight-btn">Read More</a>
-      </div>
-    </div>
-
-    <div className="card highlight-card">
-      <div className="highlight-img">
-        <img src="/images/achievements.jpg" alt="Achievements" />
-      </div>
-      <div className="highlight-content">
-        <h3>Achievements</h3>
-        <p>
-          Since 2001 more than <strong>182 children</strong> have memorized the Quran.
-        </p>
-        <a href="/achievements" className="highlight-btn">Read More</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-      {/* ================= KEY HIGHLIGHTS ================= */}
       <section className="container section highlights">
         <h2 className="center">What We Do</h2>
 
         <div className="grid-3 services-grid">
-  <div className="card service-card">
-    <div className="icon-box green">📖</div>
-    <h4>Religious Education</h4>
-    <p>
-      Jamia Tajveedul Quran provides Hifz, Nazra, and Islamic Secular education
-      with strong moral values.
-    </p>
-  </div>
+          <div className="card service-card">
+            <div className="icon-box green" aria-hidden="true">
+              <FaBookOpen />
+            </div>
+            <h4>Religious Education</h4>
+            <p>
+              Jamia Tajveedul Quran provides Hifz, Nazra, and Islamic Secular education
+              with strong moral values.
+            </p>
+          </div>
 
-  <div className="card service-card">
-    <div className="icon-box blue">🏫</div>
-    <h4>Formal Schooling</h4>
-    <p>
-      Noor Meher Urdu School & Maktab focuses on academic excellence
-      along with character building.
-    </p>
-  </div>
+          <div className="card service-card">
+            <div className="icon-box blue" aria-hidden="true">
+              <FaSchool />
+            </div>
+            <h4>Formal Schooling</h4>
+            <p>
+              Noor Meher Urdu School & Maktab focuses on academic excellence
+              along with character building.
+            </p>
+          </div>
 
-  <div className="card service-card">
-    <div className="icon-box purple">🤝</div>
-    <h4>Welfare & Support</h4>
-    <p>
-      Food, shelter, medical care, uniforms, books, and guidance for
-      orphan and needy children.
-    </p>
-  </div>
-</div>
-
+          <div className="card service-card">
+            <div className="icon-box purple" aria-hidden="true">
+              <FaHandHoldingHeart />
+            </div>
+            <h4>Welfare & Support</h4>
+            <p>
+              Food, shelter, medical care, uniforms, books, and guidance for
+              orphan and needy children.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* ================= CALL TO ACTION ================= */}
-  <section className="cta section">
-  <div className="cta-inner">
-  
+      <section className="cta section">
+        <div className="cta-inner">
+          <h2>Support Our Cause</h2>
 
-    <h2>Support Our Cause</h2>
+          <p>
+            Your contribution helps us educate, nurture, and empower children for
+            a brighter and dignified future.
+          </p>
 
-    <p>
-      Your contribution helps us educate, nurture, and empower children for
-      a brighter and dignified future.
-    </p>
-
-    <a href="/donate" className="cta-btn">
-      Donate Now
-    </a>
-  </div>
-</section>
+          <a href="/donate" className="cta-btn">
+            Donate Now
+          </a>
+        </div>
+      </section>
 
     </Layout>
   );

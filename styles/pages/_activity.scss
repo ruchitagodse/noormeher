@@ -1,68 +1,41 @@
-/* ================= HERO ================= */
-
-.activity-hero {
-  position: relative;
-  min-height: 250px;
-  height: 60vh;
-  background: url("/images/activities.jpg") center/cover no-repeat;
-}
-
-/* Overlay */
-.activity-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(11, 46, 26, 0.55),
-    rgba(11, 46, 26, 0.75)
-  );
-}
-
-/* ================= SECTION ================= */
-
 .activities-section {
-  padding: 60px 0; /* reduced for better scroll */
-  opacity: 1;       /* ✅ FIX: no hidden content */
+  padding: 70px 0 90px;
+  opacity: 1;
   transform: none;
   transition: 0.8s ease;
 }
 
-.activities-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================= GRID ================= */
-
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  margin-bottom: 60px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 54px;
 }
 
 .activity-card {
-  background: #fff;
-  padding: 40px;
+  background: #ffffff;
+  padding: 32px;
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  transition: 0.4s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
   text-align: center;
 }
 
 .activity-card svg {
-  font-size: 34px;
+  font-size: 32px;
   color: #22c55e;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .activity-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 70px rgba(34,197,94,0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(34, 197, 94, 0.2);
 }
 
 .activity-card ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .activity-card li {
@@ -71,44 +44,49 @@
   color: #475569;
 }
 
-/* ================= TIMELINE ================= */
-
 .timeline {
-  max-width: 800px;
-  margin: auto;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .timeline-item {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: flex-start;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
   border-left: 4px solid #22c55e;
   background: #f9fffc;
-  border-radius: 14px;
+  border-radius: 16px;
+}
+
+.timeline-item h4 {
+  margin-bottom: 8px;
+}
+
+.timeline-item p {
+  margin: 0;
 }
 
 .timeline-item svg {
-  font-size: 26px;
+  font-size: 24px;
   color: #16a34a;
+  margin-top: 2px;
 }
-
-/* ================= STATS ================= */
 
 .activities-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 60px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 48px;
 }
 
 .stat-box {
-  background: #fff;
-  padding: 40px;
+  background: #ffffff;
+  padding: 32px 24px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .stat-box h3 {
@@ -118,70 +96,41 @@
 
 .stat-box p {
   margin-top: 8px;
+  margin-bottom: 0;
   font-weight: 600;
   color: #475569;
 }
 
-/* ================= ACTIVITY LIST ================= */
-
 .activity-list {
+  display: grid;
+  gap: 14px;
   padding-left: 18px;
   margin: 0;
 }
 
 .activity-list li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-  word-break: break-word;
+  line-height: 1.7;
+  color: #334155;
 }
-
-/* ================= GLOBAL FIX ================= */
-
-body {
-  overflow-x: hidden; /* ✅ prevent horizontal scroll */
-}
-
-/* ================= TABLET ================= */
 
 @media (max-width: 992px) {
-  .activities-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .activities-grid,
   .activities-stats {
     grid-template-columns: 1fr;
   }
 }
 
-/* ================= MOBILE ================= */
-
 @media (max-width: 768px) {
-  .activity-hero {
-    height: 220px; /* ✅ FIX scroll jump */
-  }
-
   .activities-section {
-    padding: 40px 0;
+    padding: 54px 0 70px;
   }
 
   .timeline-item {
-    flex-direction: column; /* ✅ FIX overflow */
+    flex-direction: column;
   }
 
-  .activity-list {
-    padding-left: 16px;
-  }
-
-  .activity-list li {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .activity-card {
-    padding: 25px;
-  }
-
+  .activity-card,
   .stat-box {
-    padding: 25px;
+    padding: 24px;
   }
 }
