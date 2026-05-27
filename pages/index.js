@@ -12,7 +12,6 @@ import {
 import Layout from "../components/Layout";
 
 const images = [
-  "/images/s0.JPG",
   "/images/s2.jpeg",
   "/images/s3.jpeg",
   "/images/s6.jpeg",
