@@ -154,7 +154,7 @@ export default function Achievements() {
 
       <section
         className="feature-hero"
-        style={{ backgroundImage: "url('/images/achievement.jpeg')" }}
+        style={{ backgroundImage: "url('/images/achievementss.jpg')" }}
       >
         <div className="feature-hero-overlay" />
         <div className="container feature-hero-shell">
